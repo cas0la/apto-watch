@@ -15,14 +15,15 @@ from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from watcher.store import Store  # noqa: E402
+from watcher.store import Store, supabase_env  # noqa: E402
 
 
 def main() -> int:
     load_dotenv(ROOT / ".env")
     url, key = os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_SERVICE_KEY")
-    if not (url and key):
-        print("Defina SUPABASE_URL e SUPABASE_SERVICE_KEY no .env.")
+    problem = supabase_env(url, key)
+    if problem:
+        print(problem)
         return 1
     st = Store(url, key)
     listings = json.loads((ROOT / "seed/listings.json").read_text())
@@ -39,4 +40,16 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    import requests
+    try:
+        sys.exit(main())
+    except requests.HTTPError as e:
+        r = e.response
+        hint = (" A tabela não existe: rode supabase/schema.sql no SQL Editor." if r is not None and r.status_code == 404
+                else " Confira se SUPABASE_SERVICE_KEY é a service_role key, não a anon." if r is not None and r.status_code in (401, 403)
+                else "")
+        print(f"O Supabase recusou: HTTP {r.status_code if r is not None else '?'} {(r.text if r is not None else '')[:200]}{hint}")
+        sys.exit(1)
+    except requests.ConnectionError:
+        print("Não deu para conectar ao Supabase. Confira a SUPABASE_URL no .env e a internet.")
+        sys.exit(1)

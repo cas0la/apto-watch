@@ -13,6 +13,18 @@ LISTING_FIELDS = {
 }
 
 
+def supabase_env(url: str | None, key: str | None) -> str | None:
+    """Devolve o problema do .env em uma frase, ou None se parece preenchido."""
+    if not (url and key):
+        return "Defina SUPABASE_URL e SUPABASE_SERVICE_KEY no .env."
+    if "SEU-PROJETO" in url.upper() or key.startswith("cole-"):
+        return ("O .env ainda tem os valores de exemplo. Troque SUPABASE_URL pela Project URL e "
+                "SUPABASE_SERVICE_KEY pela service_role key (Supabase > Project Settings > API Keys).")
+    if not url.startswith("https://") or ".supabase.co" not in url:
+        return f"SUPABASE_URL não parece a Project URL do Supabase (esperado https://xxxx.supabase.co): {url}"
+    return None
+
+
 def now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
@@ -107,6 +119,25 @@ class Store:
     def mark_sent(self, listing_id: str, alert_id: str, kind: str):
         self._post("notifications", [{"listing_id": listing_id, "alert_id": alert_id, "kind": kind}],
                    ignore_dupes=True)
+
+    # pedidos de "Buscar agora"
+    def claim_sync_requests(self) -> list[int]:
+        """Marca os pedidos pendentes como 'rodando' e devolve os ids."""
+        rows = self._get("sync_requests", {"select": "id", "status": "eq.pendente"})
+        ids = [r["id"] for r in rows]
+        if ids:
+            self._patch("sync_requests", {"id": f"in.({','.join(map(str, ids))})"},
+                        {"status": "rodando", "started_at": now()})
+        return ids
+
+    def finish_sync_requests(self, ids: list[int], status: str, message: str):
+        if ids:
+            self._patch("sync_requests", {"id": f"in.({','.join(map(str, ids))})"},
+                        {"status": status, "finished_at": now(), "message": message[:500]})
+
+    def last_run_started(self) -> str | None:
+        rows = self._get("runs", {"select": "started_at", "order": "started_at.desc", "limit": "1"})
+        return rows[0]["started_at"] if rows else None
 
     # execuções
     def start_run(self, source: str) -> int:

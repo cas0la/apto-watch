@@ -4,7 +4,7 @@
 // favoritos, descartes, alugados e alertas só neste navegador (localStorage).
 // Datas de "visto pela primeira vez", saídas do ar e uma redução de preço são simuladas.
 (function () {
-  const KEY = 'apto-demo-v3';
+  const KEY = 'apto-demo-v4';
   const read = () => { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return {}; } };
   const write = s => { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} };
   const DAY = 864e5, H = 36e5;
@@ -48,7 +48,7 @@
   function from(table) {
     const q = { table, op: 'select', filters: [], row: null };
     const api = {
-      select() { return api; }, order() { return api; }, limit() { return api; },
+      select() { return api; }, order() { return api; }, limit() { return api; }, single() { return api; },
       eq(col, val) { q.filters.push([col, val]); return api; },
       delete() { q.op = 'delete'; return api; },
       upsert(row) { q.op = 'upsert'; q.row = row; return api; },
@@ -82,6 +82,18 @@
       if (q.op === 'update') st.alerts = st.alerts.map(a => match(a) ? { ...a, ...q.row } : a);
       if (q.op === 'delete') st.alerts = st.alerts.filter(a => !match(a));
       write(st); return { data: null, error: null };
+    }
+    if (q.table === 'sync_requests') {
+      // "Buscar agora" simulado: fica 4 s na fila, 6 s buscando e termina sem anúncio novo.
+      st.sync = st.sync || [];
+      if (q.op === 'insert') { st.sync.unshift({ id: Date.now(), requested_by: q.row.requested_by, requested_at: new Date().toISOString(), status: 'pendente' }); write(st); return { data: null, error: null }; }
+      const now = Date.now();
+      st.sync.forEach(r => {
+        const age = now - new Date(r.requested_at).getTime();
+        if (r.status === 'pendente' && age > 4e3) { r.status = 'rodando'; r.started_at = new Date().toISOString(); }
+        if (r.status === 'rodando' && age > 10e3) { r.status = 'ok'; r.finished_at = new Date().toISOString(); r.message = '0 anúncios novos (demonstração: nenhuma fonte foi lida)'; }
+      });
+      write(st); return { data: st.sync.slice(0, 1), error: null };
     }
     return { data: [], error: null };
   }

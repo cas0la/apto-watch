@@ -1,0 +1,11 @@
+[Unit]
+Description=apto-watch: atende o "Buscar agora" da página, se houver pedido
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/Documents/apto-watch
+# -n: se a leitura agendada estiver rodando, sai sem esperar; ela mesma atende o pedido.
+ExecStart=/usr/bin/flock -n %t/apto-watch.lock %h/Documents/apto-watch/.venv/bin/python -m watcher --if-requested
+SuccessExitStatus=1

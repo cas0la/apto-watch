@@ -6,5 +6,5 @@ After=network-online.target
 [Service]
 Type=oneshot
 WorkingDirectory=%h/Documents/apto-watch
-ExecStart=%h/Documents/apto-watch/.venv/bin/python -m watcher
+ExecStart=/usr/bin/flock -w 900 %t/apto-watch.lock %h/Documents/apto-watch/.venv/bin/python -m watcher
 # Sem reexecução automática em caso de bloqueio: a próxima tentativa é no horário do timer.

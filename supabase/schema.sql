@@ -117,7 +117,20 @@ create table if not exists runs (
   message     text
 );
 
+-- Pedidos de "Buscar agora" feitos na página; o PC confere a cada 5 min e roda o watcher
+create table if not exists sync_requests (
+  id           bigserial primary key,
+  requested_by text,
+  requested_at timestamptz not null default now(),
+  started_at   timestamptz,
+  finished_at  timestamptz,
+  status       text not null default 'pendente' check (status in ('pendente', 'rodando', 'ok', 'erro')),
+  message      text
+);
+create index if not exists sync_requests_status on sync_requests (status, requested_at);
+
 -- RLS
+alter table sync_requests enable row level security;
 alter table members       enable row level security;
 alter table listings      enable row level security;
 alter table price_history enable row level security;
@@ -151,12 +164,24 @@ create policy rentals_all on rentals for all to authenticated using (is_member()
 drop policy if exists alerts_all on alerts;
 create policy alerts_all on alerts for all to authenticated using (is_member()) with check (is_member());
 
+drop policy if exists sync_read on sync_requests;
+create policy sync_read on sync_requests for select to authenticated using (is_member());
+
+-- A página só cria pedidos pendentes em nome de quem está logado; quem muda o status é o watcher.
+drop policy if exists sync_insert on sync_requests;
+create policy sync_insert on sync_requests for insert to authenticated
+  with check (is_member() and status = 'pendente' and requested_by = auth.jwt() ->> 'email');
+
 -- Atualização ao vivo dos favoritos na página (Realtime)
 do $$ begin
   alter publication supabase_realtime add table marks;
 exception when others then null; end $$;
 do $$ begin
   alter publication supabase_realtime add table rentals;
+exception when others then null; end $$;
+
+do $$ begin
+  alter publication supabase_realtime add table sync_requests;
 exception when others then null; end $$;
 
 -- Projetos criados antes desta versão

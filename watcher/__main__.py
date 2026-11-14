@@ -3,6 +3,7 @@
     python -m watcher --dry-run    # só lê as buscas e mostra o que entraria; não grava nada
     python -m watcher --test-telegram   # manda uma mensagem de teste para o canal
     python -m watcher --ingest coleta.json   # importa a coleta assistida dos portais (ver .claude/skills)
+    python -m watcher --if-requested   # só roda se alguém tocou em "Buscar agora" na página (timer de 5 min)
 """
 from __future__ import annotations
 
@@ -11,16 +12,36 @@ import json
 import logging
 import os
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
 from dotenv import load_dotenv
 
 from .run import ingest_file, process, run
-from .store import Store
+from .store import Store, supabase_env
 from .telegram import Telegram
 
 ROOT = Path(__file__).resolve().parent.parent
+MIN_GAP_MIN = 20  # um pedido feito logo depois de uma leitura não lê as fontes de novo
+
+
+def minutes_since(iso: str | None) -> float | None:
+    if not iso:
+        return None
+    t = datetime.fromisoformat(iso.replace("Z", "+00:00"))
+    return (datetime.now(timezone.utc) - t).total_seconds() / 60
+
+
+def sync_message(summary: dict) -> str:
+    n, d = summary.get("new", 0), summary.get("drops", 0)
+    parts = [f"{n} {'anúncio novo' if n == 1 else 'anúncios novos'}"]
+    if d:
+        parts.append(f"{d} {'redução' if d == 1 else 'reduções'} de preço")
+    bad = sorted({r["source"] for r in summary.get("report", []) if r["status"] != "ok"})
+    if bad:
+        parts.append("sem resposta de " + ", ".join(bad))
+    return " · ".join(parts)
 
 
 def main() -> int:
@@ -28,6 +49,7 @@ def main() -> int:
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--test-telegram", action="store_true")
     p.add_argument("--ingest", metavar="ARQUIVO", help="JSON da coleta assistida")
+    p.add_argument("--if-requested", action="store_true", help="só roda se houver pedido de 'Buscar agora'")
     p.add_argument("--config", default=str(ROOT / "config.yaml"))
     args = p.parse_args()
 
@@ -47,8 +69,9 @@ def main() -> int:
     store = None
     if not args.dry_run:
         url, key = os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_SERVICE_KEY")
-        if not (url and key):
-            print("Defina SUPABASE_URL e SUPABASE_SERVICE_KEY no .env (ou use --dry-run).")
+        problem = supabase_env(url, key)
+        if problem:
+            print(problem + " Para testar sem gravar, use --dry-run.")
             return 1
         store = Store(url, key)
 
@@ -59,7 +82,25 @@ def main() -> int:
         seen, report = ingest_file(args.ingest)
         summary = process(cfg, store, tg, seen, report, None, os.getenv("PAGE_URL"))
     else:
-        summary = run(cfg, store, tg, page_url=os.getenv("PAGE_URL"), dry=args.dry_run)
+        # Toda leitura completa atende os pedidos de "Buscar agora" que estiverem na fila.
+        requests_ids = store.claim_sync_requests() if store else []
+        if args.if_requested:
+            if not requests_ids:
+                return 0
+            gap = minutes_since(store.last_run_started())
+            if gap is not None and gap < MIN_GAP_MIN:
+                store.finish_sync_requests(requests_ids, "ok", f"As fontes foram lidas há {max(1, round(gap))} min; "
+                                                               "a lista já está atualizada.")
+                print("Pedido atendido sem nova leitura: leitura recente.")
+                return 0
+        try:
+            summary = run(cfg, store, tg, page_url=os.getenv("PAGE_URL"), dry=args.dry_run)
+        except Exception as e:
+            if store:
+                store.finish_sync_requests(requests_ids, "erro", f"A busca falhou: {e}")
+            raise
+        if store:
+            store.finish_sync_requests(requests_ids, "ok", sync_message(summary))
     print(json.dumps({k: v for k, v in summary.items() if k not in ("report", "sample")}, ensure_ascii=False))
     for line in summary.get("sample", []):
         print("  entraria:", line)

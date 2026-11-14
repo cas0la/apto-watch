@@ -293,3 +293,22 @@ def test_robots_blocks():
     c._robots["https://exemplo.com"] = rp
     with pytest.raises(Blocked):
         c.get("https://exemplo.com/aluguel")
+
+
+def test_sync_message_and_gap():
+    from datetime import datetime, timedelta, timezone
+    from watcher.__main__ import minutes_since, sync_message
+    rep = [{"source": "ibagy", "status": "ok"}, {"source": "quintoandar", "status": "bloqueado"}]
+    assert sync_message({"new": 1, "drops": 0, "report": rep[:1]}) == "1 anúncio novo"
+    assert sync_message({"new": 3, "drops": 2, "report": rep}) == "3 anúncios novos · 2 reduções de preço · sem resposta de quintoandar"
+    ten = (datetime.now(timezone.utc) - timedelta(minutes=10)).isoformat().replace("+00:00", "Z")
+    assert 9.5 < minutes_since(ten) < 10.5
+    assert minutes_since(None) is None
+
+
+def test_supabase_env():
+    from watcher.store import supabase_env
+    assert "Defina" in supabase_env(None, "x")
+    assert "exemplo" in supabase_env("https://SEU-PROJETO.supabase.co", "cole-a-service-role-key-aqui")
+    assert "Project URL" in supabase_env("abc.supabase.co", "k")
+    assert supabase_env("https://abcd.supabase.co", "eyJ...") is None

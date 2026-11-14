@@ -1,0 +1,10 @@
+[Unit]
+Description=Confere a cada 5 minutos se alguém pediu "Buscar agora" na página
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

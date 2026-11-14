@@ -1,356 +1,354 @@
 ---
 name: Busca de apartamentos
-description: Personal rental-listing aggregator, drawn as a real-estate "Aluga-se" sign.
+description: Personal rental-listing aggregator, drawn as an inspection sheet (ficha de vistoria).
 colors:
-  ground: "#f6f5f1"
+  pen: "#1f4fd1"
+  pen-deep: "#173ea8"
+  pen-wash: "#e8eefc"
+  pen-soft: "#a9bff5"
+  stamp: "#c8322b"
+  stamp-deep: "#a3241f"
+  stamp-wash: "#fbecea"
+  ok: "#2f7d55"
+  ground: "#eef1f4"
   sheet: "#ffffff"
-  sign: "#ffd23f"
-  ink: "#141414"
-  ink-2: "#3d3d3a"
-  muted: "#686862"
-  rule: "#d9d7cf"
-  chip: "#efeee8"
-  tarja: "#d7261e"
-  tarja-ink: "#ffffff"
-  ink-hover: "#2b2b2b"
-  sign-faded: "#e9e7df"
-  sign-wash: "#fbf6dd"
-  on-ink: "#f1efe6"
-  on-ink-2: "#b9b6aa"
+  ink: "#1c2733"
+  ink-2: "#4a5867"
+  muted: "#5f6c79"
+  rule: "#c9d2dc"
+  hair: "#e3e8ee"
+  chip: "#dde3e9"
+  hover: "#f5f7fa"
 typography:
-  display:
-    fontFamily: "Archivo Narrow, Arial Narrow, sans-serif"
-    fontSize: "clamp(26px, 6.4vw, 40px)"
-    fontWeight: 700
-    lineHeight: 1
-    letterSpacing: "0.005em"
-  price:
-    fontFamily: "Archivo Narrow, Arial Narrow, sans-serif"
-    fontSize: "30px"
-    fontWeight: 700
-    lineHeight: 1
-  figure:
-    fontFamily: "Archivo Narrow, Arial Narrow, sans-serif"
+  total:
+    fontFamily: "Public Sans, system-ui, -apple-system, Segoe UI, sans-serif"
     fontSize: "28px"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "-0.02em"
+    fontFeature: "tnum"
+  total-row:
+    fontFamily: "Public Sans, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "22px"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "-0.02em"
+    fontFeature: "tnum"
+  figure:
+    fontFamily: "Public Sans, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "20px"
     fontWeight: 700
     lineHeight: 1
+    letterSpacing: "-0.01em"
+    fontFeature: "tnum"
   headline:
-    fontFamily: "Archivo Narrow, Arial Narrow, sans-serif"
-    fontSize: "22px"
-    fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "0.01em"
-  title:
-    fontFamily: "Archivo Narrow, Arial Narrow, sans-serif"
-    fontSize: "16px"
+    fontFamily: "Public Sans, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "clamp(18px, 4.6vw, 22px)"
     fontWeight: 700
     lineHeight: 1.2
-    letterSpacing: "0.03em"
-  tab:
-    fontFamily: "Archivo Narrow, Arial Narrow, sans-serif"
-    fontSize: "14px"
+    letterSpacing: "-0.01em"
+  title:
+    fontFamily: "Public Sans, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "16px"
     fontWeight: 600
-    lineHeight: 1
-    letterSpacing: "0.04em"
-  label:
-    fontFamily: "Archivo Narrow, Arial Narrow, sans-serif"
-    fontSize: "13px"
-    fontWeight: 700
-    lineHeight: 1
-    letterSpacing: "0.05em"
-  flag:
-    fontFamily: "Archivo Narrow, Arial Narrow, sans-serif"
-    fontSize: "12px"
-    fontWeight: 700
-    lineHeight: 1
-    letterSpacing: "0.06em"
+    lineHeight: 1.3
   body:
-    fontFamily: "Archivo, system-ui, sans-serif"
+    fontFamily: "Public Sans, system-ui, -apple-system, Segoe UI, sans-serif"
     fontSize: "15px"
     fontWeight: 400
     lineHeight: 1.5
     fontFeature: "tnum"
-  address:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "16px"
-    fontWeight: 600
-    lineHeight: 1.3
-  body-sm:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "13px"
-    fontWeight: 400
-    lineHeight: 1.5
-  caption:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "12px"
+  control:
+    fontFamily: "Public Sans, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "14px"
     fontWeight: 600
     lineHeight: 1
+  section:
+    fontFamily: "Public Sans, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "12px"
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: "0.08em"
+  label:
+    fontFamily: "Public Sans, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "11px"
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: "0.08em"
+  stamp:
+    fontFamily: "Public Sans, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "clamp(22px, 7vw, 28px)"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "0.24em"
 rounded:
-  sign: "2px"
+  tag: "4px"
+  control: "6px"
+  sheet: "8px"
+  pill: "10px"
+  round: "50%"
 spacing:
   tight: "6px"
-  stack: "10px"
-  card: "12px"
+  field: "12px"
   gap: "16px"
+  section: "28px"
 components:
   button:
     backgroundColor: "{colors.sheet}"
     textColor: "{colors.ink}"
-    typography: "{typography.label}"
-    rounded: "{rounded.sign}"
-    padding: "0 10px"
+    typography: "{typography.control}"
+    rounded: "{rounded.control}"
+    padding: "0 12px"
     height: "44px"
   button-hover:
-    backgroundColor: "{colors.sign}"
-    textColor: "{colors.ink}"
-  button-pressed:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.sign}"
+    backgroundColor: "{colors.hover}"
   button-primary:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.sign}"
-    typography: "{typography.label}"
-    rounded: "{rounded.sign}"
-    padding: "0 10px"
+    backgroundColor: "{colors.pen}"
+    textColor: "{colors.sheet}"
+    typography: "{typography.control}"
+    rounded: "{rounded.control}"
+    padding: "0 12px"
     height: "44px"
   button-primary-hover:
-    backgroundColor: "{colors.ink-hover}"
-    textColor: "{colors.sign}"
+    backgroundColor: "{colors.pen-deep}"
+  button-pressed:
+    backgroundColor: "{colors.pen}"
+    textColor: "{colors.sheet}"
   button-danger:
     backgroundColor: "{colors.sheet}"
-    textColor: "{colors.tarja}"
-    typography: "{typography.label}"
-    rounded: "{rounded.sign}"
+    textColor: "{colors.stamp}"
+    rounded: "{rounded.control}"
     height: "44px"
   button-danger-hover:
-    backgroundColor: "{colors.tarja}"
-    textColor: "{colors.tarja-ink}"
-  tab:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.on-ink}"
-    typography: "{typography.tab}"
-    padding: "14px 12px"
-  tab-active:
-    backgroundColor: "{colors.sign}"
-    textColor: "{colors.ink}"
-  sign-strip:
-    backgroundColor: "{colors.sign}"
-    textColor: "{colors.ink}"
-    typography: "{typography.price}"
-    padding: "8px 12px"
-  sign-strip-rented:
-    backgroundColor: "{colors.sign-faded}"
-    textColor: "{colors.ink}"
-  card:
+    backgroundColor: "{colors.stamp-wash}"
+  button-danger-confirm:
+    backgroundColor: "{colors.stamp}"
+    textColor: "{colors.sheet}"
+  sheet-card:
     backgroundColor: "{colors.sheet}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.sign}"
-    padding: "12px 12px 14px"
-  tarja:
-    backgroundColor: "{colors.tarja}"
-    textColor: "{colors.tarja-ink}"
-    typography: "{typography.price}"
-    padding: "8px 0"
-  mini-tarja:
-    backgroundColor: "{colors.tarja}"
-    textColor: "{colors.tarja-ink}"
-    padding: "3px 0"
-  flag:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.sign}"
-    typography: "{typography.flag}"
-    padding: "6px 8px"
-  flag-light:
+    rounded: "{rounded.sheet}"
+  sheet-field:
     backgroundColor: "{colors.sheet}"
-    textColor: "{colors.ink}"
-    typography: "{typography.flag}"
-    padding: "4px 6px"
-  period:
-    backgroundColor: "{colors.sheet}"
-    textColor: "{colors.ink}"
-    typography: "{typography.figure}"
-    padding: "10px"
-  period-active:
-    backgroundColor: "{colors.sign}"
-    textColor: "{colors.ink}"
+    padding: "10px 12px"
+  field-label:
+    textColor: "{colors.muted}"
+    typography: "{typography.label}"
+  total-value:
+    textColor: "{colors.pen}"
+    typography: "{typography.total}"
   input:
     backgroundColor: "{colors.sheet}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.sign}"
-    padding: "7px 9px"
-    height: "40px"
-  tag:
+    rounded: "{rounded.control}"
+    padding: "9px 10px"
+    height: "44px"
+  tab:
     backgroundColor: "{colors.sheet}"
+    textColor: "{colors.ink-2}"
+    typography: "{typography.control}"
+    padding: "15px 10px 13px"
+    height: "48px"
+  tab-active:
+    textColor: "{colors.pen}"
+  photo-flag:
+    backgroundColor: "{colors.pen}"
+    textColor: "{colors.sheet}"
+    rounded: "{rounded.tag}"
+    padding: "6px 8px"
+  status-pill:
+    backgroundColor: "{colors.pen-wash}"
+    textColor: "{colors.pen}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
+    padding: "5px 8px"
+  rented-stamp:
+    backgroundColor: "{colors.stamp}"
+    textColor: "{colors.sheet}"
+    typography: "{typography.stamp}"
+    padding: "9px 0"
+  rent-note:
+    backgroundColor: "{colors.stamp-wash}"
     textColor: "{colors.ink}"
-    typography: "{typography.caption}"
-    rounded: "{rounded.sign}"
-    padding: "5px 7px"
-  tag-good:
+    rounded: "{rounded.control}"
+    padding: "8px 10px"
+  period-cell-active:
+    backgroundColor: "{colors.pen-wash}"
+    textColor: "{colors.pen}"
+  toast:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.sheet}"
+    rounded: "{rounded.sheet}"
+    padding: "10px 10px 10px 16px"
+  toast-error:
+    backgroundColor: "{colors.stamp-deep}"
 ---
 
 # Design System: Busca de apartamentos
 
 ## Overview
 
-**Creative North Star: "Placa de Aluga-se"**
+**Creative North Star: "The Inspection Sheet"**
 
-Every listing is a real-estate rental sign. A solid yellow strip carries the word ALUGA-SE, the neighbourhood and the condensed monthly total; black condensed capitals and 2px black rules frame it; a red ALUGADO band is pasted diagonally over the photo when the flat is gone. The page reads like a wall of those signs on an off-white ground, not like a portal's grid of soft white cards with heart icons.
+Every listing is a ficha de vistoria: a white sheet with thin ruled fields, each field in a fixed position with a small uppercase label, the deciding items checked off in boxes. The person arriving from a Telegram alert reads the total in blue pen in the TOTAL / MÊS field, scans the checked items, and decides. The sheet's ruling is the card's grid; fields never move between listings, so two sheets compare at a glance like boarding passes.
 
-The system is light mode only, mobile-first and dense. One column on a phone (390px is the reference width), an auto-fill grid on desktop for calm comparison. Decoration is limited to sign material: full-bleed yellow strips, black bars, square corners, flat ink. Depth comes from borders and colour blocks, never from shadows. The only motion is the tarja "sticking" once when a listing is marked rented.
+The world is cool, flat and administrative. A cool blue-grey ground carries white sheets with 1px rules; text is slate; values written by the system or by the two users (the total, marks, the active tab, pressed actions) are in blue pen ink. Red is reserved for the stamp: the diagonal ALUGADO band, exclusions and errors. Nothing floats; there are no shadows. One family, Public Sans with tabular figures, carries everything from the 11px field labels to the 28px total.
+
+States are stages of the same sheet, not different cards: a favorite gets a pen-blue double edge, a discarded sheet fades, a rented sheet goes grayscale under a red stamp. The system is light mode only, by the user's decision.
 
 **Key Characteristics:**
-- Yellow is a sign colour, used in full strips (header, price strip, active tab, active period, hover), never as a thin accent.
-- Black does the structural work: 2px rules, the tab bar, pressed buttons, flags.
-- Red appears only for ALUGADO and errors.
-- Archivo Narrow uppercase is the sign voice; Archivo is the reading voice.
-- Square corners (2px), no shadows, 2px-stroke line icons.
+- Ruled fields in fixed positions, labelled in small uppercase (11px, 0.08em tracking).
+- Blue pen ink for values and marks; slate for text; red only for the stamp, exclusions and errors.
+- Checked-item board: ✓ confirmed, ✗ refuted, dashed empty box when the listing does not say.
+- The monthly total is the largest number on every surface.
+- Flat white sheets on a cool ground, 1px rules, 6-8px corners, no shadows.
+- Public Sans throughout, tabular figures on by default.
+- Light mode only.
 
 ## Colors
 
-A three-ink sign palette (yellow, black, red) printed on warm off-white paper, with a short neutral ladder for secondary text and hairlines.
+A cool, low-chroma slate system with one blue pen and one red stamp.
 
 ### Primary
-- **Placa Yellow** (sign): the sign itself. Header band, the ALUGA-SE price strip, the active tab, the active period button, button hover, text selection, and the yellow text on black pressed buttons and flags. Also the browser `theme-color`.
-- **Faded Placa** (sign-faded): the price strip of a rented listing; a sign left in the sun.
-- **Placa Wash** (sign-wash): hover fill on alert opportunity rows; the only tint of yellow.
+- **Ballpoint Blue** (pen): the ink of values and marks. The total, the summary count, links, the active tab underline and count, pressed action buttons, primary buttons, photo flags (Novo, Baixou), checked item boxes, focus rings, caret and range/checkbox accents.
+- **Pressed Ballpoint** (pen-deep): hover state of every pen-filled control and link; selection text.
+- **Pen Wash** (pen-wash): the faint blue fill behind an active period cell, an expanded opportunity row, the Ativo pill and the active tab count chip.
+- **Faded Pen** (pen-soft): the action text inside the dark toast (Desfazer), where full pen would fail on ink.
 
 ### Secondary
-- **Tarja Red** (tarja): the ALUGADO band, the mini-tarja on alert rows, the rented-note border and its bold lead, the danger button, sync errors and a failing source dot.
-- **Tarja Ink** (tarja-ink): white lettering on the red band and on the danger button hover.
+- **Stamp Red** (stamp): the ALUGADO band (full and mini), danger button text and confirm fill, error dots in the source status, sync error text.
+- **Dried Stamp** (stamp-deep): the error toast background and the bold lead of the rented note.
+- **Stamp Wash** (stamp-wash): the rented-note panel and the danger button hover.
+
+### Tertiary
+- **Ledger Green** (ok): only the 7px status dot of a source that was read successfully. Never text, never fills.
 
 ### Neutral
-- **Sign Black** (ink): text, 2px borders, the tab bar background, pressed and primary buttons, flags, focus rings, checkbox and range accents.
-- **Ink Hover** (ink-hover): hover on black primary buttons.
-- **Graphite** (ink-2): secondary text (breakdown, conditions, form labels, period labels), the border of a rented card.
-- **Muted Stone** (muted): tertiary text (hints, source tag, listing code, `h2` counts).
-- **Off-white Ground** (ground): page background and the opened-opportunity well.
-- **Sheet White** (sheet): cards, alert blocks, forms, inputs, default buttons, filters bar.
-- **Hairline** (rule): 1px internal separators (filters bar, details, links row, opportunity rows) and the source tag border.
-- **Chip** (chip): photo placeholder and the paused pill.
-- **On-ink** (on-ink) and **On-ink Dim** (on-ink-2): tab labels and tab counts on the black bar.
+- **Cool Desk** (ground): page background behind sheets, and the inset behind an opened opportunity sheet.
+- **Sheet White** (sheet): every sheet, header, tab bar, filter bar, form, button default fill, and text on pen or stamp fills.
+- **Slate Ink** (ink): primary text, addresses, fact values, the toast surface.
+- **Pencil Slate** (ink-2): secondary text (spec line, composition, conditions, lede), unselected tabs, item-box strokes, input hover border.
+- **Field Grey** (muted): field labels, counts, metadata, timestamps, the not-informed state, the rented total.
+- **Rule Line** (rule): the 1px rules that outline sheets and divide fields; input and button borders; the dashed empty box.
+- **Hairline** (hair): the lighter internal rules inside the item board, opportunity list and details.
+- **Photo Mat** (chip): the placeholder fill behind photos and thumbnails.
+- **Hover Tint** (hover): hover fill on buttons, period cells and rows; inactive pill and tab-count chip.
 
 ### Named Rules
-**The Three Inks Rule.** Yellow, black and red are the only chromatic statements. Every other value is a neutral step between ink and sheet.
+**The Pen And Stamp Rule.** Blue is ink the system or the users wrote: values, marks, the active choice. Red is a stamp: ALUGADO, exclusion, error. Neither is decoration, and no third accent exists (green is a 7px status dot only).
 
-**The Red Means Gone Rule.** Tarja red marks a rented listing, a destructive action or an error. It never decorates.
-
-**The Full Strip Rule.** Yellow is applied as a solid block that fills its container's width (strip, band, tab cell, period cell). It is not used for thin underlines, dots or text on white.
+**The Slate Text Rule.** Running text is always ink, ink-2 or muted on sheet or ground; never pen-colored paragraphs.
 
 ## Typography
 
-**Display Font:** Archivo Narrow (with Arial Narrow, sans-serif), weights 500/600/700
-**Body Font:** Archivo (with system-ui, sans-serif), weights 400/500/600/800
+**Display Font:** Public Sans (with system-ui, -apple-system, Segoe UI, sans-serif)
+**Body Font:** Public Sans
+**Label/Mono Font:** Public Sans, uppercase at 11-12px; no mono face.
 
-**Character:** Archivo Narrow in capitals is the lettering painted on the sign; Archivo is the small print an agent writes underneath. Body text uses tabular figures so prices align.
+**Character:** A plain civic grotesque that reads like a printed government form. Tabular figures are set on the body, so every price, count and area aligns in columns.
 
 ### Hierarchy
-- **Display** (700, clamp(26px, 6.4vw, 40px), 1, uppercase): the page title in the yellow header only.
-- **Price** (700, 30px, 1): the total in the ALUGA-SE strip. The single largest number on a card.
-- **Figure** (700, 28px, 1): period counts in the alert block. Opportunity-row totals use the same voice at 22px.
-- **Headline** (700, 22px, 1.1, uppercase, 0.01em): region headings and alert names (forms use 20px).
-- **Title** (700, 16px, 1.2, uppercase, 0.03em): the header summary line ("17 EM ANÁLISE · 4 NOVOS HOJE").
-- **Tab** (600, 14px, 1, uppercase, 0.04em; 12px and 0.02em at ≤420px): tab labels.
-- **Label** (700, 13px, uppercase, 0.05em): buttons, the strip's ALUGA-SE line, details summaries, filter summary, count. Period labels use 600 12px.
-- **Flag** (700, 12px, uppercase, 0.06em; pill 11px/0.08em; mini-tarja 10px/0.14em): small sign plates.
-- **Body** (Archivo 400, 15px, 1.5): running text; ledes cap at 66ch.
-- **Address** (Archivo 600, 16px, 1.3): the street line, with specs below at 500 14px.
-- **Body-sm** (Archivo 13px): breakdown, conditions, notes, references, rent note.
-- **Caption** (Archivo 600, 12px): tags, photo counter, "há 3 h" timestamps, hints (500).
+- **Total** (800, 28px, 1; 26px at 420px and below): the monthly total in the sheet's TOTAL / MÊS field, in pen. The largest number on the page.
+- **Total Row** (800, 22px, 1): the same total at row scale in alert opportunity rows.
+- **Figure** (700, 20px, 1): period counts in the alert period cells.
+- **Headline** (700, clamp(18px, 4.6vw, 22px), 1.2): the page name in the header; alert names and form titles at 18px.
+- **Title** (600, 16px, 1.3): the street address field.
+- **Body** (400, 15px, 1.5): base text; secondary text steps down to 13-14px in ink-2. Ledes cap at 66ch.
+- **Control** (600, 14px, 1): buttons, tabs, details summaries (13px), links row.
+- **Section** (700, 12px, 0.08em, uppercase): region group headings and the Alertas heading, with the count in 12px muted beside it.
+- **Label** (600, 11px, 0.08em, uppercase): field labels (ENDEREÇO, TOTAL / MÊS, COMPOSIÇÃO), item fact keys (0.06em), period names, pills.
+- **Stamp** (800, clamp(22px, 7vw, 28px), 0.24em, uppercase): the ALUGADO band only.
 
 ### Named Rules
-**The Sign Voice Rule.** Anything that would be painted on a sign (titles, prices, labels, buttons, tabs, flags) is Archivo Narrow uppercase with positive tracking. Anything a person reads as a sentence is Archivo in sentence case.
+**The One Value Rule.** A total is one component at three scales (28, 22, 20 for counts), always tabular, always pen, always the largest number in its context. Nothing else on a sheet outranks it.
 
-**The Total Leads Rule.** On a listing, the total in the strip is the largest type after the page title. Nothing on the card competes with it.
+**The Field Label Rule.** Every field states its name in the 11px uppercase label above its value. Labels name the field they sit in; they never introduce a section or carry a slogan.
 
 ## Layout
 
-Single centred column, max 1200px, side gutters max(16px, safe-area inset). The header and black tab bar run full-bleed; the tab bar is sticky at the top. Listings sit in an auto-fill grid with a 350px minimum track and 16px gap, so phones get one column and desktop gets three. A single-listing view caps the card at 560px; an opened opportunity card caps at 520px.
+Content sits in a 1200px max container with a 16px gutter (respecting safe-area insets). Sheets flow in an auto-fill grid with a min of 350px and a 16px gap; from 740px, sibling sheets share subgrid rows so photo, head, composition, item board and actions align across a row. Sheets may be grouped under region section headings (optional, toggled by the user); ungrouped, they form one list.
 
-Spacing is tight and sign-like: 12px card padding, 10px vertical stack inside a card, 6px between tags, buttons and flags, 16px between cards. Sections open with 30px above region headings.
+Inside a sheet the order is fixed: photo strip (min(60cqw, 250px) tall), head row (address field | total field, divided by a vertical rule), composition line, two-column item board (36px min rows, six fixed fields), then the body (notes, actions, details, links) at 10-12px padding with 10px gaps. Actions are a three-column grid with 6px gaps; at 900px and up they shrink to content width.
 
-Breakpoints are two:
-- **≤420px:** the tab bar becomes a 5-column grid with stacked short label + count (min 52px tall); filters collapse into a "Filtros" disclosure with a two-column grid; card action buttons tighten to 12px type with 16px icons.
-- **≥900px:** card actions shrink to content width and left-align; alert opportunities run in two columns separated by a hairline.
+At 420px and below the five tabs become an equal five-column grid with short labels and counts stacked beneath; filters collapse into a summary row showing the current filter state; action buttons tighten to 4px inline padding. The header is never sticky; the tab bar is sticky at the top. The main list reserves 96px at the bottom for the toast.
+
+Alert blocks are full-width sheets: header area, a three-cell period strip, and an opportunity list (88px thumbnail, total and place, time) that becomes two columns at 900px. Opening a row insets the full sheet (max 520px) on the ground color.
 
 ## Elevation & Depth
 
-Flat. There is no `box-shadow` anywhere in the system. Layering is expressed by colour blocks and rules: a 3px black rule under the yellow header, a black bar for navigation, 2px black frames on cards and alert blocks, and a 3px outline added around a favourited card. The opened opportunity sits in a ground-coloured well under a 2px rule.
+Flat. No surface has a box-shadow. Depth is expressed by tone (white sheet on cool ground, ground inset for an opened opportunity), by 1px rules, and by state edges (a favorite's 1px pen border plus a 1px inset pen outline). The only things that sit above the page are the sticky tab bar (separated by a rule, not a shadow), photo overlays (translucent white nav circles, ink-80% photo count) and the dark toast, which is distinguished by its ink fill.
 
 ### Named Rules
-**The No Shadow Rule.** Signs are flat. Separate surfaces with a 2px ink rule or a colour change, never with a shadow or blur.
+**The Ruled Not Raised Rule.** Separate with a 1px rule or a tone change, never with a shadow.
 
 ## Shapes
 
-Square-cornered plates with a 2px radius that only takes the edge off. The border language has four weights, each with a job: 2px solid ink for every frame (cards, alerts, buttons, inputs, strip top and bottom, period dividers); 3px for emphasis (header bottom rule, favourite outline); 1.5px for small plates (tags, notes); 1px hairline in rule colour for internal separators. A dashed border means provisional: "semimobiliado"/warning tags, free-text notes and a paused alert. Icons are SVG line icons at 18px, 2px stroke, square caps and mitred joins. The tarja is the one diagonal in the system, rotated -14deg and allowed to overrun its photo.
+Corners are modest and consistent: 8px on sheets, alert blocks, forms and the toast; 6px on buttons, inputs, notes and the rented note; 4px on photo flags, thumbnails, the photo count and item boxes; 10px on pills and tab-count chips; full circles only for photo nav buttons and status dots. Rules are 1px solid; a dashed rule means "missing or paused" (empty item box, author note, paused alert). Icons are inline SVG strokes, 2px, round caps and joins, 18px (16px in tight action rows, 13px at 3px stroke inside item boxes). The one rotated shape in the system is the stamp: a full-bleed band at -12 degrees.
 
 ## Components
 
 ### Buttons
-Blunt sign plates.
-- **Shape:** square plate (2px radius), 2px ink border, min height 44px (38px in alert actions, 36px in the rent note).
-- **Default:** sheet background, ink label in the label voice, optional 18px line icon left of the label.
-- **Hover:** fills Placa Yellow; 150ms background transition, removed under reduced motion.
-- **Pressed (`aria-pressed=true`):** ink fill with yellow label. Used for Favorito, Descartado ("Voltar") and Alugado.
-- **Primary:** ink fill with yellow label; hover lifts to ink-hover. Used for "Novo alerta" and the login submit.
-- **Danger:** red label and border on sheet; hover fills red with white label. Used for Excluir.
-- **Disabled:** 40% opacity on sheet. **Pressed + disabled** keeps the ink fill and yellow label at 55% opacity, so a rented listing still shows which mark was on.
-- **Focus:** 2.5px ink outline, 2px offset (yellow and inset -3px on the tab bar).
+Plain form controls: white, ruled, quietly firm.
+- **Shape:** gently rounded (6px), 44px min height, 0 12px padding, 7px icon gap.
+- **Default:** sheet fill, rule border, ink text.
+- **Hover / Active:** border darkens to ink-2 with the hover tint; active uses the hairline tint. Transitions 0.15s on color properties only.
+- **Pressed (toggle):** pen fill, white text; hover deepens to pen-deep. Used for Favorito / Voltar / Alugado states.
+- **Primary:** pen fill, white text (Novo alerta, Criar alerta, Enviar link).
+- **Danger:** stamp text on white; hover gets stamp-wash and stamp border; the confirm step fills with stamp.
+- **Disabled:** 45% opacity; a pressed disabled button keeps its pen fill at 50%.
+- **Sync (Buscar agora):** a default button in the header with a pen-colored sync icon that spins (1.1s linear) while busy.
 
 ### Chips
-- **Tags:** Archivo 600 12px, 1.5px ink border. Good facts ("gás encanado", "aceita pet") invert to ink fill with white text; warnings ("semimobiliado", "condomínio não informado") use a dashed border; the source tag drops to a hairline border and muted text.
-- **Pill:** alert status. "Ativo" is ink with yellow lettering; "Pausado" is chip with graphite.
+- **Photo flags:** pen fill, white 11px bold text, 4px corners, top-left of the photo (Novo, Baixou R$ x); a light variant (95% white, ink text) for Favorito / Descartado / Era descartado attributions.
+- **Status pill:** 11px uppercase label in pen on pen-wash, 10px corners (Ativo); inactive variant in muted on hover tint (Pausado).
 
 ### Cards / Containers
-- **Corner Style:** 2px.
+- **Corner Style:** 8px.
 - **Background:** sheet on ground.
 - **Shadow Strategy:** none (see Elevation & Depth).
-- **Border:** 2px ink; favourite adds a 3px ink outline; rented switches the frame to graphite.
-- **Internal Padding:** 12px sides, 14px bottom, 10px stack.
-- **Order:** photo carousel (snap-scroll, square nav buttons, ink photo counter), ALUGA-SE strip, body (rent note if rented, breakdown, address and specs, tags, note, actions, "Perto daqui" and description disclosures, links row).
-- **Discarded:** photo, address, breakdown and tags drop to 60% opacity.
+- **Border:** 1px rule; favorite adds a pen border and a 1px pen outline inset 2px.
+- **Internal Padding:** fields 10px 12px; body 10px 12px 12px.
+- **States:** discarded fades photo, head, items and composition to 62%; leaving collapses height (0.28s, cubic-bezier(.2,.8,.2,1)) and fades (0.18s).
 
 ### Inputs / Fields
-- **Style:** sheet background, 2px ink border, 2px radius, 7px 9px padding, min 40px, Archivo 500 15px.
-- **Checkbox and range:** native controls with ink accent colour.
-- **Focus:** the global 2.5px ink outline.
+- **Style:** sheet fill, 1px rule border, 6px corners, 15px medium ink text, 9px 10px padding, 44px min height. Checkboxes and ranges use the pen accent.
+- **Focus:** border turns pen, plus the global 2px pen focus ring.
+- **Hover:** border ink-2.
 
 ### Navigation
-- **Header:** full-bleed yellow band with the display title, the summary line, source status (8px square ink dots, red when a source fails) and the sync line; 3px ink rule below.
-- **Tab bar:** sticky full-bleed black bar. Tabs are on-ink sign voice with an on-ink-2 count. The active tab is a solid yellow cell with ink text and count. Above 420px the tabs scroll horizontally, with a fade mask when they overflow; at ≤420px they become a 5-column grid with short labels ("Análise", "Não fav.", "Favoritos", "Descartes", "Alertas") over the count.
-- **Back link:** in single-listing view, an uppercase "Ver a lista" with a left chevron.
+- **Tabs:** sticky white bar with a bottom rule; 14px semibold ink-2 tabs, 48px tall, each with a count chip. Active tab: pen text, 2px pen underline, count on pen-wash. At 420px and below: five equal columns, short label over a bold count, 54px tall.
+- **Filters:** a white bar under the tabs; on phones it collapses into a summary (Filtros + current state + count) with a plus/minus toggle.
 
-### ALUGA-SE Strip (signature)
-A full-width yellow band between photo and body, 2px ink rules top and bottom, 8px 12px padding. Left: "ALUGA-SE · {bairro}" in the label voice. Right: the total in the price voice, with the previous total struck through above it in 12px graphite when the price dropped. On a rented listing the band turns sign-faded.
+### Inspection Sheet (signature)
+The listing card. Photo strip with scroll-snap and nav circles; head row of two labelled fields (ENDEREÇO with address and spec line, TOTAL / MÊS with the pen total, a struck-through previous total above it after a price drop); a COMPOSIÇÃO line where a missing condominium reads "não informado" with a dashed underline; the item board of six fixed fields: three criteria boxes (Aceita pet, Gás encanado, Cozinha separada) and three facts (Andar, Mobília, Elevador) written out or "não informado" in muted.
 
-### ALUGADO Tarja (signature)
-A red band lettered "ALUGADO" in white (700, clamp(22px, 7vw, 30px), 0.18em tracking), rotated -14deg across the photo and overrunning it by 20% each side. Photos go grayscale at 65% opacity underneath, and the card's flags are hidden. On the action that marks a listing rented, it sticks once: 450ms from 1.25 scale and -6deg to rest, cubic-bezier(.16, 1, .3, 1); no animation under reduced motion. A rent note sits at the top of the body in a 2px red frame:
-- **Automatic:** "**Provavelmente alugado.** Saiu do ar no {fonte} em {data}." No undo; the Alugado button shows pressed + disabled.
-- **Manual:** "**Marcado como alugado.** Por {pessoa} em {data}." with a "Desfazer" button (undo icon); the Alugado button stays pressed and active.
+### Checked-Item Board (signature)
+17px boxes with 1.5px strokes and 4px corners. Confirmed: pen box with a check. Refuted: ink-2 box with an x. Not stated: dashed rule box, empty, muted label, with a screen-reader "(não informado)".
 
-Either way Favoritar and Descartar are disabled.
-- **Mini-tarja:** on alert opportunity rows, the same red band at 10px across the 96×72 thumbnail, with the thumbnail grayscale and the total in muted.
-
-### Flags
-Small plates pinned to the photo's top-left. "Novo" and "Baixou R$ x" are ink plates with yellow lettering. "Favorito · {pessoa}", "Descartado · {pessoa}" and "Era descartado" (a reopened discard whose price dropped) are light plates: sheet, ink lettering, 2px ink border.
+### ALUGADO Stamp (signature, kept by the user)
+A red band across the photo at -12 degrees, 22-28px 800 white uppercase tracked 0.24em, bleeding past both edges. The sheet beneath goes grayscale (photo 60%, head/items/composition 70%, total muted) and a stamp-wash rented note explains who marked it and when, or that it left the source. The band lands with a 0.45s scale-in (cubic-bezier(.16,1,.3,1)) when freshly marked. A mini band sits across rented thumbnails in alert rows.
 
 ### Alert Block
-A sheet container with a 2px ink frame (dashed when paused). The top holds the alert name (headline voice), status pill, conditions line (body-sm, graphite) and Editar / Pausar / Excluir buttons. Under a 2px rule, three equal period cells divided by 2px ink: "Últimas 24h", "Últimos 7 dias", "Último mês", each a period label over its count in the figure voice. The selected cell fills yellow. Below, opportunity rows (96×72 thumbnail, 22px total, neighbourhood and specs, relative time), separated by hairlines, wash-yellow on hover, solid yellow when expanded; an expanded row opens the full card in a ground-coloured well.
+A sheet with name, status pill, a conditions line and Editar / Pausar / Excluir; a three-cell period strip (label over 20px count; active cell pen-wash with a 2px pen underline); then opportunity rows (thumb, pen total at 22px, place, time) that expand in place into a full inspection sheet.
+
+### Toast
+Fixed bottom-center, ink fill, white 14px text, 8px corners, pen-soft text action (Desfazer); error variant on stamp-deep. Rises in over 0.22s. Motion is removed under reduced-motion.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** put the total in the yellow strip at 30px Archivo Narrow 700 and keep it the largest number on the card.
-- **Do** frame every surface and control with a 2px ink border and a 2px radius.
-- **Do** show state with colour blocks: yellow fill for active/hover, ink fill with yellow lettering for pressed.
-- **Do** keep a rented listing's pressed mark visible when disabled (ink fill, yellow label, 55% opacity).
-- **Do** use the dashed border for provisional or paused things only.
-- **Do** draw icons as 2px-stroke SVG lines with square caps.
+- **Do** put every value in a labelled field at a fixed position, with an 11px uppercase label above it.
+- **Do** write the monthly total in pen at 28px 800 with tabular figures, and keep it the largest number on the surface.
+- **Do** show what the listing does not say as a dashed empty box or the words "não informado" in muted.
+- **Do** separate with 1px rule or hair lines and tone changes; keep sheets at 8px and controls at 6px corners.
+- **Do** mark rented listings with the diagonal red ALUGADO band and a grayscale sheet, never by removing them.
+- **Do** keep icons as 2px stroke SVG and touch targets at 44px minimum.
+- **Do** stay in light mode; the system has no dark theme by decision.
 
 ### Don't:
-- **Don't** add shadows, blur or gradients to surfaces (the tab bar's overflow fade mask is functional, not a surface).
-- **Don't** use tarja red for anything except rented, destructive and error states.
-- **Don't** round corners beyond 2px or build soft white cards with heart overlays like the portals.
-- **Don't** use yellow as text on white or as a thin accent line.
-- **Don't** add a dark mode; the sign is printed on light stock.
+- **Don't** use red for anything but the stamp, exclusions and errors; never as a price-drop or "new" highlight.
+- **Don't** add shadows, gradients or lifted cards; the sheet is flat paper.
+- **Don't** use rounded portal cards with heart overlays and colored amenity chips; amenities belong in the item board or the description.
+- **Don't** introduce a second typeface or a third accent hue.
+- **Don't** use the uppercase label style as a kicker above headings; labels name fields only.
+- **Don't** set text below 11px.
