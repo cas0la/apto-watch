@@ -1,0 +1,10 @@
+[Unit]
+Description=apto-watch: procura apartamentos novos e avisa no Telegram
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/Documents/apto-watch
+ExecStart=%h/Documents/apto-watch/.venv/bin/python -m watcher
+# Sem reexecução automática em caso de bloqueio: a próxima tentativa é no horário do timer.

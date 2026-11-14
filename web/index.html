@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffd23f">
+<title>Busca de apartamentos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Archivo:wght@400;500;600;800&display=swap">
+<style>
+/* Placa de Aluga-se: faixas amarelas de placa, letra condensada preta, tarja vermelha ALUGADO.
+   Uma coluna no celular; grade no desktop. Só modo claro (pedido do usuário). */
+:root{
+  --ground:#f6f5f1; --sheet:#ffffff; --sign:#ffd23f; --ink:#141414; --ink-2:#3d3d3a;
+  --muted:#686862; --rule:#d9d7cf; --chip:#efeee8; --tarja:#d7261e; --tarja-ink:#ffffff; --ok:#1d6b45;
+  --ink-hover:#2b2b2b; --sign-faded:#e9e7df; --sign-wash:#fbf6dd; --on-ink:#f1efe6; --on-ink-2:#b9b6aa;
+  --display:"Archivo Narrow","Arial Narrow",sans-serif; --body:"Archivo",system-ui,sans-serif;
+  --r:2px; --gap:16px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 15px/1.5 var(--body);font-variant-numeric:tabular-nums;caret-color:var(--ink)}
+::selection{background:var(--sign);color:var(--ink)}
+*{scrollbar-color:var(--ink-2) var(--ground)}
+a{color:var(--ink);text-underline-offset:3px;text-decoration-thickness:1.5px}
+:focus-visible{outline:2.5px solid var(--ink);outline-offset:2px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.ico{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter}
+[hidden]{display:none!important}
+
+/* cabeçalho: a placa */
+.top{background:var(--sign);border-bottom:3px solid var(--ink);padding-top:env(safe-area-inset-top,0px)}
+.top .wrap{padding-block:18px 14px;display:grid;gap:6px}
+h1{margin:0;font:700 clamp(26px,6.4vw,40px)/1 var(--display);text-transform:uppercase;letter-spacing:.005em}
+.status{display:flex;flex-wrap:wrap;gap:4px 14px;font:600 13px/1.35 var(--body);color:var(--ink)}
+.status span{display:inline-flex;gap:6px;align-items:center}
+.dot{width:8px;height:8px;background:var(--ink)}
+.dot.bad{background:var(--tarja)}
+.summary{margin:0;font:700 16px/1.2 var(--display);text-transform:uppercase;letter-spacing:.03em}
+.summary:empty{display:none}
+.sync{font-size:13px;color:var(--ink-2);margin:0}
+.single-back{display:inline-flex;gap:6px;align-items:center;font:700 14px var(--display);text-transform:uppercase;margin:4px 0 14px}
+.single .card{max-width:560px}
+.sync:empty{display:none}
+.sync.err{color:var(--tarja);font-weight:600}
+
+/* abas */
+.tabs{position:sticky;top:0;z-index:10;background:var(--ink)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.tabs .wrap.more{-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}
+.tabs .wrap::-webkit-scrollbar{display:none}
+.tab{flex:none;font:600 14px/1 var(--display);text-transform:uppercase;letter-spacing:.04em;color:var(--on-ink);background:none;border:0;padding:14px 12px;cursor:pointer;display:flex;gap:6px;align-items:center}
+.tab b{font:700 12px/1 var(--body);color:var(--on-ink-2)}
+.tab[aria-selected="true"]{background:var(--sign);color:var(--ink)}
+.tab[aria-selected="true"] b{color:var(--ink)}
+.tab:focus-visible{outline-color:var(--sign);outline-offset:-3px}
+.tab .short{display:none}
+@media (max-width:420px){
+  .tabs .wrap{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;overflow:visible;padding-left:0;padding-right:0}
+  .tabs .wrap,.tabs .wrap.more{-webkit-mask-image:none;mask-image:none}
+  .tab{flex-direction:column;gap:3px;padding:9px 2px 8px;font-size:12px;letter-spacing:.02em;min-height:52px;justify-content:center}
+  .tab .full{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .tab .short{display:block;white-space:nowrap}
+  .tab b{font-size:13px}
+}
+
+/* filtros */
+.filters{border-bottom:1px solid var(--rule);background:var(--sheet);padding-block:10px}
+.filters .wrap{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.filters label{display:flex;gap:8px;align-items:center;font:600 13px var(--body);color:var(--ink-2)}
+select,input[type=text],input[type=number],input[type=email]{font:500 15px var(--body);color:var(--ink);background:var(--sheet);border:2px solid var(--ink);border-radius:var(--r);padding:7px 9px;min-height:40px}
+input[type=range]{accent-color:var(--ink);width:120px}
+input[type=checkbox]{accent-color:var(--ink);width:18px;height:18px}
+.count{margin-left:auto;font:700 13px var(--display);text-transform:uppercase;letter-spacing:.04em}
+.fdet{border:0;padding:0}
+.fsum{display:none}
+
+main .wrap{padding-block:18px 64px}
+h2{font:700 22px/1.1 var(--display);text-transform:uppercase;letter-spacing:.01em;margin:30px 0 12px;display:flex;align-items:baseline;gap:10px;text-wrap:balance}
+h2:first-child{margin-top:4px}
+h2 small{font:600 14px var(--body);text-transform:none;letter-spacing:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,350px),1fr));gap:var(--gap);align-items:start}
+
+/* card = placa */
+.card{background:var(--sheet);border:2px solid var(--ink);border-radius:var(--r);display:flex;flex-direction:column;min-width:0;position:relative}
+.card.fav{outline:3px solid var(--ink)}
+.card.desc .ph img,.card.desc .addr,.card.desc .breakdown,.card.desc .tags{opacity:.6}
+.photo{position:relative;overflow:hidden;background:var(--chip)}
+.ph{display:flex;width:100%;height:min(62.5cqw,260px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.photo{container-type:inline-size}
+.opp-card .ph{height:min(56.25cqw,220px)}
+.ph::-webkit-scrollbar{display:none}
+.ph img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start;display:block}
+.ph .none{margin:auto;font:600 13px var(--body);color:var(--muted)}
+.nav{position:absolute;top:50%;translate:0 -50%;width:40px;height:40px;border:2px solid var(--ink);background:var(--sheet);color:var(--ink);display:grid;place-items:center;cursor:pointer;border-radius:var(--r)}
+.nav.p{left:8px}.nav.n{right:8px}
+.nav:hover{background:var(--sign)}
+.cnt{position:absolute;right:8px;bottom:8px;background:var(--ink);color:#fff;font:600 12px var(--body);padding:3px 8px}
+.flag{position:absolute;left:8px;top:8px;display:flex;gap:6px;flex-wrap:wrap;right:56px}
+.flag span{font:700 12px/1 var(--display);text-transform:uppercase;letter-spacing:.06em;padding:6px 8px;background:var(--ink);color:var(--sign)}
+.flag span.light{background:var(--sheet);color:var(--ink);border:2px solid var(--ink);padding:4px 6px}
+.strip{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--sign);border-block:2px solid var(--ink);padding:8px 12px}
+.strip .lbl{font:700 13px/1.15 var(--display);text-transform:uppercase;letter-spacing:.05em;min-width:0;overflow-wrap:anywhere}
+.strip .tot{font:700 30px/1 var(--display);white-space:nowrap}
+.strip .was{display:block;font:600 12px var(--body);text-decoration:line-through;text-align:right;color:var(--ink-2)}
+.body{padding:12px 12px 14px;display:grid;gap:10px;min-width:0}
+.breakdown{font-size:13px;color:var(--ink-2)}
+.addr{font-weight:600;font-size:16px;line-height:1.3;overflow-wrap:anywhere}
+.addr small{display:block;font:500 14px var(--body);color:var(--ink-2);margin-top:2px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font:600 12px/1 var(--body);padding:5px 7px;border:1.5px solid var(--ink);border-radius:var(--r)}
+.tag.good{background:var(--ink);color:#fff}
+.tag.warn{border-style:dashed}
+.tag.src{border-color:var(--rule);color:var(--muted)}
+.note{font-size:13px;padding:8px 10px;border:1.5px dashed var(--ink);margin:0}
+details{font-size:14px;border-top:1px solid var(--rule);padding-top:8px}
+details summary{cursor:pointer;font:700 13px var(--display);text-transform:uppercase;letter-spacing:.05em;list-style:none;display:flex;justify-content:space-between;min-height:28px;align-items:center}
+details summary::-webkit-details-marker{display:none}
+details summary .i-close{display:none}
+details[open] summary .i-open{display:none}
+details[open] summary .i-close{display:block}
+details p{white-space:pre-line;margin:8px 0 0}
+.refs{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:4px;font-size:13px}
+.refs li{display:flex;gap:8px;min-width:0}
+.refs b{min-width:98px;font-weight:600;color:var(--ink-2);flex:none}
+.refs .n{min-width:0;overflow-wrap:anywhere}
+.refs .m{margin-left:auto;white-space:nowrap;color:var(--ink-2)}
+.acts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.btn{font:700 13px/1 var(--display);text-transform:uppercase;letter-spacing:.05em;border:2px solid var(--ink);border-radius:var(--r);background:var(--sheet);color:var(--ink);min-height:44px;padding:0 10px;display:inline-flex;gap:6px;align-items:center;justify-content:center;cursor:pointer;transition:background-color .15s}
+.btn:hover{background:var(--sign)}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--sign)}
+.btn.primary{background:var(--ink);color:var(--sign)}
+.btn.primary:hover{background:var(--ink-hover)}
+.btn.danger{color:var(--tarja);border-color:var(--tarja)}
+.btn.danger:hover{background:var(--tarja);color:#fff}
+.btn:disabled{opacity:.4;cursor:not-allowed;background:var(--sheet)}
+.btn[aria-pressed="true"]:disabled{background:var(--ink);color:var(--sign);opacity:.55}
+.links{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font:600 14px var(--body);border-top:1px solid var(--rule);padding-top:10px}
+.links a{display:inline-flex;gap:4px;align-items:center;min-height:32px}
+.links .code{margin-left:auto;font:500 12px var(--body);color:var(--muted);min-width:0;overflow-wrap:anywhere}
+
+/* alugado: placa desabilitada com a tarja */
+.card.rented{border-color:var(--ink-2)}
+.card.rented .ph img{filter:grayscale(1) contrast(.9);opacity:.65}
+.card.rented .strip{background:var(--sign-faded)}
+.card.rented .addr,.card.rented .breakdown,.card.rented .tags{opacity:.6}
+.tarja{position:absolute;left:-20%;right:-20%;top:42%;background:var(--tarja);color:var(--tarja-ink);font:700 clamp(22px,7vw,30px)/1 var(--display);text-transform:uppercase;letter-spacing:.18em;text-align:center;padding:8px 0;rotate:-14deg;pointer-events:none}
+.tarja.fresh{animation:cola .45s cubic-bezier(.16,1,.3,1)}
+@keyframes cola{from{scale:1.25;opacity:0;rotate:-6deg}to{scale:1;opacity:1;rotate:-14deg}}
+.rentnote{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--sheet);border:2px solid var(--tarja);padding:8px 10px;font-size:13px}
+.rentnote b{color:var(--tarja)}
+.rentnote .btn{min-height:36px}
+
+/* alertas */
+.alerts-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.alerts-head h2{margin:4px 0}
+.lede{max-width:66ch;color:var(--ink-2);margin:0 0 16px;font-size:14px}
+.alert{background:var(--sheet);border:2px solid var(--ink);border-radius:var(--r);margin-bottom:18px}
+.alert.paused{border-style:dashed}
+.alert-top{display:grid;gap:8px;padding:12px;border-bottom:2px solid var(--ink)}
+.alert-name{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.alert-name h3{margin:0;font:700 22px/1.1 var(--display);text-transform:uppercase}
+.pill{font:700 11px/1 var(--display);text-transform:uppercase;letter-spacing:.08em;padding:5px 7px;background:var(--ink);color:var(--sign)}
+.pill.off{background:var(--chip);color:var(--ink-2)}
+.cond{font-size:13px;color:var(--ink-2)}
+.alert-acts{display:flex;gap:6px;flex-wrap:wrap}
+.alert-acts .btn{min-height:38px}
+.periods{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:2px solid var(--ink)}
+.periods button{font:inherit;color:var(--ink);background:var(--sheet);border:0;border-right:2px solid var(--ink);padding:10px 10px;cursor:pointer;text-align:left;display:grid;gap:4px}
+.periods button:last-child{border-right:0}
+.periods button span{font:600 12px/1.1 var(--display);text-transform:uppercase;letter-spacing:.05em;color:var(--ink-2)}
+.periods button b{font:700 28px/1 var(--display)}
+.periods button[aria-pressed="true"]{background:var(--sign)}
+.periods button[aria-pressed="true"] span{color:var(--ink)}
+.opps{display:grid}
+.opp{display:grid;grid-template-columns:96px 1fr auto;gap:12px;align-items:center;padding:10px 12px;border:0;border-top:1px solid var(--rule);background:none;font:inherit;color:inherit;text-align:left;cursor:pointer;width:100%}
+.opps>.opp:first-child{border-top:0}
+.opp:hover{background:var(--sign-wash)}
+.opp[aria-expanded="true"]{background:var(--sign)}
+.opp img,.opp .noimg{width:96px;height:72px;object-fit:cover;background:var(--chip);display:block}
+.opp .t{display:block;font:700 22px/1 var(--display)}
+.opp .w{display:block;font-size:13px;color:var(--ink-2);overflow-wrap:anywhere;margin-top:4px}
+.opp .when{font:600 12px var(--body);color:var(--ink-2);white-space:nowrap;align-self:start;margin-top:4px}
+.thumb{position:relative;display:block;width:96px;height:72px;overflow:hidden}
+.mini-tarja{position:absolute;left:-14px;right:-14px;top:28px;background:var(--tarja);color:var(--tarja-ink);font:700 10px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:3px 0;rotate:-14deg}
+.opp.rented img{filter:grayscale(1);opacity:.6}
+.opp.rented .t{color:var(--muted)}
+.opp-card{padding:12px;border-top:2px solid var(--ink);background:var(--ground)}
+.opp-card .card{max-width:520px}
+@media (min-width:900px){ .opps{grid-template-columns:1fr 1fr} .opps>.opp:nth-child(2){border-top:0} .opps>.opp:nth-child(odd){border-right:1px solid var(--rule)} .opp-card,.opps>.empty{grid-column:1/-1} }
+.empty{padding:16px 12px;color:var(--ink-2);font-size:14px;margin:0}
+form.aform{background:var(--sheet);border:2px solid var(--ink);border-radius:var(--r);padding:14px;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));margin-bottom:22px}
+form.aform h3{grid-column:1/-1;margin:0;font:700 20px var(--display);text-transform:uppercase}
+form.aform label{display:grid;gap:6px;font:600 13px var(--body);color:var(--ink-2)}
+form.aform .full{grid-column:1/-1}
+.checks{display:flex;flex-wrap:wrap;gap:10px 18px}
+.checks label{display:flex!important;gap:8px;align-items:center;color:var(--ink)!important;font-weight:500!important}
+.formacts{display:flex;gap:8px;flex-wrap:wrap}
+.hint{display:block;font:500 12px var(--body);color:var(--muted);margin-top:6px}
+
+.login{max-width:440px;margin:40px auto;background:var(--sheet);border:2px solid var(--ink);padding:20px;display:grid;gap:12px}
+.login h2{margin:0}
+.big-empty{padding:32px 0;font-size:15px;color:var(--ink-2);max-width:60ch}
+
+@media (max-width:420px){
+  .filters .wrap{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px}
+  .filters label{display:grid;gap:4px;font-size:12px}
+  .filters select{width:100%;min-height:38px}
+  .filters label[for=fGas]{display:flex;align-self:end;min-height:38px}
+  .filters .count{display:none}
+  .filters{padding-block:0}
+  .fsum{display:flex!important;justify-content:space-between;align-items:center;min-height:44px;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));font:700 13px var(--display);text-transform:uppercase;letter-spacing:.05em}
+  .fdet .fsum .i-close{display:none}
+  .fdet[open] .fsum .i-open{display:none}
+  .fdet[open] .fsum .i-close{display:block}
+  .fsum .end{display:flex;gap:10px;align-items:center}
+  .fdet[open] .wrap{padding-bottom:10px}
+  input[type=range]{width:100%}
+}
+@media (max-width:420px){ .acts .btn{padding:0 4px;gap:4px;font-size:12px;letter-spacing:.02em} .acts .ico{width:16px;height:16px} }
+@media (min-width:900px){ .card .acts{grid-template-columns:repeat(3,auto);justify-content:start} }
+@media (prefers-reduced-motion:reduce){ *{scroll-behavior:auto!important} .tarja.fresh{animation:none} .btn{transition:none} }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="demo.js"></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20 4.5 12.6a4.6 4.6 0 0 1 6.5-6.5l1 1 1-1a4.6 4.6 0 0 1 6.5 6.5Z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 7 4 12l5 5M4 12h11a5 5 0 0 1 0 10h-3"/></symbol>
+</svg>
+
+<header class="top"><div class="wrap">
+  <h1>Busca de apartamentos</h1>
+  <p class="summary" id="summary"></p>
+  <div class="status" id="status"></div>
+  <p class="sync" id="sync" role="status"></p>
+</div></header>
+
+<section id="loginView" hidden><div class="wrap">
+  <form class="login" id="loginForm">
+    <h2>Entrar</h2>
+    <p class="lede">Receba um link de acesso por e-mail. Só os e-mails cadastrados como membros veem os anúncios.</p>
+    <label for="email">E-mail</label>
+    <input id="email" type="email" required autocomplete="email">
+    <button class="btn primary" type="submit">Enviar link de acesso</button>
+    <p class="sync" id="loginMsg" role="status"></p>
+  </form>
+</div></section>
+
+<div id="appView" hidden>
+  <nav class="tabs" aria-label="Listas"><div class="wrap" role="tablist">
+    <button class="tab" role="tab" data-v="analise"><span class="full">Em análise</span><span class="short" aria-hidden="true">Análise</span> <b id="n-analise"></b></button>
+    <button class="tab" role="tab" data-v="semmarca"><span class="full">Não favoritados</span><span class="short" aria-hidden="true">Não fav.</span> <b id="n-semmarca"></b></button>
+    <button class="tab" role="tab" data-v="fav"><span class="full">Favoritos</span><span class="short" aria-hidden="true">Favoritos</span> <b id="n-fav"></b></button>
+    <button class="tab" role="tab" data-v="desc"><span class="full">Descartados</span><span class="short" aria-hidden="true">Descartes</span> <b id="n-desc"></b></button>
+    <button class="tab" role="tab" data-v="alertas"><span class="full">Alertas</span><span class="short" aria-hidden="true">Alertas</span> <b id="n-alertas"></b></button>
+  </div></nav>
+  <div class="filters" id="filters"><details class="fdet" id="fdet" open><summary class="fsum"><span>Filtros</span><span class="end"><span id="count2"></span><svg class="ico i-open" aria-hidden="true"><use href="#i-plus"/></svg><svg class="ico i-close" aria-hidden="true"><use href="#i-minus"/></svg></span></summary><div class="wrap">
+    <label for="fReg">Região <select id="fReg"><option value="">Todas</option></select></label>
+    <label for="fMax">Até <input id="fMax" type="range" min="1500" max="3500" step="50" value="3500"> <b id="fMaxV"></b></label>
+    <label for="fGas"><input id="fGas" type="checkbox"> Só com gás</label>
+    <label for="fOrd">Ordem <select id="fOrd"><option value="tot">Menor total</option><option value="recent">Mais recentes</option><option value="area">Maior área</option></select></label>
+    <span class="count" id="count"></span>
+  </div></details></div>
+  <main><div class="wrap" id="list"></div></main>
+</div>
+
+<script>
+const cfg = window.APTO || {};
+const DEMO = new URLSearchParams(location.search).has('demo') || !cfg.supabaseUrl || cfg.supabaseUrl.includes('SEU-PROJETO');
+const sb = DEMO ? window.demoClient() : window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const brl = n => n ? 'R$ ' + Number(n).toLocaleString('pt-BR') : '—';
+const ico = (n, c = '') => `<svg class="ico ${c}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+const sumIco = ico('plus', 'i-open') + ico('minus', 'i-close');
+const SINGLE = new URLSearchParams(location.search).get('anuncio');
+const REGS = ['Pedra Branca (Palhoça)', 'São José', 'Florianópolis'];
+const SRC = { vivareal: 'VivaReal', zap: 'ZAP', olx: 'OLX', ibagy: 'Ibagy', quintoandar: 'QuintoAndar' };
+const DAY = 864e5;
+const PERIODS = [['d1', 'Últimas 24h', 0, DAY, 'nas últimas 24h'], ['d7', 'Últimos 7 dias', DAY, 7 * DAY, 'entre 1 e 7 dias atrás'], ['d30', 'Último mês', 7 * DAY, 30 * DAY, 'entre 7 e 30 dias atrás']];
+REGS.forEach(r => $('fReg').insertAdjacentHTML('beforeend', `<option>${r}</option>`));
+const narrow = matchMedia('(max-width: 420px)');
+const syncFilters = () => { $('fdet').open = !narrow.matches; };
+syncFilters(); narrow.addEventListener('change', syncFilters);
+
+let L = [], marks = {}, rentals = {}, alerts = [], me = null, view = 'analise', editing = null, openAlert = {}, openOpp = null, freshRent = null;
+
+/* ---------- regras ---------- */
+const dropAfterMark = d => { const m = marks[d.id]; return d.price_drop_at && m && m.status === 'desc' && new Date(d.price_drop_at) > new Date(m.at); };
+function rentInfo(d) {
+  if (rentals[d.id]) return { manual: true, at: rentals[d.id].at, by: rentals[d.id].by_email };
+  if (!d.active || d.inactive_at) return { manual: false, at: d.inactive_at || d.last_seen };
+  return null;
+}
+function state(d) {
+  const m = marks[d.id];
+  if (!m) return 'none';
+  if (m.status === 'desc' && dropAfterMark(d)) return 'reaberto';
+  return m.status;
+}
+const inView = (d, v) => { const s = state(d); return v === 'analise' ? s !== 'desc' : v === 'semmarca' ? (s === 'none' || s === 'reaberto') : v === 'fav' ? s === 'fav' : s === 'desc'; };
+const norm = s => (s || '').normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
+const has = (b, n) => !!n && new RegExp('(^|\\s)' + n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(\\s|$)').test(b);
+function alertMatch(d, a) {
+  if (a.max_total && d.total > a.max_total) return false;
+  if ((a.regioes || []).length && !a.regioes.includes(d.regiao)) return false;
+  const b = norm(d.bairro), inc = (a.bairros_incluir || []).map(norm).filter(Boolean), exc = (a.bairros_excluir || []).map(norm).filter(Boolean);
+  if (inc.length && !inc.some(x => has(b, x))) return false;
+  if (exc.some(x => has(b, x))) return false;
+  if (a.min_quartos && (d.quartos || 0) < a.min_quartos) return false;
+  if (a.min_banheiros && (d.banheiros || 0) < a.min_banheiros) return false;
+  if (a.min_vagas && (d.vagas || 0) < a.min_vagas) return false;
+  if (a.exigir_pet && d.pet !== 'SIM') return false;
+  return true;
+}
+/* Oportunidades = anúncios novos, vistos pela primeira vez depois da criação do alerta, que atendem às condições. */
+function opportunities(a) {
+  const since = new Date(a.created_at || 0).getTime(), now = Date.now();
+  return L.filter(d => { const t = new Date(d.first_seen).getTime(); return t >= since && now - t < 30 * DAY && alertMatch(d, a); })
+    .sort((x, y) => new Date(y.first_seen) - new Date(x.first_seen));
+}
+const bucket = (list, p) => list.filter(d => { const age = Date.now() - new Date(d.first_seen).getTime(); return age >= p[2] && age < p[3]; });
+function ago(t) {
+  const s = (Date.now() - new Date(t).getTime()) / 1e3;
+  if (s < 3600) return `há ${Math.max(1, Math.round(s / 60))} min`;
+  if (s < 86400) return `há ${Math.round(s / 3600)} h`;
+  const d = Math.round(s / 86400); return d === 1 ? 'ontem' : `há ${d} dias`;
+}
+const date = t => new Date(t).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+const who = e => !e ? 'alguém' : e === me ? 'você' : e.split('@')[0];
+
+function flags(d) {
+  const t = ((d.descricao || '') + ' ' + (d.amenities || []).join(' ')).toLowerCase(); const f = [];
+  const floor = (d.amenities || []).find(x => /andar/i.test(x)) || ((t.match(/(\d+)\s*º?\s*andar/) || [])[0]);
+  if (floor) f.push([floor.replace(/\s+/g, ' '), /^1º|térreo/i.test(floor) ? 'good' : '']);
+  if (/aquecimento a g|aquecedor a g|caldeira|chuveiro a g/.test(t)) f.push(['água quente a gás', 'good']);
+  else if (/g[áa]s (central|encanad|canalizad|individual)|g[áa]s com medi|g[áa]s e [áa]gua por consumo|medidores individuais de [áa]gua e g[áa]s/.test(t)) f.push(['gás encanado', 'good']);
+  if (/cozinha (separada|independente|fechada)|sala individual|cozinha e [áa]rea de servi[çc]o interna/.test(t)) f.push(['cozinha separada', 'good']);
+  else if (/americana|integrad|conjugad/.test(t)) f.push(['cozinha integrada', '']);
+  if (/semi.?mobil/.test(t)) f.push(['semimobiliado', 'warn']);
+  else if (/mobiliad/.test(t) && !/n[ãa]o mobiliad|sem mob|n[ãa]o significa que o im[óo]vel ser[áa] alugado mobiliado/.test(t)) f.push(['mobiliado', 'warn']);
+  if (/elevador/.test(t)) f.push(['elevador', '']);
+  if (d.pet === 'SIM') f.push(['aceita pet', 'good']);
+  if (!d.cond && !/sem taxa de condom/i.test(d.descricao || '')) f.push(['condomínio não informado', 'warn']);
+  return f;
+}
+
+/* ---------- card ---------- */
+function slide(btn, dir) { const s = btn.parentElement.querySelector('.ph'); s.scrollBy({ left: dir * s.clientWidth, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); }
+function card(d) {
+  const st = state(d), m = marks[d.id], rent = rentInfo(d);
+  const photos = d.photos || [];
+  const imgs = photos.length ? photos.map((u, i) => `<img alt="Foto ${i + 1} de ${photos.length}" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${esc(u)}">`).join('') : '<span class="none">Sem fotos no anúncio</span>';
+  const spec = [d.area && d.area + ' m²', d.quartos && d.quartos + ' quartos', d.banheiros && d.banheiros + ' banheiros', d.vagas && d.vagas + (d.vagas > 1 ? ' vagas' : ' vaga')].filter(Boolean).join(' · ');
+  const isFav = st === 'fav', isDesc = st === 'desc';
+  const drop = d.prev_total && d.prev_total > d.total && (Date.now() - new Date(d.price_drop_at) < 21 * DAY || st === 'reaberto');
+  const fresh = Date.now() - new Date(d.first_seen) < 3 * DAY;
+  const top = [fresh && '<span>Novo</span>', drop && `<span>Baixou ${brl(d.prev_total - d.total)}</span>`,
+    isFav && `<span class="light">Favorito${m.by_email ? ' · ' + esc(who(m.by_email)) : ''}</span>`, isDesc && `<span class="light">Descartado${m.by_email ? ' · ' + esc(who(m.by_email)) : ''}</span>`,
+    st === 'reaberto' && '<span class="light">Era descartado</span>'].filter(Boolean).join('');
+  const am = (d.amenities || []).filter(x => !/m²|quarto|banheiro|vaga|suíte|andar|aceita animais/i.test(x)).slice(0, 12).join(' · ');
+  const srcs = [d.source, ...(d.alt_urls || []).map(x => x.source)].map(s => SRC[s] || s).join(' + ');
+  const id = esc(d.id), dis = rent ? ' disabled' : '';
+  return `<article class="card${isFav ? ' fav' : ''}${isDesc ? ' desc' : ''}${rent ? ' rented' : ''}" data-id="${id}">
+  <div class="photo"><div class="ph">${imgs}</div>
+    ${photos.length > 1 ? `<button class="nav p" aria-label="Foto anterior" onclick="slide(this,-1)">${ico('left')}</button><button class="nav n" aria-label="Próxima foto" onclick="slide(this,1)">${ico('right')}</button>` : ''}
+    ${photos.length ? `<span class="cnt">${photos.length} fotos</span>` : ''}
+    ${top && !rent ? `<div class="flag">${top}</div>` : ''}
+    ${rent ? `<div class="tarja${freshRent === d.id ? ' fresh' : ''}" aria-hidden="true">Alugado</div>` : ''}
+  </div>
+  <div class="strip"><span class="lbl">Aluga-se · ${esc(d.bairro || d.cidade || '')}</span><span>${drop ? `<span class="was">${brl(d.prev_total)}</span>` : ''}<span class="tot">${brl(d.total)}</span></span></div>
+  <div class="body">
+    ${rent ? `<div class="rentnote"><span><b>${rent.manual ? 'Marcado como alugado.' : 'Provavelmente alugado.'}</b> ${rent.manual ? `Por ${esc(who(rent.by))} em ${date(rent.at)}.` : `Saiu do ar no ${esc(SRC[d.source] || d.source)}${rent.at ? ' em ' + date(rent.at) : ''}.`}</span>
+      ${rent.manual ? `<button class="btn" onclick="toggleRent('${id}')">${ico('undo')}Desfazer</button>` : ''}</div>` : ''}
+    <div class="breakdown">Aluguel ${brl(d.rent)} + condomínio ${d.cond ? brl(d.cond) : 'não informado'}${d.iptu ? ` · IPTU ${esc(d.iptu)} (conforme anúncio)` : ''}</div>
+    <div class="addr">${esc(d.addr || [d.street, d.bairro, d.cidade].filter(Boolean).join(', '))}<small>${esc(spec)}</small></div>
+    <div class="tags">${flags(d).map(([t, c]) => `<span class="tag ${c}">${esc(t)}</span>`).join('')}<span class="tag src">${esc(srcs)}</span></div>
+    ${d.nota ? `<p class="note">${esc(d.nota)}</p>` : ''}
+    <div class="acts">
+      <button class="btn" aria-pressed="${isFav}" onclick="mark('${id}','fav')"${dis}>${ico('heart')}${isFav ? 'Favorito' : 'Favoritar'}</button>
+      <button class="btn" aria-pressed="${isDesc}" onclick="mark('${id}','desc')"${dis}>${ico('x')}${isDesc ? 'Voltar' : 'Descartar'}</button>
+      <button class="btn" aria-pressed="${!!rent}" onclick="toggleRent('${id}')"${rent && !rent.manual ? ' disabled' : ''}>${ico('key')}Alugado</button>
+    </div>
+    ${(d.refs || []).length ? `<details><summary>Perto daqui${sumIco}</summary><ul class="refs">${d.refs.map(([c, n, mt]) => `<li><b>${esc(c)}</b><span class="n">${esc(n)}</span><span class="m">${mt < 1000 ? mt + ' m' : (mt / 1000).toFixed(1).replace('.', ',') + ' km'}</span></li>`).join('')}</ul></details>` : ''}
+    ${d.descricao || am ? `<details><summary>Descrição do anúncio${sumIco}</summary>${am ? `<p>${esc(am)}</p>` : ''}${d.descricao ? `<p>${esc(d.descricao)}</p>` : ''}</details>` : ''}
+    <div class="links">${d.lat ? `<a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=${d.lat},${d.lon}">${ico('pin')}Mapa</a>` : ''}
+      <a target="_blank" rel="noopener" href="${esc(d.url)}">${ico('out')}Ver no ${esc(SRC[d.source] || d.source)}</a>
+      ${(d.alt_urls || []).map(x => `<a target="_blank" rel="noopener" href="${esc(x.url)}">${ico('out')}${esc(SRC[x.source] || x.source)}</a>`).join('')}
+      <span class="code">cód. ${id} · visto ${ago(d.first_seen)}</span></div>
+  </div></article>`;
+}
+
+/* ---------- listas ---------- */
+function centerTab() {
+  const tw = document.querySelector('.tabs .wrap'), at = document.querySelector('.tab[aria-selected="true"]');
+  if (at) at.scrollIntoView({ inline: 'center', block: 'nearest' });
+  tw.classList.toggle('more', tw.scrollLeft + tw.clientWidth < tw.scrollWidth - 4);
+}
+if (document.fonts) document.fonts.ready.then(() => centerTab());
+function render() {
+  const nA = L.filter(d => inView(d, 'analise') && !rentInfo(d)).length, nNew = L.filter(d => Date.now() - new Date(d.first_seen) < DAY && !rentInfo(d)).length;
+  $('summary').textContent = L.length ? `${nA} em análise · ${nNew} ${nNew === 1 ? 'novo' : 'novos'} hoje` : '';
+  if (SINGLE) return renderSingle();
+  for (const v of ['analise', 'semmarca', 'fav', 'desc']) $('n-' + v).textContent = L.filter(d => inView(d, v)).length;
+  $('n-alertas').textContent = alerts.length || '';
+  document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-selected', b.dataset.v === view));
+  centerTab();
+  $('filters').hidden = view === 'alertas';
+  if (view === 'alertas') return renderAlerts();
+  const reg = $('fReg').value, max = +$('fMax').value, gas = $('fGas').checked, ord = $('fOrd').value;
+  $('fMaxV').textContent = brl(max);
+  const R = L.filter(d => inView(d, view) && d.total <= max && (!reg || d.regiao === reg) && (!gas || flags(d).some(f => /gás/.test(f[0]))));
+  const rentLast = (a, b) => !!rentInfo(a) - !!rentInfo(b);
+  const favFirst = (a, b) => (state(b) === 'fav') - (state(a) === 'fav');
+  R.sort((a, b) => rentLast(a, b) || (ord === 'area' ? (b.area || 0) - (a.area || 0) : ord === 'recent' ? new Date(b.first_seen) - new Date(a.first_seen) : favFirst(a, b) || a.total - b.total));
+  $('count').textContent = $('count2').textContent = R.length + (R.length === 1 ? ' anúncio' : ' anúncios');
+  const empty = { analise: 'Nenhum anúncio com esses filtros. Aumente o valor máximo ou escolha outra região.', semmarca: 'Tudo já foi marcado. Os anúncios novos aparecem aqui.', fav: 'Nenhum favorito ainda. Toque em Favoritar num anúncio em análise.', desc: 'Nada descartado.' }[view];
+  $('list').innerHTML = REGS.filter(r => R.some(d => d.regiao === r)).map(r => { const n = R.filter(d => d.regiao === r); return `<h2>${r} <small>${n.length}</small></h2><div class="grid">${n.map(card).join('')}</div>`; }).join('') || `<p class="big-empty">${empty}</p>`;
+  freshRent = null;
+}
+
+function renderSingle() {
+  $('filters').hidden = true;
+  const d = L.find(x => x.id === SINGLE);
+  $('list').innerHTML = `<div class="single"><a class="single-back" href="${location.pathname}${DEMO ? '?demo' : ''}">${ico('left')}Ver a lista</a>${d ? card(d) : '<p class="big-empty">Este anúncio não está mais na lista.</p>'}</div>`;
+  freshRent = null;
+}
+
+/* ---------- alertas ---------- */
+const alertDesc = a => [a.max_total && 'até ' + brl(a.max_total), (a.regioes || []).length ? a.regioes.join(', ') : 'todas as regiões',
+  (a.bairros_incluir || []).length && 'só ' + a.bairros_incluir.join(', '), (a.bairros_excluir || []).length && 'sem ' + a.bairros_excluir.join(', '),
+  a.min_quartos && a.min_quartos + '+ quartos', a.min_banheiros && a.min_banheiros + '+ banheiros', a.min_vagas && a.min_vagas + '+ vagas',
+  a.exigir_pet && 'só pet declarado'].filter(Boolean).join(' · ');
+function oppRow(d, a) {
+  const rent = !!rentInfo(d), key = a.id + ':' + d.id, open = openOpp === key;
+  return `<button class="opp${rent ? ' rented' : ''}" aria-expanded="${open}" onclick="toggleOpp('${esc(a.id)}','${esc(d.id)}')">
+    <span class="thumb">${(d.photos || [])[0] ? `<img alt="" loading="lazy" referrerpolicy="no-referrer" src="${esc(d.photos[0])}">` : '<span class="noimg"></span>'}${rent ? '<span class="mini-tarja">Alugado</span>' : ''}</span>
+    <span><span class="t">${brl(d.total)}</span><span class="w">${esc(d.bairro || '')} · ${esc([d.area && d.area + '\u00a0m²', d.quartos && d.quartos + '\u00a0quartos'].filter(Boolean).join(' · '))}</span></span>
+    <span class="when">${ago(d.first_seen)}</span></button>${open ? `<div class="opp-card">${card(d)}</div>` : ''}`;
+}
+function alertBlock(a) {
+  const ops = opportunities(a), aid = esc(a.id);
+  const sel = openAlert[a.id] || (PERIODS.find(p => bucket(ops, p).length) || PERIODS[0])[0];
+  const p = PERIODS.find(x => x[0] === sel), list = bucket(ops, p);
+  return `<section class="alert${a.enabled ? '' : ' paused'}" aria-labelledby="al-${aid}">
+    <div class="alert-top">
+      <div class="alert-name"><h3 id="al-${aid}">${esc(a.name)}</h3><span class="pill${a.enabled ? '' : ' off'}">${a.enabled ? 'Ativo' : 'Pausado'}</span></div>
+      <div class="cond">${esc(alertDesc(a))}</div>
+      <div class="alert-acts">
+        <button class="btn" onclick="editAlert('${aid}')">Editar</button>
+        <button class="btn" onclick="toggleAlert('${aid}')">${a.enabled ? 'Pausar' : 'Ativar'}</button>
+        <button class="btn danger" id="del-${aid}" onclick="askDelete('${aid}')">Excluir</button>
+      </div>
+    </div>
+    <div class="periods" role="group" aria-label="Período">${PERIODS.map(q => `<button aria-pressed="${q[0] === sel}" onclick="pickPeriod('${aid}','${q[0]}')"><span>${q[1]}</span><b>${bucket(ops, q).length}</b></button>`).join('')}</div>
+    <div class="opps">${list.length ? list.map(d => oppRow(d, a)).join('') : `<p class="empty">Nenhum anúncio novo ${p[4]} para este alerta.</p>`}</div>
+  </section>`;
+}
+function alertForm() {
+  const a = editing || {}, csv = v => (v || []).join(', ');
+  return `<form class="aform" id="aform">
+    <h3>${a.id ? 'Editar alerta' : 'Novo alerta'}</h3>
+    <label class="full">Nome <input id="a_name" type="text" required value="${esc(a.name || '')}" placeholder="Ex.: Pedra Branca até R$ 3.200"></label>
+    <label>Total máximo (R$) <input id="a_max" type="number" inputmode="numeric" min="0" step="50" value="${a.max_total ?? 3500}"></label>
+    <label>Quartos mínimos <input id="a_q" type="number" inputmode="numeric" min="0" value="${a.min_quartos ?? ''}"></label>
+    <label>Banheiros mínimos <input id="a_b" type="number" inputmode="numeric" min="0" value="${a.min_banheiros ?? 2}"></label>
+    <label>Vagas mínimas <input id="a_v" type="number" inputmode="numeric" min="0" value="${a.min_vagas ?? 1}"></label>
+    <div class="full"><div class="checks">${REGS.map((r, i) => `<label><input type="checkbox" id="a_r${i}" ${(a.regioes || []).includes(r) ? 'checked' : ''}> ${r}</label>`).join('')}</div><span class="hint">Nenhuma região marcada = todas.</span></div>
+    <label class="full">Só estes bairros <input id="a_inc" type="text" value="${esc(csv(a.bairros_incluir))}" placeholder="Separe por vírgula. Ex.: Pedra Branca, Barreiros"></label>
+    <label class="full">Exceto estes bairros <input id="a_exc" type="text" value="${esc(csv(a.bairros_excluir))}" placeholder="Separe por vírgula"></label>
+    <div class="full checks"><label><input type="checkbox" id="a_pet" ${a.exigir_pet ? 'checked' : ''}> Só anúncios que declaram aceitar pet</label>
+      <label><input type="checkbox" id="a_red" ${a.avisar_reducao !== false ? 'checked' : ''}> Avisar reduções de preço no Telegram</label>
+      <label><input type="checkbox" id="a_on" ${a.enabled !== false ? 'checked' : ''}> Ativo</label></div>
+    <div class="full formacts"><button class="btn primary" type="submit">${a.id ? 'Salvar alterações' : 'Criar alerta'}</button><button class="btn" type="button" onclick="closeForm()">Cancelar</button></div>
+  </form>`;
+}
+function renderAlerts() {
+  $('list').innerHTML = `<div class="alerts-head"><h2>Alertas</h2>${editing ? '' : `<button class="btn primary" onclick="newAlert()">${ico('plus')}Novo alerta</button>`}</div>
+    <p class="lede">Cada alerta avisa no Telegram quando aparece um anúncio novo dentro das condições. Aqui ficam os anúncios novos que ele encontrou desde que foi criado, por período.</p>
+    ${editing ? alertForm() : ''}
+    ${alerts.map(alertBlock).join('') || (editing ? '' : '<p class="big-empty">Nenhum alerta ainda. Crie o primeiro para receber os anúncios novos no Telegram.</p>')}`;
+  if (editing) { $('aform').addEventListener('submit', saveAlert); $('a_name').focus(); }
+}
+function pickPeriod(id, p) { openAlert[id] = p; openOpp = null; render(); }
+function toggleOpp(aid, id) { const k = aid + ':' + id; openOpp = openOpp === k ? null : k; render(); }
+function newAlert() { editing = {}; render(); }
+function editAlert(id) { editing = alerts.find(a => a.id === id); render(); window.scrollTo({ top: 0 }); }
+function closeForm() { editing = null; render(); }
+let pendingDelete = null;
+async function askDelete(id) {
+  if (pendingDelete !== id) { pendingDelete = id; $('del-' + id).textContent = 'Confirmar exclusão'; return; }
+  pendingDelete = null;
+  const { error } = await sb.from('alerts').delete().eq('id', id);
+  if (error) return setSync('Não deu para excluir o alerta: ' + error.message, true);
+  await loadAlerts(); render(); setSync('Alerta excluído.');
+}
+async function toggleAlert(id) {
+  const a = alerts.find(x => x.id === id);
+  const { error } = await sb.from('alerts').update({ enabled: !a.enabled }).eq('id', id);
+  if (error) return setSync('Não deu para salvar o alerta: ' + error.message, true);
+  await loadAlerts(); render();
+}
+async function saveAlert(ev) {
+  ev.preventDefault();
+  const list = v => v.split(',').map(s => s.trim()).filter(Boolean), n = v => v === '' ? null : +v;
+  const row = { name: $('a_name').value.trim(), max_total: n($('a_max').value), min_quartos: n($('a_q').value), min_banheiros: n($('a_b').value),
+    min_vagas: n($('a_v').value), regioes: REGS.filter((r, i) => $('a_r' + i).checked), bairros_incluir: list($('a_inc').value),
+    bairros_excluir: list($('a_exc').value), exigir_pet: $('a_pet').checked, avisar_reducao: $('a_red').checked, enabled: $('a_on').checked };
+  const { error } = editing && editing.id ? await sb.from('alerts').update(row).eq('id', editing.id) : await sb.from('alerts').insert({ ...row, created_by: me });
+  if (error) return setSync('Não deu para salvar o alerta: ' + error.message, true);
+  editing = null; await loadAlerts(); render(); setSync('Alerta salvo.');
+}
+
+/* ---------- marcações ---------- */
+async function mark(id, status) {
+  const prev = marks[id], d = L.find(x => x.id === id);
+  const reopen = prev && prev.status === 'desc' && d && dropAfterMark(d);
+  const off = prev && prev.status === status && !reopen;
+  if (off) delete marks[id]; else marks[id] = { listing_id: id, status, by_email: me, at: new Date().toISOString() };
+  render();
+  const { error } = off ? await sb.from('marks').delete().eq('listing_id', id) : await sb.from('marks').upsert(marks[id]);
+  if (error) { if (prev) marks[id] = prev; else delete marks[id]; render(); setSync('Não deu para salvar a marcação: ' + error.message, true); }
+}
+async function toggleRent(id) {
+  const prev = rentals[id];
+  if (prev) delete rentals[id]; else { rentals[id] = { listing_id: id, by_email: me, at: new Date().toISOString() }; freshRent = id; }
+  render();
+  const { error } = prev ? await sb.from('rentals').delete().eq('listing_id', id) : await sb.from('rentals').upsert(rentals[id]);
+  if (error) { if (prev) rentals[id] = prev; else delete rentals[id]; render(); setSync('Não deu para salvar: ' + error.message, true); }
+}
+
+/* ---------- dados ---------- */
+function setSync(msg, err) { const s = $('sync'); s.textContent = msg; s.classList.toggle('err', !!err); }
+async function loadAlerts() { const { data } = await sb.from('alerts').select('*').order('created_at'); alerts = data || []; }
+async function loadAll() {
+  setSync('Carregando…');
+  const [ls, ms, rt, rs] = await Promise.all([
+    sb.from('listings').select('*').order('first_seen', { ascending: false }).limit(3000),
+    sb.from('marks').select('*'), sb.from('rentals').select('*'),
+    sb.from('runs').select('source,status,finished_at,message').order('started_at', { ascending: false }).limit(30),
+  ]);
+  if (ls.error) return setSync('Não foi possível carregar os anúncios: ' + ls.error.message, true);
+  marks = Object.fromEntries((ms.data || []).map(m => [m.listing_id, m]));
+  rentals = Object.fromEntries((rt.data || []).map(m => [m.listing_id, m]));
+  const cutoff = Date.now() - 45 * DAY;
+  L = (ls.data || []).filter(d => d.active || marks[d.id] || rentals[d.id] || new Date(d.inactive_at || 0).getTime() > cutoff);
+  await loadAlerts();
+  const last = {};
+  (rs.data || []).forEach(r => { if (!last[r.source]) last[r.source] = r; });
+  $('status').innerHTML = Object.values(last).map(r => `<span><i class="dot${r.status === 'ok' ? '' : ' bad'}"></i>${esc(SRC[r.source] || r.source)} ${r.status === 'ok' ? 'lido ' + ago(r.finished_at) : esc(r.status)}</span>`).join('') || '<span>O watcher ainda não rodou.</span>';
+  setSync(DEMO ? 'Modo demonstração: dados da migração, marcações salvas só neste navegador, sem Telegram.' : '');
+  render();
+}
+function subscribe() {
+  for (const t of ['marks', 'rentals']) sb.channel(t).on('postgres_changes', { event: '*', schema: 'public', table: t }, p => {
+    const store = t === 'marks' ? marks : rentals;
+    if (p.eventType === 'DELETE') delete store[p.old.listing_id]; else store[p.new.listing_id] = p.new;
+    if (!editing) render();
+  }).subscribe();
+}
+
+const VIEWS = ['analise', 'semmarca', 'fav', 'desc', 'alertas'];
+if (VIEWS.includes(location.hash.slice(1))) view = location.hash.slice(1);
+document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => { view = b.dataset.v; editing = null; openOpp = null; history.replaceState(null, '', '#' + view); render(); window.scrollTo({ top: 0 }); }));
+document.querySelector('.tabs .wrap').addEventListener('scroll', e => { const w = e.target; w.classList.toggle('more', w.scrollLeft + w.clientWidth < w.scrollWidth - 4); }, { passive: true });
+window.addEventListener('hashchange', () => { const v = location.hash.slice(1); if (VIEWS.includes(v) && v !== view) { view = v; editing = null; render(); } });
+['fReg', 'fMax', 'fGas', 'fOrd'].forEach(id => $(id).addEventListener('input', render));
+$('loginForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const { error } = await sb.auth.signInWithOtp({ email: $('email').value.trim(), options: { emailRedirectTo: location.origin + location.pathname } });
+  $('loginMsg').textContent = error ? 'Não deu para enviar o link: ' + error.message : 'Link enviado. Abra o e-mail neste mesmo navegador.';
+});
+(async () => {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) { $('loginView').hidden = false; return; }
+  me = session.user.email;
+  $('appView').hidden = false;
+  await loadAll();
+  subscribe();
+})();
+</script>
+</body>
+</html>

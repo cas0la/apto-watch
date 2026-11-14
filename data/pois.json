@@ -1,0 +1,6335 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-06T17:20:38Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 1738262279,
+  "lat": -27.6075206,
+  "lon": -48.5795283,
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "115",
+    "addr:postcode": "88080-250",
+    "addr:street": "Rua Doutor Abel Capela",
+    "addr:suburb": "Coqueiros",
+    "amenity": "university",
+    "contact:instagram": "https://www.instagram.com/cieph_faculdade/",
+    "contact:phone": "+55 48 3206-2851;+55 48 3206-2891",
+    "contact:website": "https://cieph.edu.br/",
+    "contact:whatsapp": "+55 48 99192-6872",
+    "description": "Centro Integrado de Estudos e Pesquisas do Homem",
+    "name": "Faculdade de Tecnologia em Saúde CIEPH",
+    "short_name": "Faculdade CIEPH"
+  }
+},
+{
+  "type": "node",
+  "id": 1795156003,
+  "lat": -27.6422812,
+  "lon": -48.6710119,
+  "tags": {
+    "name": "Giassi Supemercados",
+    "opening_hours": "Mo-Sa 08:00-22:30; Su 08:00-21:00",
+    "phone": "+55 48 3279-0500",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 2507517874,
+  "lat": -27.6766804,
+  "lon": -48.6398373,
+  "tags": {
+    "name": "Supermercado Elaine",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 2950121416,
+  "lat": -27.6727595,
+  "lon": -48.5067057,
+  "tags": {
+    "building": "yes",
+    "name": "Progresso",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 3794780190,
+  "lat": -27.5857087,
+  "lon": -48.5018737,
+  "tags": {
+    "addr:housenumber": "2037",
+    "addr:street": "Avenida Madre Benvenuta",
+    "amenity": "university",
+    "contact:phone": "+55 48 3664-8254",
+    "contact:website": "http://www.esag.udesc.br/",
+    "faculty": "economics",
+    "name": "Centro de Ciências da Administração e Socioeconômicas",
+    "opening_hours": "Mo-Fr 07:00-22:00; Sa,Su,PH,SH off",
+    "short_name": "ESAG"
+  }
+},
+{
+  "type": "node",
+  "id": 3969063825,
+  "lat": -27.5898351,
+  "lon": -48.5152575,
+  "tags": {
+    "name": "Carrefour",
+    "shop": "supermarket",
+    "website": "http://walmart.com.br"
+  }
+},
+{
+  "type": "node",
+  "id": 4193513785,
+  "lat": -27.6255399,
+  "lon": -48.6795053,
+  "tags": {
+    "amenity": "university",
+    "name": "Unisul Virtual"
+  }
+},
+{
+  "type": "node",
+  "id": 4374487992,
+  "lat": -27.5927921,
+  "lon": -48.6220369,
+  "tags": {
+    "name": "Supermercado Dico",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 4775209219,
+  "lat": -27.5978943,
+  "lon": -48.6198211,
+  "tags": {
+    "addr:city": "São José",
+    "addr:milestone": "207",
+    "addr:postcode": "88102-460",
+    "addr:street": "BR-101",
+    "addr:suburb": "Kobrasol",
+    "alt_name": "Câmpus Univali Kobrasol",
+    "amenity": "university",
+    "internet_access": "yes",
+    "internet_access:ssid": "Univali",
+    "name": "Universidade do Vale do Itajaí",
+    "phone": "+55 48 3211-2005",
+    "short_name": "Univali",
+    "website": "https://univali.br/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4787072021,
+  "lat": -27.5950893,
+  "lon": -48.6159301,
+  "tags": {
+    "access": "yes",
+    "addr:housenumber": "268",
+    "addr:postcode": "88102-180",
+    "addr:street": "Rua Jair Vieira",
+    "amenity": "university",
+    "contact:website": "https://usj.edu.br/",
+    "loc_name": "Universidade de São José",
+    "name": "Centro Universitário Municipal de São José",
+    "name:en": "University of San Jose",
+    "operator": "Prefeitura Municipal de São José",
+    "operator:type": "public",
+    "short_name": "USJ",
+    "wikidata": "Q10387903"
+  }
+},
+{
+  "type": "node",
+  "id": 4837303384,
+  "lat": -27.5946764,
+  "lon": -48.5209853,
+  "tags": {
+    "amenity": "college",
+    "name": "DeROSE Method Trindade",
+    "name:pt": "Método DeROSE Trindade",
+    "network": "DeRose Method",
+    "phone": "+55 48 32330016",
+    "training": "derose_method",
+    "website": "https://www.derosetrindade.com.br/"
+  }
+},
+{
+  "type": "node",
+  "id": 4837303385,
+  "lat": -27.5876228,
+  "lon": -48.5515055,
+  "tags": {
+    "addr:door": "402",
+    "alt_name": "Método DeRose Gama D'Eça",
+    "amenity": "college",
+    "contact:phone": "+55 48 3223-1282",
+    "contact:website": "http://metododerosefloripa.com",
+    "name": "DeRose Method Gama D'Eça",
+    "opening_hours": "Mo-Fr 11:00-20:00",
+    "operator": "DeRose Method",
+    "training": "derose_method"
+  }
+},
+{
+  "type": "node",
+  "id": 4837303387,
+  "lat": -27.5861868,
+  "lon": -48.5455077,
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:door": "4",
+    "addr:housenumber": "129",
+    "addr:postcode": "88015-460",
+    "addr:street": "Rua Germano Wendhausen",
+    "addr:suburb": "Centro",
+    "alt_name": "DeRose Method Beira Mar",
+    "amenity": "college",
+    "contact:phone": "+55 48 3222-8486",
+    "contact:website": "http://ecfretta.org",
+    "name": "Espaço Cultural Fretta",
+    "network": "DeRose Method",
+    "old_name": "Método DeRose Beira Mar",
+    "training": "derose_method"
+  }
+},
+{
+  "type": "node",
+  "id": 4837314081,
+  "lat": -27.5923834,
+  "lon": -48.6118822,
+  "tags": {
+    "addr:housenumber": "949",
+    "addr:street": "Rua Vereador Mário Coelho Pires",
+    "amenity": "college",
+    "name": "DeRose Method Kobrasol",
+    "name:pt": "Método DeRose Kobrasol",
+    "network": "DeRose Method",
+    "phone": "+55 48 32474646",
+    "training": "derose_method",
+    "website": "http://www.metododerosekobrasol.org"
+  }
+},
+{
+  "type": "node",
+  "id": 4869778214,
+  "lat": -27.5851323,
+  "lon": -48.5450788,
+  "tags": {
+    "name": "Imperatriz Gourmet",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 4907440621,
+  "lat": -27.6131142,
+  "lon": -48.5248675,
+  "tags": {
+    "amenity": "college",
+    "contact:phone": "+55 48 3204-7932",
+    "contact:website": "http://www.florianopolis.colegiologosofico.com.br",
+    "name": "Colégio Logosófico González Pecotche"
+  }
+},
+{
+  "type": "node",
+  "id": 5207004132,
+  "lat": -27.5889864,
+  "lon": -48.5517356,
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "771",
+    "addr:postcode": "88015-240",
+    "addr:street": "Avenida Professor Othon Gama d'Eça",
+    "addr:suburb": "Centro",
+    "name": "Imperatriz Gourmet",
+    "opening_hours": "Mo-Su 08:00-21:00",
+    "operator": "Imperatriz",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 5243738822,
+  "lat": -27.6334497,
+  "lon": -48.6711919,
+  "tags": {
+    "addr:street": "Rua José Leonídio Vieira",
+    "name": "Supermercado J.Silveira",
+    "opening_hours": "Mo-Sa 09:00-19:00",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 5261372340,
+  "lat": -27.6103431,
+  "lon": -48.5234151,
+  "tags": {
+    "name": "Açoriano",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 6327817038,
+  "lat": -27.6811741,
+  "lon": -48.6594228,
+  "tags": {
+    "name": "Mercado da Família",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 6462747998,
+  "lat": -27.5924877,
+  "lon": -48.5501199,
+  "tags": {
+    "addr:housenumber": "280",
+    "addr:postcode": "88015-120",
+    "addr:street": "Rua Dom Jaime Câmara",
+    "contact:website": "https://www.guiavegano.com.br/vegan/",
+    "contact:whatsapp": "+55 48 99600-6711",
+    "delivery": "yes",
+    "name": "Loja do Guia Vegano",
+    "opening_hours": "Mo-Fr 09:00-19:00; Sa,Su,PH off",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:visa_debit": "yes",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 6520228285,
+  "lat": -27.5963310,
+  "lon": -48.5211333,
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "2010",
+    "addr:street": "Rua Lauro Linhares",
+    "addr:suburb": "Trindade",
+    "level": "0",
+    "name": "Imperatriz",
+    "opening_hours": "Mo-Sa 08:00-22:00; PH,Su 08:00-20:00",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 6624567237,
+  "lat": -27.5965265,
+  "lon": -48.5505043,
+  "tags": {
+    "addr:housenumber": "219",
+    "addr:street": "Rua Trajano",
+    "amenity": "university",
+    "contact:phone": "+55 48 3279-1920",
+    "contact:website": "https://www.unisul.br/nucleo-de-pratica-juridica/grande-florianopolis/",
+    "contact:whatsapp": "+55 48 3279-1356",
+    "level": "1",
+    "name": "Unisul - Núclo de Prática Jurídica",
+    "short_name": "Unisul NPJ"
+  }
+},
+{
+  "type": "node",
+  "id": 7692772355,
+  "lat": -27.6797468,
+  "lon": -48.6745178,
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "1014",
+    "addr:street": "Rua Nelson Floriano Campos",
+    "addr:suburb": "Pachecos",
+    "name": "Mercado Avante",
+    "phone": "+55 48 3374-2967",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 8643648617,
+  "lat": -27.6678124,
+  "lon": -48.6944675,
+  "tags": {
+    "addr:street": "Avenida Dário da Silva Mattos",
+    "name": "Mundialmix CD",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 9005335052,
+  "lat": -27.5899212,
+  "lon": -48.5103411,
+  "tags": {
+    "amenity": "college",
+    "name": "Rock's Pré-vestibular"
+  }
+},
+{
+  "type": "node",
+  "id": 9102478700,
+  "lat": -27.5773742,
+  "lon": -48.5093071,
+  "tags": {
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "name": "Hospital Vilson Pedro Kleinubing"
+  }
+},
+{
+  "type": "node",
+  "id": 9616147569,
+  "lat": -27.5954831,
+  "lon": -48.5534602,
+  "tags": {
+    "name": "Galeria Comasa",
+    "shop": "mall"
+  }
+},
+{
+  "type": "node",
+  "id": 9616147605,
+  "lat": -27.5959669,
+  "lon": -48.5535957,
+  "tags": {
+    "amenity": "college",
+    "name": "Escola Técnica Geração"
+  }
+},
+{
+  "type": "node",
+  "id": 9616147609,
+  "lat": -27.5960857,
+  "lon": -48.5537110,
+  "tags": {
+    "amenity": "college",
+    "level": "1",
+    "name": "Saga Escola de Arte, Game e Animação"
+  }
+},
+{
+  "type": "node",
+  "id": 9627836830,
+  "lat": -27.5954766,
+  "lon": -48.5517798,
+  "tags": {
+    "addr:housenumber": "242",
+    "addr:street": "Rua Tenente Silveira",
+    "amenity": "college",
+    "level": "1",
+    "name": "Microlins"
+  }
+},
+{
+  "type": "node",
+  "id": 9627836838,
+  "lat": -27.5956103,
+  "lon": -48.5515961,
+  "tags": {
+    "name": "Galeria Central",
+    "shop": "mall"
+  }
+},
+{
+  "type": "node",
+  "id": 9785668618,
+  "lat": -27.5959526,
+  "lon": -48.6115234,
+  "tags": {
+    "addr:housenumber": "68",
+    "addr:street": "Rua Altamiro di Bernardi",
+    "amenity": "college",
+    "contact:email": "contato@baumgartenebrauncursos.com",
+    "contact:website": "https://www.baumgartenebrauncursos.com/",
+    "contact:whatsapp": "+55 48 98495-8210",
+    "name": "Baumgarten e Braun Cursos",
+    "opening_hours": "Mo-Fr 08:30-18:00; Sa,Su,PH off"
+  }
+},
+{
+  "type": "node",
+  "id": 10202875030,
+  "lat": -27.6622763,
+  "lon": -48.7012447,
+  "tags": {
+    "name": "Minuando",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 11081840231,
+  "lat": -27.6874287,
+  "lon": -48.5546012,
+  "tags": {
+    "addr:street": "Rua José Correia (Juca)",
+    "name": "Mercado Dega",
+    "opening_hours": "Mo-Sa 07:00-20:00",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 11124051551,
+  "lat": -27.6078765,
+  "lon": -48.5346678,
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "549",
+    "addr:postcode": "88045-520",
+    "addr:street": "Rua João Motta Espezim",
+    "addr:suburb": "Saco dos Limões",
+    "name": "Supermercado Imperatriz",
+    "opening_hours": "08:00-22:00",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "shop": "supermarket",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11784058016,
+  "lat": -27.6343678,
+  "lon": -48.6454391,
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:street": "Avenida Aniceto Zacchi",
+    "addr:suburb": "Ponte do Imaruim",
+    "amenity": "university",
+    "name": "Fadesc Uniasselvi"
+  }
+},
+{
+  "type": "node",
+  "id": 11812818958,
+  "lat": -27.6368928,
+  "lon": -48.6658084,
+  "tags": {
+    "name": "Park Mall Palhoça",
+    "shop": "mall"
+  }
+},
+{
+  "type": "node",
+  "id": 12186771580,
+  "lat": -27.6821483,
+  "lon": -48.7097872,
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:street": "Avenida São Cristóvão",
+    "addr:suburb": "Alto Aririu",
+    "name": "Supermercados Sul do Rio",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 12195307510,
+  "lat": -27.7001997,
+  "lon": -48.5506358,
+  "tags": {
+    "name": "Dimarcos",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 12730052101,
+  "lat": -27.5968070,
+  "lon": -48.5194536,
+  "tags": {
+    "addr:housenumber": "190",
+    "addr:postcode": "88036-580",
+    "addr:street": "Rua Professor Simão José Hess",
+    "name": "Angeloni Trindade",
+    "opening_hours": "Mo-Su 07:00-22:30",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 13006591044,
+  "lat": -27.6700329,
+  "lon": -48.6624619,
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:street": "Avenida Aleixo Alves de Souza",
+    "addr:suburb": "Nova Palhoça",
+    "currency:XBT": "yes",
+    "name": "Seu Ze Bebidas Nova Palhoça",
+    "opening_hours": "Mo-Fr 10:00-00:00",
+    "payment:cards": "yes",
+    "payment:cash": "yes",
+    "payment:lightning": "yes",
+    "payment:lightning_contactless": "no",
+    "payment:onchain": "no",
+    "phone": "+55 48 99836 5751",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 13044399396,
+  "lat": -27.5696322,
+  "lon": -48.6414400,
+  "tags": {
+    "addr:street": "Rua José Antônio Pereira",
+    "name": "Supermercado Costa",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 13046797073,
+  "lat": -27.5698210,
+  "lon": -48.6167440,
+  "tags": {
+    "addr:street": "Avenida Brasil",
+    "name": "Mercado Guesser",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 13109368610,
+  "lat": -27.5847296,
+  "lon": -48.6391168,
+  "tags": {
+    "addr:street": "Rua Docilício Luz",
+    "name": "RP Supermercado",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 13126330681,
+  "lat": -27.5840554,
+  "lon": -48.5838925,
+  "tags": {
+    "addr:housenumber": "410",
+    "addr:postcode": "88070-800",
+    "addr:street": "Rua General Liberato Bittencourt",
+    "contact:phone": "+55 48 3348-6600",
+    "name": "Imperatriz",
+    "opening_hours": "Mo-Sa 08:00-22:00; Su 08:00-21:00",
+    "shop": "supermarket",
+    "toilets": "yes",
+    "toilets:access": "permissive",
+    "toilets:wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13138248338,
+  "lat": -27.5856670,
+  "lon": -48.6458882,
+  "tags": {
+    "addr:street": "Rua João Sebastião da Conceição Filho",
+    "name": "Mercado Luciana",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 13160014873,
+  "lat": -27.6646149,
+  "lon": -48.5453102,
+  "tags": {
+    "addr:housenumber": "3393",
+    "addr:street": "Avenida Deputado Diomício Freitas",
+    "addr:suburb": "Carianos",
+    "amenity": "hospital",
+    "description": "0800 000 4310 (Opção 2 - Recepção Hospital Dia)",
+    "healthcare": "hospital",
+    "healthcare:speciality": "ultrassonografia;tomografia;radiology;consultas_cirúrgicas;ophthalmology;endoscopia;colonoscopia;cirurgias_oftalmológicas;exames_laboratoriais;surgery",
+    "name": "Hospital Dia",
+    "opening_hours": "Mo-Fr 07:00-19:00; PH off",
+    "operator": "Secretaria Municipal de Saúde",
+    "operator:type": "government",
+    "phone": "0800 000 4310"
+  }
+},
+{
+  "type": "node",
+  "id": 13160014874,
+  "lat": -27.6648149,
+  "lon": -48.5448435,
+  "tags": {
+    "addr:housenumber": "3393",
+    "addr:street": "Avenida Deputado Diomício Freitas",
+    "addr:suburb": "Carianos",
+    "amenity": "hospital",
+    "emergency": "yes",
+    "healthcare": "hospital",
+    "healthcare:speciality": "general",
+    "name": "UPA Sul – Unidade de Pronto Atendimento"
+  }
+},
+{
+  "type": "node",
+  "id": 13185994167,
+  "lat": -27.6040477,
+  "lon": -48.5157519,
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "129",
+    "addr:postcode": "88040300",
+    "addr:street": "Rua João Câncio dos Santos",
+    "addr:suburb": "Pantanal",
+    "amenity": "university",
+    "name": "Faculdade Católica de Santa Catarina",
+    "operator": "FACASC",
+    "operator:type": "private_non_profit",
+    "website": "www.facasc.edu.br"
+  }
+},
+{
+  "type": "node",
+  "id": 13238130394,
+  "lat": -27.5958308,
+  "lon": -48.5932405,
+  "tags": {
+    "addr:housenumber": "86",
+    "addr:street": "Rua Waldemar Ouriques",
+    "addr:suburb": "Capoeiras",
+    "amenity": "college",
+    "contact:facebook": "https://www.facebook.com/institutovet",
+    "contact:instagram": "https://www.instagram.com/instituto.veterinario/",
+    "email": "institutovet@gmail.com",
+    "mobile": "+55 48 99105 6226",
+    "name": "Instituto Veterinário",
+    "website": "https://www.institutovet.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 13239140362,
+  "lat": -27.5885357,
+  "lon": -48.5996753,
+  "tags": {
+    "addr:street": "Rua Luiz Carlos Prestes",
+    "name": "2M Supermercado",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 13239215066,
+  "lat": -27.5922514,
+  "lon": -48.6021297,
+  "tags": {
+    "addr:housenumber": "659",
+    "addr:street": "Rua Professor Egídio Ferreira",
+    "name": "Mercado Fernandes",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 13254872491,
+  "lat": -27.5963850,
+  "lon": -48.6893847,
+  "tags": {
+    "addr:housenumber": "18801",
+    "addr:street": "Rua Francisco Antônio da Silva",
+    "name": "Lira Mini Mercado",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 13345305602,
+  "lat": -27.6741998,
+  "lon": -48.5464305,
+  "tags": {
+    "level": "0",
+    "name": "Imperatriz",
+    "opening_hours": "Mo-Su 07:00-21:00",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 14027061501,
+  "lat": -27.6900341,
+  "lon": -48.5554564,
+  "tags": {
+    "addr:street": "Rua José Correia - Juca",
+    "addr:suburb": "Tapera da Base",
+    "name": "Mercado Sempre Mais",
+    "phone": "+55 48 3364 0843",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 14027746987,
+  "lat": -27.5571435,
+  "lon": -48.6274887,
+  "tags": {
+    "addr:street": "Rua Aparecida Maria Dadam",
+    "amenity": "college",
+    "education": "college",
+    "name": "Escola Profissional Professora Nilza Maria da Silva"
+  }
+},
+{
+  "type": "node",
+  "id": 14031543237,
+  "lat": -27.5959717,
+  "lon": -48.6486837,
+  "tags": {
+    "name": "Supermercado Mercocentro",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 14032230519,
+  "lat": -27.5857193,
+  "lon": -48.6808285,
+  "tags": {
+    "addr:housenumber": "989",
+    "addr:street": "Rua João Honorato da Silveira",
+    "name": "Mercado Esquina",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 14070439801,
+  "lat": -27.6094708,
+  "lon": -48.5920654,
+  "tags": {
+    "leisure": "park",
+    "name": "Praça da Alameda das Palmeiras"
+  }
+},
+{
+  "type": "node",
+  "id": 14101044801,
+  "lat": -27.5960219,
+  "lon": -48.6486039,
+  "tags": {
+    "addr:street": "Rua Vereador Arthur Manoel Mariano",
+    "name": "Mercocentro",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 14269541329,
+  "lat": -27.6133618,
+  "lon": -48.5100139,
+  "tags": {
+    "leisure": "park",
+    "name": "Sertão do Pantanal"
+  }
+},
+{
+  "type": "node",
+  "id": 14269541330,
+  "lat": -27.6127783,
+  "lon": -48.5042481,
+  "tags": {
+    "leisure": "park",
+    "name": "Poção do Córrego Grande"
+  }
+},
+{
+  "type": "node",
+  "id": 14295170801,
+  "lat": -27.6005698,
+  "lon": -48.5223251,
+  "tags": {
+    "check_date": "2026-10-15",
+    "leisure": "park",
+    "name": "Espaço Agora Paula Pivatto"
+  }
+},
+{
+  "type": "node",
+  "id": 14342838389,
+  "lat": -27.5929709,
+  "lon": -48.5133655,
+  "tags": {
+    "leisure": "park",
+    "name": "Parque do Jacaré"
+  }
+},
+{
+  "type": "node",
+  "id": 14350431801,
+  "lat": -27.6197927,
+  "lon": -48.5006370,
+  "tags": {
+    "leisure": "park",
+    "name": "Sertão do Córrego Grande"
+  }
+},
+{
+  "type": "way",
+  "id": 35165963,
+  "center": {
+    "lat": -27.5971596,
+    "lon": -48.5580241
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "1101",
+    "addr:postcode": "88010-230",
+    "addr:street": "Avenida Paulo Fontes",
+    "addr:suburb": "Centro",
+    "alt_name": "Rodoviária",
+    "amenity": "bus_station",
+    "building": "transportation",
+    "bus": "yes",
+    "internet_access": "yes",
+    "internet_access:fee": "yes",
+    "internet_access:ssid": "15min free",
+    "name": "Terminal Rodoviário Rita Maria",
+    "operator": "DETER - SC",
+    "operator:type": "public",
+    "public_transport": "station",
+    "shower": "yes",
+    "toilets": "yes",
+    "toilets:access": "fee",
+    "toilets:handwashing": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 37738786,
+  "center": {
+    "lat": -27.5948837,
+    "lon": -48.5537863
+  },
+  "tags": {
+    "alt_name": "Largo do Fagundes",
+    "leisure": "park",
+    "name": "Largo Fagundes",
+    "wikidata": "Q132156429",
+    "wikimedia_commons": "File:Pflanzen im Zentrum von Florianópolis 6 (22089660276).jpg"
+  }
+},
+{
+  "type": "way",
+  "id": 43242697,
+  "center": {
+    "lat": -27.5973964,
+    "lon": -48.5180767
+  },
+  "tags": {
+    "addr:housenumber": "108",
+    "addr:postcode": "88036-800",
+    "addr:street": "Rua Professora Maria Flora Pausewang",
+    "addr:suburb": "Trindade",
+    "amenity": "hospital",
+    "building": "university",
+    "building:levels": "4",
+    "emergency": "yes",
+    "healthcare": "hospital",
+    "healthcare:speciality": "fisioterapia;gastroenterologia_pediátrica;gynaecology;otorrinoloaringologia;psychiatry;psicologia;transplante_hepático;urology;pneumologia;paediatrics;ophthalmology;oncology;nephrology;odontologia;general;dermatology;vascular_surgery;cirurgia_oncológica",
+    "name": "Hospital Universitário Polydoro Ernani de São Thiago",
+    "operator": "Universidade Federal de Santa Catarina",
+    "operator:type": "government",
+    "short_name": "HU",
+    "website": "http://www.hu.ufsc.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 43719844,
+  "center": {
+    "lat": -27.5992790,
+    "lon": -48.5498669
+  },
+  "tags": {
+    "addr:postcode": "88010-400",
+    "addr:street": "Avenida Paulo Fontes",
+    "amenity": "bus_station",
+    "building": "roof",
+    "bus": "yes",
+    "internet_access": "no",
+    "layer": "1",
+    "name": "Terminal Urbano Cidade de Florianópolis",
+    "public_transport": "station",
+    "toilets": "yes",
+    "toilets:access": "fee"
+  }
+},
+{
+  "type": "way",
+  "id": 43719878,
+  "center": {
+    "lat": -27.5984563,
+    "lon": -48.5538180
+  },
+  "tags": {
+    "addr:housenumber": "701",
+    "addr:postcode": "88010-906",
+    "addr:street": "Avenida Paulo Fontes",
+    "amenity": "bus_station",
+    "bus": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Terminal de Integração do Centro",
+    "operator": "Cotisa",
+    "public_transport": "station",
+    "short_name": "TICEN",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 43730717,
+  "center": {
+    "lat": -27.5848162,
+    "lon": -48.5450508
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "2468",
+    "addr:postcode": "88015-902",
+    "addr:street": "Rua Bocaiúva",
+    "addr:suburb": "Centro",
+    "contact:phone": "+55 48 3212-4600",
+    "contact:website": "https://www.shoppingbeiramar.com.br/",
+    "internet_access": "wlan",
+    "name": "Beiramar Shopping",
+    "opening_hours": "Mo-Su 10:00-22:00; PH off",
+    "shop": "mall",
+    "toilets": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 72944850,
+  "center": {
+    "lat": -27.5916756,
+    "lon": -48.5132913
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "75",
+    "addr:postcode": "88035-215",
+    "addr:street": "Rua Nirberto Haase",
+    "addr:suburb": "Santa Mônica",
+    "building": "supermarket",
+    "check_date": "2026-06-22",
+    "check_date:opening_hours": "2026-06-22",
+    "name": "Angeloni Santa Mônica",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "operator": "Angeloni",
+    "shop": "supermarket",
+    "source:opening_hours": "entrance",
+    "website": "https://www.angeloni.com.br/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 72944851,
+  "center": {
+    "lat": -27.5900926,
+    "lon": -48.5149737
+  },
+  "tags": {
+    "addr:housenumber": "687",
+    "addr:postcode": "88035-000",
+    "addr:street": "Avenida Madre Benvenuta",
+    "building": "yes",
+    "contact:website": "http://villaromanashopping.com.br/l",
+    "height": "20",
+    "name": "Villa Romana Shopping",
+    "old_name": "Shopping Iguatemi",
+    "opening_hours": "Mo-Sa 10:00-22:00; Su,PH 14:00-20:00",
+    "shop": "mall",
+    "toilets:wheelchair": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 72944852,
+  "center": {
+    "lat": -27.5858046,
+    "lon": -48.4997812
+  },
+  "tags": {
+    "addr:street": "Rodovia Admar Gonzaga",
+    "building": "supermarket",
+    "name": "Supermercado É de Casa",
+    "opening_hours": "Mo-Sa 07:00-22:00; Su,PH 07:00-21:00",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 72944878,
+  "center": {
+    "lat": -27.5839692,
+    "lon": -48.5228482
+  },
+  "tags": {
+    "addr:postcode": "88036-700",
+    "addr:street": "Avenida Professor Henrique da Silva Fontes",
+    "amenity": "bus_station",
+    "bench": "yes",
+    "bus": "yes",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "lit": "yes",
+    "name": "Terminal de Integração da Trindade",
+    "network": "SIM - Sistema Integrado de Mobilidade",
+    "operator": "Consórcio Fênix",
+    "passenger_information_display": "yes",
+    "public_transport": "station",
+    "shelter": "yes",
+    "short_name": "TITRI"
+  }
+},
+{
+  "type": "way",
+  "id": 88463151,
+  "center": {
+    "lat": -27.5963784,
+    "lon": -48.5101673
+  },
+  "tags": {
+    "alt_name": "Horto Florestal do Córrego Grande",
+    "leisure": "park",
+    "name": "Parque Ecológico do Córrego Grande",
+    "opening_hours": "Mo-Su 07:00-19:00"
+  }
+},
+{
+  "type": "way",
+  "id": 96868224,
+  "center": {
+    "lat": -27.5973301,
+    "lon": -48.5210404
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Santos Dumont"
+  }
+},
+{
+  "type": "way",
+  "id": 99776065,
+  "center": {
+    "lat": -27.6005109,
+    "lon": -48.5020243
+  },
+  "tags": {
+    "addr:street": "Rua João Pio Duarte Silva",
+    "building": "commercial",
+    "contact:instagram": "https://www.instagram.com/redeimperatriz/",
+    "name": "Imperatriz Supermercados",
+    "shop": "supermarket",
+    "website": "https://www.supermercadosimperatriz.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 119501440,
+  "center": {
+    "lat": -27.6009351,
+    "lon": -48.5965810
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "2445",
+    "addr:postcode": "88085-001",
+    "addr:street": "Avenida Governador Ivo Silveira",
+    "addr:suburb": "Capoeiras",
+    "branch": "Angeloni Capoeiras",
+    "building": "yes",
+    "contact:phone": "+55 48 3271 7500",
+    "name": "Angeloni Supermercado",
+    "opening_hours": "Mo-Su,PH 08:00-22:00",
+    "operator": "Angeloni",
+    "shop": "supermarket",
+    "toilets": "yes",
+    "toilets:access": "permissive",
+    "toilets:wheelchair": "*",
+    "website": "https://www.angeloni.com.br/super/"
+  }
+},
+{
+  "type": "way",
+  "id": 120435564,
+  "center": {
+    "lat": -27.5853859,
+    "lon": -48.6141095
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "1079",
+    "addr:postcode": "88117-900",
+    "addr:street": "Rua Gerôncio Thives",
+    "addr:suburb": "Campinas",
+    "building": "commercial",
+    "building:levels": "2",
+    "contact:phone": "+55 48 3288-5900",
+    "contact:website": "https://shoppingitaguacu.com.br",
+    "name": "Shopping Itaguaçu",
+    "opening_hours": "Mo-Sa 10:00-22:00; Su 14:00-20:00",
+    "operator:type": "private",
+    "shop": "mall",
+    "smoking": "no",
+    "toilets": "yes",
+    "toilets:access": "permissive",
+    "toilets:wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 121232517,
+  "center": {
+    "lat": -27.5918664,
+    "lon": -48.6103616
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "425",
+    "addr:postcode": "88101-300",
+    "addr:street": "Avenida Governador Irineu Bornhausen",
+    "addr:suburb": "Campinas",
+    "building": "supermarket",
+    "email": "contato@giassi.com.br",
+    "layer": "-1",
+    "name": "Giassi Supermercados",
+    "opening_hours": "Mo-Sa 07:30-22:00; Su 07:30-21:00; PH off",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "phone": "+55 48 3381-4000",
+    "shop": "supermarket",
+    "website": "https://www.giassi.com.br/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 129055549,
+  "center": {
+    "lat": -27.6659257,
+    "lon": -48.5036064
+  },
+  "tags": {
+    "addr:housenumber": "630",
+    "addr:street": "Rodovia Francisco Magno Vieira",
+    "amenity": "bus_station",
+    "bench": "yes",
+    "bus": "yes",
+    "contact:phone": "+55 48 3237-2245",
+    "lit": "yes",
+    "name": "Terminal de Integração do Rio Tavares",
+    "network": "SIM - Sistema Integrado de Mobilidade",
+    "operator": "Consórcio Fênix",
+    "passenger_information_display": "yes",
+    "public_transport": "station",
+    "shelter": "yes",
+    "short_name": "TIRIO",
+    "surface": "paved",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "way",
+  "id": 129339075,
+  "center": {
+    "lat": -27.6220739,
+    "lon": -48.5256335
+  },
+  "tags": {
+    "addr:housenumber": "49",
+    "addr:postcode": "88047-010",
+    "addr:street": "Rua João Câncio Jacques",
+    "building": "commercial",
+    "contact:phone": "+55 48 3239-6900",
+    "name": "Bistek Supermercado",
+    "opening_hours": "Mo-Fr 08:00-22:30; Sa 07:30-22:30; Su,PH 08:00-21:30",
+    "operator": "Bistek",
+    "operator:type": "private",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 129453067,
+  "center": {
+    "lat": -27.5968218,
+    "lon": -48.5202567
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Trindade Shopping",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 129483476,
+  "center": {
+    "lat": -27.6034293,
+    "lon": -48.5282775
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Frei Jacir Bachi",
+    "source:name": "PMF"
+  }
+},
+{
+  "type": "way",
+  "id": 129811721,
+  "center": {
+    "lat": -27.6592914,
+    "lon": -48.5043774
+  },
+  "tags": {
+    "addr:housenumber": "2550",
+    "addr:street": "Rodovia Francisco Magno Vieira",
+    "building": "yes",
+    "name": "Rodrigues",
+    "old_name": "Açoriana",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 129944789,
+  "center": {
+    "lat": -27.5970495,
+    "lon": -48.5535018
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Camelódromo Municipal",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 130549883,
+  "center": {
+    "lat": -27.5975106,
+    "lon": -48.5497694
+  },
+  "tags": {
+    "alt_name": "Praça 15 de Novembro;Praça Quinze de Novembro",
+    "leisure": "park",
+    "lit": "yes",
+    "loc_name": "Praça da Figueira",
+    "name": "Praça XV de Novembro",
+    "sett:style": "portuguese",
+    "start_date": "1891",
+    "surface": "sett",
+    "wikidata": "Q3390051",
+    "wikipedia": "pt:Praça XV de Novembro (Florianópolis)"
+  }
+},
+{
+  "type": "way",
+  "id": 131337292,
+  "center": {
+    "lat": -27.5954528,
+    "lon": -48.5487965
+  },
+  "tags": {
+    "alt_name": "Praça Antônio Pereira da Silva Oliveira",
+    "leisure": "park",
+    "name": "Praça Pereira Oliveira",
+    "sett:style": "portuguese",
+    "surface": "sett"
+  }
+},
+{
+  "type": "way",
+  "id": 131353995,
+  "center": {
+    "lat": -27.5930955,
+    "lon": -48.5466251
+  },
+  "tags": {
+    "dog": "yes",
+    "leisure": "park",
+    "lit": "yes",
+    "loc_name": "Praça dos Bombeiros",
+    "name": "Praça Getúlio Vargas"
+  }
+},
+{
+  "type": "way",
+  "id": 131353997,
+  "center": {
+    "lat": -27.5924623,
+    "lon": -48.5602341
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Parque da Luz",
+    "wikidata": "Q10345438"
+  }
+},
+{
+  "type": "way",
+  "id": 131393101,
+  "center": {
+    "lat": -27.5823763,
+    "lon": -48.5050427
+  },
+  "tags": {
+    "addr:housenumber": "1346",
+    "addr:street": "Rodovia Admar Gonzaga",
+    "amenity": "university",
+    "contact:email": "cca@contato.ufsc.br",
+    "contact:website": "https://cca.ufsc.br/",
+    "faculty": "agriculture",
+    "name": "Centro de Ciências Agrárias UFSC",
+    "operator": "Universidade Federal de Santa Catarina",
+    "short_name": "CCA UFSC"
+  }
+},
+{
+  "type": "way",
+  "id": 131617183,
+  "center": {
+    "lat": -27.5873763,
+    "lon": -48.5536548
+  },
+  "tags": {
+    "alt_name": "Praça Esteve Júnior",
+    "leisure": "park",
+    "name": "Praça Esteves Júnior",
+    "source:alt_name": "PMF"
+  }
+},
+{
+  "type": "way",
+  "id": 131617193,
+  "center": {
+    "lat": -27.5870790,
+    "lon": -48.5523279
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça dos Namorados Beto Stodieck"
+  }
+},
+{
+  "type": "way",
+  "id": 132457334,
+  "center": {
+    "lat": -27.5939201,
+    "lon": -48.5420350
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "950",
+    "addr:street": "Avenida Mauro Ramos",
+    "addr:suburb": "Centro",
+    "amenity": "university",
+    "contact:instagram": "ifscfloripa",
+    "name": "Instituto Federal de Santa Catarina",
+    "name:en": "Federal Institute of Santa Catarina",
+    "short_name": "IFSC",
+    "website": "https://www.ifsc.edu.br/",
+    "wheelchair": "yes",
+    "wikidata": "Q7419281"
+  }
+},
+{
+  "type": "way",
+  "id": 132846736,
+  "center": {
+    "lat": -27.5777870,
+    "lon": -48.5337198
+  },
+  "tags": {
+    "addr:postcode": "88025-301",
+    "addr:street": "Rua Rui Barbosa",
+    "addr:suburb": "Agronômica",
+    "amenity": "hospital",
+    "email": "hnr@saude.sc.gov.br",
+    "healthcare": "hospital",
+    "healthcare:speciality": "surgery;infectologia;pneumologia;alergologia;fibrose_cística;dermatology;gastroenterology;psychiatry;cirurgia_torácica",
+    "name": "Hospital Nereu Ramos",
+    "operator": "Secretaria de Saúde",
+    "operator:type": "government",
+    "phone": "+55 48 3665 9401"
+  }
+},
+{
+  "type": "way",
+  "id": 132846741,
+  "center": {
+    "lat": -27.5767057,
+    "lon": -48.5352883
+  },
+  "tags": {
+    "access": "yes",
+    "addr:housenumber": "152",
+    "addr:street": "Rua Rui Barbosa",
+    "addr:suburb": "Agronômica",
+    "amenity": "hospital",
+    "emergency": "yes",
+    "healthcare": "hospital",
+    "healthcare:speciality": "cardiology;endocrinology;pediatria_geral;pneumologia;psychiatry;terapia_intensiva;queimadura;neonatology;nephrology",
+    "name": "Hospital Infantil Joana de Gusmão",
+    "operator": "Secretaria de Saúde",
+    "operator:type": "government",
+    "phone": "+55 48 3664 3200",
+    "short_name": "HIJG",
+    "website": "https://www.saude.sc.gov.br/index.php/pt/ses-sc/unidades-de-saude/hospital-infantil-joana-de-gusmao"
+  }
+},
+{
+  "type": "way",
+  "id": 133116488,
+  "center": {
+    "lat": -27.5732806,
+    "lon": -48.5140782
+  },
+  "tags": {
+    "addr:housenumber": "407 km 01",
+    "addr:street": "Rodovia José Carlos Daux",
+    "addr:suburb": "Itacorubi",
+    "amenity": "university",
+    "contact:phone": "+55 48 3202-6000",
+    "contact:website": "http://www.assesc.edu.br/",
+    "name": "Faculdade Estácio",
+    "operator": "Estácio"
+  }
+},
+{
+  "type": "way",
+  "id": 133849002,
+  "center": {
+    "lat": -27.6451144,
+    "lon": -48.5215893
+  },
+  "tags": {
+    "addr:street": "Avenida Jorge Lacerda",
+    "building": "retail",
+    "name": "Supermercado Tropical Sul",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 134056396,
+  "center": {
+    "lat": -27.5893423,
+    "lon": -48.5099838
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Maria Teresa Kock"
+  }
+},
+{
+  "type": "way",
+  "id": 135576060,
+  "center": {
+    "lat": -27.6017491,
+    "lon": -48.5476032
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Tancredo Neves"
+  }
+},
+{
+  "type": "way",
+  "id": 141067781,
+  "center": {
+    "lat": -27.6040666,
+    "lon": -48.5248794
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Frei Jacir Bachi",
+    "source:name": "Lei Municipal 4403/94"
+  }
+},
+{
+  "type": "way",
+  "id": 141770201,
+  "center": {
+    "lat": -27.5937251,
+    "lon": -48.5027614
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Breno Pinheiro Valadares"
+  }
+},
+{
+  "type": "way",
+  "id": 141770203,
+  "center": {
+    "lat": -27.5976467,
+    "lon": -48.5035861
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Padre José Anchieta"
+  }
+},
+{
+  "type": "way",
+  "id": 146805008,
+  "center": {
+    "lat": -27.5774931,
+    "lon": -48.5900616
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "3028",
+    "addr:postcode": "88095-900",
+    "addr:street": "Avenida Marinheiro Max Schramm",
+    "addr:suburb": "Jardim Atlântico",
+    "amenity": "college",
+    "contact:phone": "+55 48 3298-5050",
+    "contact:website": "https://www.marinha.mil.br/eamsc/",
+    "landuse": "military",
+    "name": "Escola de Aprendizes Marinheiros",
+    "operator": "Marinha do Brasil",
+    "operator:type": "public",
+    "short_name": "EAMSC"
+  }
+},
+{
+  "type": "way",
+  "id": 146805015,
+  "center": {
+    "lat": -27.5787945,
+    "lon": -48.5907613
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Marcílio Dias"
+  }
+},
+{
+  "type": "way",
+  "id": 147124675,
+  "center": {
+    "lat": -27.5959686,
+    "lon": -48.5806489
+  },
+  "tags": {
+    "addr:housenumber": "469",
+    "addr:postcode": "88070-120",
+    "addr:street": "Avenida Juscelino Kubitschek de Oliveira",
+    "brand": "Atacadão",
+    "brand:wikidata": "Q2868739",
+    "building": "yes",
+    "contact:phone": "+55 48 3131 5024",
+    "contact:website": "https://www.atacadao.com.br/",
+    "name": "Atacadão",
+    "old_name": "Macro",
+    "opening_hours": "Mo-Sa 07:00-22:00; Su,PH 08:00-18:00",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:voucher_meal": "yes",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 147127496,
+  "center": {
+    "lat": -27.5958792,
+    "lon": -48.5831268
+  },
+  "tags": {
+    "addr:housename": "Centro Comercial Edelweiss",
+    "addr:housenumber": "1180",
+    "addr:postcode": "88070-101",
+    "addr:street": "Rua Santos Saraiva",
+    "building": "retail",
+    "name": "Centro Comercial Edelweiss",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 150494853,
+  "center": {
+    "lat": -27.5871552,
+    "lon": -48.5432512
+  },
+  "tags": {
+    "leisure": "park",
+    "loc_name": "Praça Banco Redondo",
+    "name": "Praça Etelvina Luz",
+    "sett:style": "portuguese",
+    "surface": "sett"
+  }
+},
+{
+  "type": "way",
+  "id": 152343923,
+  "center": {
+    "lat": -27.5812121,
+    "lon": -48.5438087
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Governador Celso Ramos",
+    "source:name": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 154023336,
+  "center": {
+    "lat": -27.5928089,
+    "lon": -48.5428839
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "982",
+    "addr:postcode": "88020-300",
+    "addr:street": "Avenida Mauro Ramos",
+    "addr:suburb": "Centro",
+    "building": "supermarket",
+    "name": "Supermercado Imperatriz",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "operator": "Imperatriz",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 159119769,
+  "center": {
+    "lat": -27.5941919,
+    "lon": -48.5383344
+  },
+  "tags": {
+    "alt_name": "Praça da Caixa d'Água",
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça do Monte Serrat"
+  }
+},
+{
+  "type": "way",
+  "id": 164226382,
+  "center": {
+    "lat": -27.6032682,
+    "lon": -48.5004591
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça da Comunidade",
+    "source:name": "Lei Municipal 1165/2004"
+  }
+},
+{
+  "type": "way",
+  "id": 164777180,
+  "center": {
+    "lat": -27.5761125,
+    "lon": -48.5424727
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Professor Amaro Seixas Neto",
+    "source:name": "Lei Municipal 5615/99"
+  }
+},
+{
+  "type": "way",
+  "id": 165843745,
+  "center": {
+    "lat": -27.5948889,
+    "lon": -48.5447387
+  },
+  "tags": {
+    "alt_name": "Jardim Prefeito Olívio Amorim",
+    "leisure": "park",
+    "name": "Praça Olívio Amorim",
+    "source:name": "IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 166156424,
+  "center": {
+    "lat": -27.5900719,
+    "lon": -48.5463832
+  },
+  "tags": {
+    "addr:housenumber": "555",
+    "addr:street": "Rua Almirante Alvim",
+    "building": "supermarket",
+    "name": "Hippo Loja Alvim",
+    "roof:material": "metal",
+    "roof:shape": "round",
+    "shop": "supermarket",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 167375091,
+  "center": {
+    "lat": -27.5894431,
+    "lon": -48.5456636
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Largo Benjamin Constant"
+  }
+},
+{
+  "type": "way",
+  "id": 167456917,
+  "center": {
+    "lat": -27.5869233,
+    "lon": -48.5798664
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Nossa Senhora de Fátima"
+  }
+},
+{
+  "type": "way",
+  "id": 167884444,
+  "center": {
+    "lat": -27.5995463,
+    "lon": -48.6451875
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Adriano Farias",
+    "source:name": "IBGE"
+  }
+},
+{
+  "type": "way",
+  "id": 168195104,
+  "center": {
+    "lat": -27.6458507,
+    "lon": -48.6670806
+  },
+  "tags": {
+    "alt_name": "Praça Sete de Setembro",
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça 7 de Setembro"
+  }
+},
+{
+  "type": "way",
+  "id": 168199871,
+  "center": {
+    "lat": -27.6294027,
+    "lon": -48.6549582
+  },
+  "tags": {
+    "amenity": "bus_station",
+    "name": "Estação Palhoça",
+    "public_transport": "station",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "way",
+  "id": 168226108,
+  "center": {
+    "lat": -27.6419201,
+    "lon": -48.6712161
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "270",
+    "addr:postcode": "88132-149",
+    "addr:street": "Avenida Atílio Pedro Pagani",
+    "addr:suburb": "Pagani",
+    "building": "yes",
+    "name": "Shopping ViaCatarina",
+    "opening_hours": "Mo-Sa 10:00-22:00; Su 11:00-21:00",
+    "phone": "+55 48 3086-9500",
+    "shop": "mall",
+    "toilets": "yes",
+    "toilets:access": "permissive",
+    "website": "https://www.viacatarina.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 168497978,
+  "center": {
+    "lat": -27.6084935,
+    "lon": -48.6331671
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "608",
+    "addr:postcode": "88130-310",
+    "addr:street": "Rua José Lino Kretzer",
+    "addr:suburb": "Centro",
+    "alt_name": "Instituto Federal de Santa Catarina - Câmpus São José",
+    "amenity": "university",
+    "name": "Instituto Federal de Santa Catarina",
+    "opening_hours": "Mo-Fr 07:00-22:30",
+    "short_name": "IFSC Câmpus São José",
+    "website": "https://www.ifsc.edu.br/web/campus-sao-jose"
+  }
+},
+{
+  "type": "way",
+  "id": 172026037,
+  "center": {
+    "lat": -27.7152781,
+    "lon": -48.5096224
+  },
+  "tags": {
+    "addr:street": "Rodovia  Francisco Thomaz dos Santos",
+    "building": "supermarket",
+    "contact:phone": "+55 48 3338-7388",
+    "name": "Bistek Supermercado",
+    "opening_hours": "Mo-Fr 07:00-23:00; Sa,Su 06:00-23:00; PH off",
+    "operator": "Bistek",
+    "shop": "supermarket",
+    "source:name": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 172434362,
+  "center": {
+    "lat": -27.5741306,
+    "lon": -48.5147642
+  },
+  "tags": {
+    "addr:housenumber": "21",
+    "addr:street": "Marginal da Rodovia José Carlos Daux",
+    "amenity": "hospital",
+    "building": "hospital",
+    "healthcare": "hospital",
+    "mobile": "+55 48 99153 9050",
+    "name": "Hospital S.O.S. Cardio",
+    "phone": "+55 48 3212 5000",
+    "source:name": "survey",
+    "website": "https://soscardio.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 179163553,
+  "center": {
+    "lat": -27.6096925,
+    "lon": -48.6307707
+  },
+  "tags": {
+    "addr:postcode": "88103-901",
+    "addr:street": "Rua Adolfo Donato da Silva",
+    "addr:suburb": "Centro",
+    "alt_name": "Hospital Regional de São José",
+    "amenity": "hospital",
+    "email": "hrsj@saude.sc.gov.br",
+    "emergency": "yes",
+    "healthcare": "hospital",
+    "healthcare:speciality": "general;maternity;ophthalmology;gynaecology;urology",
+    "name": "Hospital Doutor Homero de Miranda Gomes",
+    "operator": "Secretaria de Estado da Saúde",
+    "operator:type": "government",
+    "phone": "+55 48 3271 9000",
+    "start_date": "1987-02-27",
+    "website": "https://saude.sc.gov.br/index.php/pt/ses-sc/unidades-de-saude/hospital-regional-de-sao-jose-dr-homero-de-miranda-gomes-hrsj"
+  }
+},
+{
+  "type": "way",
+  "id": 183788659,
+  "center": {
+    "lat": -27.5951798,
+    "lon": -48.5998129
+  },
+  "tags": {
+    "addr:housenumber": "3530",
+    "addr:street": "Rua Paralela Novo Horizonte",
+    "addr:suburb": "Capoeiras",
+    "branch": "Florianópolis Via Expressa",
+    "brand": "Atacadão",
+    "brand:wikidata": "Q2868739",
+    "building": "supermarket",
+    "layer": "-1",
+    "name": "Atacadão",
+    "old_name": "Maxxi",
+    "opening_hours": "Mo-Sa 07:00-22:00; Su 08:00-20:00; PH off",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:pix": "yes",
+    "payment:voucher_meal": "yes",
+    "shop": "supermarket",
+    "wholesale": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 192973239,
+  "center": {
+    "lat": -27.5988533,
+    "lon": -48.6426020
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "1175",
+    "addr:postcode": "88106-501",
+    "addr:street": "Rua Vereador Arthur Manoel Mariano",
+    "addr:suburb": "Forquilhinhas",
+    "building": "yes",
+    "contact:instagram": "https://www.instagram.com/jvargasoficial/",
+    "name": "Supermercados JVargas",
+    "old_name": "Supermercados Xande",
+    "phone": "+55 48 3259 4432",
+    "shop": "supermarket",
+    "website": "https://www.superjvargas.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 192973241,
+  "center": {
+    "lat": -27.5941949,
+    "lon": -48.6425296
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça da Saudade"
+  }
+},
+{
+  "type": "way",
+  "id": 194798144,
+  "center": {
+    "lat": -27.7057245,
+    "lon": -48.5031552
+  },
+  "tags": {
+    "addr:housenumber": "465",
+    "addr:street": "Rua Francisco Vieira",
+    "addr:suburb": "Morro das Pedras",
+    "building": "commercial",
+    "name": "Hiper Select",
+    "old_name": "Hiperbom Supermercados",
+    "opening_hours": "Mo-Su 07:00-22:00; PH off",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:voucher_meal": "yes",
+    "phone": "+55 48 3237 9009",
+    "shop": "supermarket",
+    "source:name": "survey",
+    "website": "https://www.hiperbom.com/"
+  }
+},
+{
+  "type": "way",
+  "id": 196585718,
+  "center": {
+    "lat": -27.6063266,
+    "lon": -48.6248227
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "2183",
+    "addr:postcode": "88103-600",
+    "addr:street": "Rua Doutor Constâncio Krummel",
+    "addr:suburb": "Praia Comprida",
+    "building": "supermarket",
+    "name": "Bistek",
+    "opening_hours": "Mo-Sa 08:00-22:30; Su,PH 08:30-21:00",
+    "shop": "supermarket",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 196888039,
+  "center": {
+    "lat": -27.6158487,
+    "lon": -48.6275942
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Hercílio Luz"
+  }
+},
+{
+  "type": "way",
+  "id": 198243782,
+  "center": {
+    "lat": -27.7038763,
+    "lon": -48.5295418
+  },
+  "tags": {
+    "addr:street": "Rodovia Baldicero Filomeno",
+    "building": "yes",
+    "name": "Dimarcos Supermercado",
+    "shop": "supermarket",
+    "source:name": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 203774594,
+  "center": {
+    "lat": -27.5716385,
+    "lon": -48.5119112
+  },
+  "tags": {
+    "amenity": "college",
+    "building": "yes",
+    "building:levels": "7",
+    "name": "Sebrae",
+    "roof:levels": "1"
+  }
+},
+{
+  "type": "way",
+  "id": 206515055,
+  "center": {
+    "lat": -27.5888731,
+    "lon": -48.5494917
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Osvaldo Bulcão Viana"
+  }
+},
+{
+  "type": "way",
+  "id": 211923309,
+  "center": {
+    "lat": -27.7181356,
+    "lon": -48.5638098
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Hermínio da Silva"
+  }
+},
+{
+  "type": "way",
+  "id": 212950558,
+  "center": {
+    "lat": -27.6610817,
+    "lon": -48.7136148
+  },
+  "tags": {
+    "amenity": "college",
+    "name": "Centro de Treinamento da Prosegur"
+  }
+},
+{
+  "type": "way",
+  "id": 215664425,
+  "center": {
+    "lat": -27.6252623,
+    "lon": -48.6829470
+  },
+  "tags": {
+    "amenity": "university",
+    "name": "Unisul",
+    "official_name": "Universidade do Sul de Santa Catarina"
+  }
+},
+{
+  "type": "way",
+  "id": 217818309,
+  "center": {
+    "lat": -27.6650133,
+    "lon": -48.5447376
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "3393",
+    "addr:postcode": "88047-900",
+    "addr:street": "Avenida Deputado Diomício Freitas",
+    "addr:suburb": "Carianos",
+    "amenity": "hospital",
+    "description": "0800 000 4310 (Opção 1 - Recepção UPA | Opção 2 - Recepção Hospital Dia | Opção 3 - Recepção CAPS 24)",
+    "healthcare": "hospital",
+    "layer": "-1",
+    "name": "Multi Hospital Florianópolis",
+    "old_name": "Terminal de Passageiros do Aeroporto de Florianópolis",
+    "operator": "Secretaria Municipal de Saúde",
+    "operator:type": "government",
+    "phone": "0800 000 4310",
+    "website": "https://www.pmf.sc.gov.br/entidades/saude/index.php?cms=multihospital",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 218129591,
+  "center": {
+    "lat": -27.5981802,
+    "lon": -48.6200372
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "68",
+    "addr:postcode": "88102-700",
+    "addr:street": "Rua Cassol",
+    "addr:suburb": "Kobrasol",
+    "building": "retail",
+    "contact:phone": "+55 48 3034 9400",
+    "contact:website": "https://www.mundocarmaisshopping.com.br/",
+    "name": "Mundo Car Mais Shopping",
+    "opening_hours": "Mo-Sa 09:00-19:00; Su 10:00-19:00,PH off",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 219710495,
+  "center": {
+    "lat": -27.5919738,
+    "lon": -48.5062808
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:postcode": "88037-100",
+    "addr:street": "Rua Capitão Amaro Seixas Ribeiro esquina com Acd. Reinaldo Consoni, frente pela Doutor Baron Maurer",
+    "leisure": "park",
+    "name": "Parque dos Jacarés"
+  }
+},
+{
+  "type": "way",
+  "id": 225335540,
+  "center": {
+    "lat": -27.5984419,
+    "lon": -48.5506388
+  },
+  "tags": {
+    "leisure": "park",
+    "loc_name": "Praça Miramar",
+    "name": "Praça Fernando Machado",
+    "sett:style": "portuguese",
+    "surface": "sett"
+  }
+},
+{
+  "type": "way",
+  "id": 225622103,
+  "center": {
+    "lat": -27.5797978,
+    "lon": -48.5260105
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Coronel Bento da Rosa Menezes"
+  }
+},
+{
+  "type": "way",
+  "id": 226065965,
+  "center": {
+    "lat": -27.6129241,
+    "lon": -48.6440584
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "210",
+    "addr:postcode": "88104-732",
+    "addr:street": "BR-101",
+    "addr:suburb": "Picadas do Sul",
+    "building": "warehouse",
+    "government": "archive",
+    "name": "Super A Atacadista",
+    "opening_hours": "Mo-Sa 09:00-21:00; Su 08:00-21:15",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 226552717,
+  "center": {
+    "lat": -27.5733529,
+    "lon": -48.6055041
+  },
+  "tags": {
+    "addr:housenumber": "431",
+    "addr:street": "Rua Laudelino Souza Filho",
+    "amenity": "university",
+    "education": "university",
+    "name": "Faculdade Estácio de Sá",
+    "website": "https://estacio.br/a-estacio/unidades/sao-jose"
+  }
+},
+{
+  "type": "way",
+  "id": 229621544,
+  "center": {
+    "lat": -27.6455830,
+    "lon": -48.6701360
+  },
+  "tags": {
+    "addr:housenumber": "160",
+    "addr:postcode": "88130-280",
+    "addr:street": "Rua Amaro Ferreira Lima de Macedo",
+    "addr:suburb": "Centro",
+    "alt_name": "Fort",
+    "branch": "Fort Atacadista Compacta 462",
+    "building": "retail",
+    "name": "Fort Atacadista",
+    "opening_hours": "Mo-Sa 07:00-22:00; Su 08:00-21:00; Jan-Dec Sa[1] 06:00-24:00; PH off",
+    "operator": "Grupo Pereira",
+    "phone": "+55 48 2108 2900",
+    "shop": "supermarket",
+    "website": "https://www.fortatacadista.com.br/",
+    "wholesale": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 230696281,
+  "center": {
+    "lat": -27.6146066,
+    "lon": -48.6462126
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "km 211",
+    "addr:postcode": "88104-800",
+    "addr:street": "Rodovia BR-101",
+    "addr:suburb": "Distrito Industrial",
+    "alt_name": "Shopping Continente",
+    "building": "retail",
+    "name": "Continente Shopping",
+    "opening_hours": "Mo-Sa 10:00-22:00; Su,PH 14:00-20:00",
+    "operator": "Almeida Júnior",
+    "shop": "mall",
+    "type": "indoor",
+    "website": "https://www.continenteshopping.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 233660328,
+  "center": {
+    "lat": -27.5942982,
+    "lon": -48.5515264
+  },
+  "tags": {
+    "addr:housenumber": "183",
+    "addr:postcode": "88015-130",
+    "addr:street": "Avenida Prefeito Osmar Cunha",
+    "building": "commercial",
+    "name": "Ceisa Center",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 242281833,
+  "center": {
+    "lat": -27.6160584,
+    "lon": -48.5908650
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Calistrano Salles"
+  }
+},
+{
+  "type": "way",
+  "id": 248327922,
+  "center": {
+    "lat": -27.5791563,
+    "lon": -48.5853317
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Gulherme Fortkamp",
+    "surface": "grass"
+  }
+},
+{
+  "type": "way",
+  "id": 254257677,
+  "center": {
+    "lat": -27.5958263,
+    "lon": -48.5590455
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça da França"
+  }
+},
+{
+  "type": "way",
+  "id": 255011764,
+  "center": {
+    "lat": -27.5794152,
+    "lon": -48.5810590
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Renato Ramos da Silva",
+    "official_name": "Praça Senador Renato Ramos da Silva"
+  }
+},
+{
+  "type": "way",
+  "id": 257778385,
+  "center": {
+    "lat": -27.6397502,
+    "lon": -48.6678076
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Camelão",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 257834072,
+  "center": {
+    "lat": -27.6162241,
+    "lon": -48.6270086
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Arnoldo de Souza"
+  }
+},
+{
+  "type": "way",
+  "id": 259395770,
+  "center": {
+    "lat": -27.5913180,
+    "lon": -48.5197036
+  },
+  "tags": {
+    "addr:housenumber": "265",
+    "addr:postcode": "88036-500",
+    "addr:street": "Avenida Madre Benvenuta",
+    "amenity": "college",
+    "name": "Centro de Ensino da Polícia Militar"
+  }
+},
+{
+  "type": "way",
+  "id": 262478393,
+  "center": {
+    "lat": -27.5912043,
+    "lon": -48.5611057
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça José Mauro da Costa Ortiga"
+  }
+},
+{
+  "type": "way",
+  "id": 269688196,
+  "center": {
+    "lat": -27.5783328,
+    "lon": -48.5848441
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Vila da Caixa Econômica"
+  }
+},
+{
+  "type": "way",
+  "id": 270679709,
+  "center": {
+    "lat": -27.5965054,
+    "lon": -48.5938992
+  },
+  "tags": {
+    "addr:street": "Rua Waldemar Ouriques",
+    "addr:suburb": "Capoeiras",
+    "building": "yes",
+    "name": "OK Supermercados",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 270765969,
+  "center": {
+    "lat": -27.5987756,
+    "lon": -48.6081885
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "256",
+    "addr:postcode": "88101-010",
+    "addr:street": "Rua Wanderlei Júnior",
+    "addr:suburb": "Campinas",
+    "building": "yes",
+    "name": "Camelão",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 271769856,
+  "center": {
+    "lat": -27.5883780,
+    "lon": -48.5506244
+  },
+  "tags": {
+    "access": "yes",
+    "addr:housenumber": "297",
+    "addr:postcode": "88015-270",
+    "addr:street": "Rua Irmã Benwarda",
+    "addr:suburb": "Centro",
+    "amenity": "hospital",
+    "email": "hcr@saude.sc.gov.br",
+    "emergency": "yes",
+    "healthcare": "hospital",
+    "name": "Hospital Governador Celso Ramos",
+    "operator": "Secretaria de Estado da Saúde",
+    "operator:type": "government",
+    "phone": "+55 48 3664 3600",
+    "ref:CNES": "2691841"
+  }
+},
+{
+  "type": "way",
+  "id": 271769857,
+  "center": {
+    "lat": -27.5891863,
+    "lon": -48.5502288
+  },
+  "tags": {
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "name": "Maternidade Carmela Dutra",
+    "wikidata": "Q61000818"
+  }
+},
+{
+  "type": "way",
+  "id": 271769864,
+  "center": {
+    "lat": -27.5882654,
+    "lon": -48.5521890
+  },
+  "tags": {
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "name": "Casa de Saúde São Sebastião"
+  }
+},
+{
+  "type": "way",
+  "id": 271769866,
+  "center": {
+    "lat": -27.6030315,
+    "lon": -48.5448618
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "376",
+    "addr:postcode": "88020-210",
+    "addr:street": "Rua Menino Deus",
+    "addr:suburb": "Centro",
+    "amenity": "hospital",
+    "emergency": "yes",
+    "healthcare": "hospital",
+    "name": "Imperial Hospital de Caridade"
+  }
+},
+{
+  "type": "way",
+  "id": 271946422,
+  "center": {
+    "lat": -27.5894465,
+    "lon": -48.5870296
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "1665",
+    "addr:postcode": "88090-350",
+    "addr:street": "Rua Santa Rita de Cássia",
+    "addr:suburb": "Canto",
+    "amenity": "hospital",
+    "emergency": "yes",
+    "healthcare": "hospital",
+    "healthcare:speciality": "ortopedia;general;paediatrics;trauma",
+    "mobile": "+55 48 99661 3411",
+    "name": "Hospital Florianópolis",
+    "operator": "IMAS - Instituto Maria Schmitt",
+    "operator:type": "private_non_profit",
+    "phone": "+55 48 3522 0257",
+    "website": "https://www.imas.net.br/site/unidade/hospital-florianopolis/"
+  }
+},
+{
+  "type": "way",
+  "id": 284432280,
+  "center": {
+    "lat": -27.6009078,
+    "lon": -48.5001900
+  },
+  "tags": {
+    "addr:street": "Rua João Pio Duarte Silva",
+    "building": "retail",
+    "name": "Centro Comercial Germânia",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 291840913,
+  "center": {
+    "lat": -27.6024619,
+    "lon": -48.6411007
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Maurino Manoel Cardoso"
+  }
+},
+{
+  "type": "way",
+  "id": 291840914,
+  "center": {
+    "lat": -27.6033819,
+    "lon": -48.6435930
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Martins Ramão Eustáquio"
+  }
+},
+{
+  "type": "way",
+  "id": 291943704,
+  "center": {
+    "lat": -27.5744290,
+    "lon": -48.5353477
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Rui Barbosa"
+  }
+},
+{
+  "type": "way",
+  "id": 292488736,
+  "center": {
+    "lat": -27.5885956,
+    "lon": -48.5217659
+  },
+  "tags": {
+    "addr:housenumber": "1213",
+    "addr:postcode": "88036-003",
+    "addr:street": "Rua Lauro Linhares",
+    "amenity": "college",
+    "contact:phone": "+55 48 3665-7936",
+    "contact:website": "https://www.cbm.sc.gov.br/",
+    "name": "Centro de Ensino Bombeiro Militar",
+    "operator": "Corpo de Bombeiros Militar de Santa Catarina",
+    "operator:short": "CBMSC",
+    "operator:type": "public",
+    "operator:wikidata": "Q768967",
+    "owner": "Governo do Estado de Santa Catarina",
+    "ownership": "state",
+    "short_name": "CEBM"
+  }
+},
+{
+  "type": "way",
+  "id": 292899796,
+  "center": {
+    "lat": -27.5933455,
+    "lon": -48.5516994
+  },
+  "tags": {
+    "addr:housenumber": "366",
+    "addr:postcode": "88015-110",
+    "addr:street": "Rua Antônio Dib Mussi",
+    "amenity": "university",
+    "contact:phone": "+55 48 3279-1000",
+    "name": "Unisul"
+  }
+},
+{
+  "type": "way",
+  "id": 294514278,
+  "center": {
+    "lat": -27.5806984,
+    "lon": -48.5859324
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "513",
+    "addr:postcode": "88075-525",
+    "addr:street": "Rua Vereador Batista Pereira",
+    "addr:suburb": "Balneário",
+    "building": "supermarket",
+    "name": "Supermercado É de Casa",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 295441136,
+  "center": {
+    "lat": -27.5790257,
+    "lon": -48.6078357
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Cleusa de Resende Moreira"
+  }
+},
+{
+  "type": "way",
+  "id": 295704363,
+  "center": {
+    "lat": -27.6131662,
+    "lon": -48.5856830
+  },
+  "tags": {
+    "addr:housenumber": "2392",
+    "addr:postcode": "88080-701",
+    "addr:street": "Rua Desembargador Pedro Silva",
+    "name": "Hippo Supermercado",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 303558500,
+  "center": {
+    "lat": -27.5875519,
+    "lon": -48.5567026
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça de Portugal"
+  }
+},
+{
+  "type": "way",
+  "id": 303939187,
+  "center": {
+    "lat": -27.5963684,
+    "lon": -48.5210746
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "2010",
+    "addr:street": "Rua Lauro Linhares",
+    "addr:suburb": "Trindade",
+    "building": "commercial",
+    "name": "Comercial São Francisco",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 308221276,
+  "center": {
+    "lat": -27.5842785,
+    "lon": -48.6024819
+  },
+  "tags": {
+    "addr:street": "Rua Elesbão Pinto da Luz",
+    "description": "Local de lazer",
+    "dog": "yes",
+    "leisure": "park",
+    "name": "Praça Jacques Schweidson",
+    "smoking": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 309815674,
+  "center": {
+    "lat": -27.5893384,
+    "lon": -48.5051651
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça João di Bernardi"
+  }
+},
+{
+  "type": "way",
+  "id": 311602834,
+  "center": {
+    "lat": -27.5536251,
+    "lon": -48.6227641
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "301",
+    "addr:postcode": "88113-600",
+    "addr:street": "Rua Álvaro Medeiros de Santiago",
+    "addr:suburb": "Areias",
+    "building": "retail",
+    "contact:phone": "+55 48 3382-1200",
+    "name": "Giassi",
+    "opening_hours": "Mo-Sa 08:00-22:30; Su,PH 08:00-21:00",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 313839728,
+  "center": {
+    "lat": -27.5835196,
+    "lon": -48.5446033
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Lauro Müller"
+  }
+},
+{
+  "type": "way",
+  "id": 314251669,
+  "center": {
+    "lat": -27.5945795,
+    "lon": -48.5575518
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça do Desterro"
+  }
+},
+{
+  "type": "way",
+  "id": 315604331,
+  "center": {
+    "lat": -27.5962810,
+    "lon": -48.5120487
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça das Árvores"
+  }
+},
+{
+  "type": "way",
+  "id": 317657940,
+  "center": {
+    "lat": -27.5895392,
+    "lon": -48.5010240
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Ipiranga"
+  }
+},
+{
+  "type": "way",
+  "id": 325349338,
+  "center": {
+    "lat": -27.5871230,
+    "lon": -48.6113815
+  },
+  "tags": {
+    "addr:housenumber": "1909",
+    "addr:street": "Rua Manoel Loureiro",
+    "addr:suburb": "Campinas",
+    "amenity": "hospital",
+    "building": "hospital",
+    "healthcare": "hospital",
+    "name": "Hospital Unimed Grande Florianópolis",
+    "phone": "+55 48 3288 4100",
+    "website": "https://www.unimedflorianopolis.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 326264213,
+  "center": {
+    "lat": -27.6634492,
+    "lon": -48.5408352
+  },
+  "tags": {
+    "building": "retail",
+    "name": "Mercado Aeroporto",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 326264215,
+  "center": {
+    "lat": -27.6636796,
+    "lon": -48.5383524
+  },
+  "tags": {
+    "addr:street": "Avenida Deputado Diomício Freitas",
+    "building": "supermarket",
+    "name": "Supermercado Costa",
+    "opening_hours": "Mo-Sa 07:00-21:00; Su,PH  08:00-12:00",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 326264216,
+  "center": {
+    "lat": -27.6640611,
+    "lon": -48.5389992
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Manoel João Querino (Seu Manequinha)"
+  }
+},
+{
+  "type": "way",
+  "id": 327762071,
+  "center": {
+    "lat": -27.6055942,
+    "lon": -48.5478126
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Arena de Esporte e Lazer Prainha-Mocotó",
+    "official_name": "Arena de Esporte e Lazer Wilson Flores"
+  }
+},
+{
+  "type": "way",
+  "id": 330939730,
+  "center": {
+    "lat": -27.5924399,
+    "lon": -48.5122183
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "no",
+    "name": "Praça Donato da Silva"
+  }
+},
+{
+  "type": "way",
+  "id": 332975150,
+  "center": {
+    "lat": -27.6046693,
+    "lon": -48.6418779
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Oscar Melo"
+  }
+},
+{
+  "type": "way",
+  "id": 335884548,
+  "center": {
+    "lat": -27.5992682,
+    "lon": -48.5512064
+  },
+  "tags": {
+    "alt_name": "Praça Maçônica",
+    "leisure": "park",
+    "name": "Praça Adolfo Luiz Dias"
+  }
+},
+{
+  "type": "way",
+  "id": 337091660,
+  "center": {
+    "lat": -27.6053993,
+    "lon": -48.5158396
+  },
+  "tags": {
+    "addr:housenumber": "1414",
+    "addr:street": "Rua Deputado Antônio Edu Vieira",
+    "alt_name": "Ilha Hospital & Maternidade",
+    "amenity": "hospital",
+    "name": "Ilha Hospital e Maternidade",
+    "phone": "+55 48 3234-0770",
+    "website": "https://www.ilhahospital.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 338659353,
+  "center": {
+    "lat": -27.6058194,
+    "lon": -48.6229097
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Largo Benedito Jorge"
+  }
+},
+{
+  "type": "way",
+  "id": 340428636,
+  "center": {
+    "lat": -27.5904818,
+    "lon": -48.5855786
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Bosque Pedro Medeiros"
+  }
+},
+{
+  "type": "way",
+  "id": 341517515,
+  "center": {
+    "lat": -27.5691789,
+    "lon": -48.6178131
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça das Orquídeas"
+  }
+},
+{
+  "type": "way",
+  "id": 356077567,
+  "center": {
+    "lat": -27.5951501,
+    "lon": -48.5423301
+  },
+  "tags": {
+    "access": "private",
+    "addr:housenumber": "221",
+    "addr:street": "Rua Major Costa",
+    "amenity": "hospital",
+    "email": "hpmcoord@pm.sc.gov.br",
+    "healthcare": "hospital",
+    "name": "Hospital da Policia Militar Comandante Lara Ribas",
+    "operator": "Polícia Militar do Estado de Santa Catarina",
+    "operator:type": "government",
+    "phone": "+55 48 3229 6500",
+    "short_name": "HPM"
+  }
+},
+{
+  "type": "way",
+  "id": 360947348,
+  "center": {
+    "lat": -27.6356344,
+    "lon": -48.6540011
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "university",
+    "name": "Faculdade Municipal da Palhoça",
+    "short_name": "FMP"
+  }
+},
+{
+  "type": "way",
+  "id": 360947367,
+  "center": {
+    "lat": -27.6361517,
+    "lon": -48.6535328
+  },
+  "tags": {
+    "amenity": "college",
+    "name": "Senac",
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "way",
+  "id": 374294407,
+  "center": {
+    "lat": -27.5952921,
+    "lon": -48.6148262
+  },
+  "tags": {
+    "leisure": "park",
+    "loc_name": "Praça Kobrasol",
+    "name": "Praça Eugênio Raulino Koerich"
+  }
+},
+{
+  "type": "way",
+  "id": 378292376,
+  "center": {
+    "lat": -27.6082362,
+    "lon": -48.6435141
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "1680",
+    "addr:postcode": "88106-045",
+    "addr:street": "Rua Luiz Fagundes",
+    "addr:suburb": "Picadas do Sul",
+    "amenity": "university",
+    "name": "Anhanguera"
+  }
+},
+{
+  "type": "way",
+  "id": 389573888,
+  "center": {
+    "lat": -27.5875771,
+    "lon": -48.5230615
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Atílio Ferreira"
+  }
+},
+{
+  "type": "way",
+  "id": 393813754,
+  "center": {
+    "lat": -27.5901550,
+    "lon": -48.5167907
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Jornalista Gustavo Lacerda"
+  }
+},
+{
+  "type": "way",
+  "id": 399813234,
+  "center": {
+    "lat": -27.5991656,
+    "lon": -48.5967472
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Vereador Nagib Jabor"
+  }
+},
+{
+  "type": "way",
+  "id": 402225676,
+  "center": {
+    "lat": -27.5988645,
+    "lon": -48.6074336
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça José Jordino de Souza"
+  }
+},
+{
+  "type": "way",
+  "id": 403868910,
+  "center": {
+    "lat": -27.6345648,
+    "lon": -48.6642928
+  },
+  "tags": {
+    "addr:housenumber": "160",
+    "addr:postcode": "88132-010",
+    "addr:street": "Rua João Caruso Mac Donald",
+    "addr:suburb": "Passa Vinte",
+    "alt_name": "Fort",
+    "branch": "Fort Atacadista 130",
+    "building": "supermarket",
+    "email": "televendas130@fortatacadista.com.br",
+    "internet_access": "wlan",
+    "name": "Fort Atacadista",
+    "opening_hours": "Mo-Sa 07:00-23:00; Su 08:00-21:00; PH off",
+    "operator": "Grupo Pereira",
+    "phone": "+55 48 3722 1215",
+    "shop": "supermarket",
+    "website": "https://www.fortatacadista.com.br/",
+    "wholesale": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 415814263,
+  "center": {
+    "lat": -27.5750505,
+    "lon": -48.5273194
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "5288",
+    "addr:postcode": "88025-202",
+    "addr:street": "Avenida Governador Irineu Bornhausen",
+    "addr:suburb": "Agronômica",
+    "branch": "Beira Mar",
+    "building": "detached",
+    "landuse": "commercial",
+    "name": "Angeloni",
+    "opening_hours": "Mo-Su, PH 08:00-24:00; Dec 25 off; Jan 01 off",
+    "operator": "Angeloni",
+    "phone": "+55 48 3215 6100",
+    "shop": "supermarket",
+    "source": "https://www.angeloni.com.br/lojas/index",
+    "source:name": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 416832280,
+  "center": {
+    "lat": -27.6036252,
+    "lon": -48.5157655
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "129",
+    "addr:postcode": "88040300",
+    "addr:street": "Rua João Câncio dos Santos",
+    "addr:suburb": "Pantanal",
+    "amenity": "university",
+    "check_date": "2025-10-01",
+    "contact:email": "facasc@facasc.edu.br",
+    "contact:facebook": "https://www.facebook.com/faculdadecatolicasc/",
+    "contact:phone": "+55 48 3234-0400",
+    "contact:website": "http://facasc.edu.br/",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "name": "Faculdade Católica de Santa Catarina",
+    "opening_hours": "Mo-Fr 08:00-17:00",
+    "operator": "FACASC",
+    "operator:type": "private_non_profit",
+    "religion": "christian",
+    "short_name": "Facasc",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 417207634,
+  "center": {
+    "lat": -27.5817897,
+    "lon": -48.5918463
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Naval"
+  }
+},
+{
+  "type": "way",
+  "id": 417207641,
+  "center": {
+    "lat": -27.6156199,
+    "lon": -48.5297726
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Quadrado"
+  }
+},
+{
+  "type": "way",
+  "id": 419164021,
+  "center": {
+    "lat": -27.5921590,
+    "lon": -48.5809076
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Roberto de Oliveira"
+  }
+},
+{
+  "type": "way",
+  "id": 419166478,
+  "center": {
+    "lat": -27.5763798,
+    "lon": -48.5977254
+  },
+  "tags": {
+    "addr:postcode": "88095-001",
+    "addr:street": "Avenida Marinheiro Max Schramm",
+    "amenity": "college",
+    "contact:phone": "+55 48 3281 6200",
+    "education": "college",
+    "name": "Sest Senat",
+    "opening_hours": "Mo,Fr 08:00-18:00; We,Th 08:00-21:00; Sa 08:00-12:00; PH off",
+    "website": "https://www.sestsenat.org.br/home"
+  }
+},
+{
+  "type": "way",
+  "id": 438407018,
+  "center": {
+    "lat": -27.5876557,
+    "lon": -48.5540294
+  },
+  "tags": {
+    "landuse": "commercial",
+    "name": "Shopping Praia de Fora",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 443779866,
+  "center": {
+    "lat": -27.5997276,
+    "lon": -48.5517027
+  },
+  "tags": {
+    "alt_name": "Praça A. Gomes",
+    "leisure": "park",
+    "name": "Praça Procurador Abelardo Gomes"
+  }
+},
+{
+  "type": "way",
+  "id": 444553167,
+  "center": {
+    "lat": -27.5819124,
+    "lon": -48.5078543
+  },
+  "tags": {
+    "addr:street": "Rodovia Admar Gonzaga",
+    "leisure": "park",
+    "name": "Jardim Botânico de Florianópolis Major Antônio José de Freitas Noronha",
+    "opening_hours": "Mo off; Tu-Su 07:00-18:00",
+    "operator": "Prefeitura Municipal de Florianópolis",
+    "operator:type": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 446729970,
+  "center": {
+    "lat": -27.6061190,
+    "lon": -48.6423403
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Alfonso Ott"
+  }
+},
+{
+  "type": "way",
+  "id": 449145757,
+  "center": {
+    "lat": -27.5831775,
+    "lon": -48.5248577
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "99",
+    "addr:postcode": "88036-080",
+    "addr:street": "Rua Professor Milton Roque Ramos Krieger",
+    "addr:suburb": "Trindade",
+    "amenity": "college",
+    "building": "commercial",
+    "contact:facebook": "https://www.facebook.com/atelier.voida/",
+    "contact:instagram": "https://www.instagram.com/ateliervoida/",
+    "name": "Atelier Vó Ida",
+    "opening_hours": "Mo-Fr 08:30-18:00; PH off"
+  }
+},
+{
+  "type": "way",
+  "id": 471322077,
+  "center": {
+    "lat": -27.6050028,
+    "lon": -48.5031286
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Edson Pereira do Nascimento"
+  }
+},
+{
+  "type": "way",
+  "id": 473180655,
+  "center": {
+    "lat": -27.5996170,
+    "lon": -48.5939090
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Patrício Caldeira de Andrade"
+  }
+},
+{
+  "type": "way",
+  "id": 473180662,
+  "center": {
+    "lat": -27.6113193,
+    "lon": -48.6259352
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Hermelino Dircksen"
+  }
+},
+{
+  "type": "way",
+  "id": 481573389,
+  "center": {
+    "lat": -27.6222235,
+    "lon": -48.6775503
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:street": "Rua da Pedra",
+    "addr:suburb": "Pedra Branca",
+    "leisure": "park",
+    "name": "Praça Passeio Pedra Branca"
+  }
+},
+{
+  "type": "way",
+  "id": 516675900,
+  "center": {
+    "lat": -27.5923757,
+    "lon": -48.5533689
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "307",
+    "addr:postcode": "88015-530",
+    "addr:street": "Rua Esteves Júnior",
+    "addr:suburb": "Centro",
+    "air_conditioning": "yes",
+    "building": "commercial",
+    "elevator": "yes",
+    "landuse": "commercial",
+    "name": "Angeloni Centro",
+    "opening_hours": "Mo-Sa 08:00-22:00; Su,PH 08:00-20:00",
+    "operator": "Angeloni",
+    "ramp": "yes",
+    "shop": "supermarket",
+    "toilets": "yes",
+    "toilets:access": "permissive",
+    "toilets:wheelchair": "yes",
+    "website": "https://www.angeloni.com.br/super/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 517714451,
+  "center": {
+    "lat": -27.6044259,
+    "lon": -48.5771409
+  },
+  "tags": {
+    "building": "supermarket",
+    "name": "Supermercados Imperatriz",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 518693536,
+  "center": {
+    "lat": -27.6027574,
+    "lon": -48.6137631
+  },
+  "tags": {
+    "alt_name": "Escola de Olaria;Escola de Oleiros",
+    "amenity": "college",
+    "building": "yes",
+    "craft": "handicraft",
+    "description": "Escola de Cerâmica Utilitária e Figurativa Regional",
+    "name": "Olaria Beiramar de São José"
+  }
+},
+{
+  "type": "way",
+  "id": 528253583,
+  "center": {
+    "lat": -27.6001719,
+    "lon": -48.5723823
+  },
+  "tags": {
+    "addr:housenumber": "150",
+    "addr:postcode": "88075-010",
+    "addr:street": "Rua 14 de Julho",
+    "alt_name": "IFSC Câmpus Florianópolis-Continente",
+    "amenity": "university",
+    "contact:phone": "+55 48 3877-9000",
+    "contact:website": "http://www.continente.ifsc.edu.br/",
+    "name": "Instituto Federal de Santa Catarina",
+    "opening_hours": "Mo-Fr 07:30-22:30; Sa,Su,PH off",
+    "short_name": "IFSC"
+  }
+},
+{
+  "type": "way",
+  "id": 543804092,
+  "center": {
+    "lat": -27.5767897,
+    "lon": -48.6174030
+  },
+  "tags": {
+    "access": "yes",
+    "alt_name": "Praça do Parque Residencial Floresta",
+    "description": "Praça com pista de skate, área para crianças, campo de futebol e pista de caminhada.",
+    "dog": "yes",
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça do Floresta",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "way",
+  "id": 543804418,
+  "center": {
+    "lat": -27.5753752,
+    "lon": -48.6242261
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "4476",
+    "addr:postcode": "88110-798",
+    "addr:street": "Avenida Osvaldo José do Amaral",
+    "addr:suburb": "Bela Vista",
+    "building": "supermarket",
+    "name": "Bistek",
+    "opening_hours": "Mo-Sa 08:00-22:00; Su 08:00-21:00",
+    "phone": "+55 48 3039 5050",
+    "shop": "supermarket",
+    "website": "https://www.bistek.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 544803933,
+  "center": {
+    "lat": -27.5885365,
+    "lon": -48.5893407
+  },
+  "tags": {
+    "addr:street": "Rua Tupinambá",
+    "leisure": "park",
+    "name": "Praça do Canto"
+  }
+},
+{
+  "type": "way",
+  "id": 546398005,
+  "center": {
+    "lat": -27.6246267,
+    "lon": -48.6824462
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça da Unisul"
+  }
+},
+{
+  "type": "way",
+  "id": 548635776,
+  "center": {
+    "lat": -27.5811759,
+    "lon": -48.6208250
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Iracema Rodrigues Vieira de Camargo"
+  }
+},
+{
+  "type": "way",
+  "id": 548791902,
+  "center": {
+    "lat": -27.6199663,
+    "lon": -48.6664081
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Valdair Antônio Jeremias"
+  }
+},
+{
+  "type": "way",
+  "id": 548793362,
+  "center": {
+    "lat": -27.6041818,
+    "lon": -48.5367179
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Dalva Cardoso"
+  }
+},
+{
+  "type": "way",
+  "id": 548864251,
+  "center": {
+    "lat": -27.6283439,
+    "lon": -48.6815935
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Lagos Pedra Branca"
+  }
+},
+{
+  "type": "way",
+  "id": 549371083,
+  "center": {
+    "lat": -27.6344974,
+    "lon": -48.6465878
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça da Ponte do Imaruim"
+  }
+},
+{
+  "type": "way",
+  "id": 549401854,
+  "center": {
+    "lat": -27.6650637,
+    "lon": -48.6614477
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça da Cultura"
+  }
+},
+{
+  "type": "way",
+  "id": 549577048,
+  "center": {
+    "lat": -27.6724933,
+    "lon": -48.6502906
+  },
+  "tags": {
+    "building": "supermarket",
+    "name": "Perto Atacadista",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 551698936,
+  "center": {
+    "lat": -27.5998589,
+    "lon": -48.6138269
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Alzemiro Lídio Vieira"
+  }
+},
+{
+  "type": "way",
+  "id": 551700814,
+  "center": {
+    "lat": -27.5969500,
+    "lon": -48.6132373
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Dona Cotinha - Maria Rodrigues Vieira"
+  }
+},
+{
+  "type": "way",
+  "id": 552024413,
+  "center": {
+    "lat": -27.5743369,
+    "lon": -48.6186998
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Diego Jerônimo Cardoso"
+  }
+},
+{
+  "type": "way",
+  "id": 552374454,
+  "center": {
+    "lat": -27.5934755,
+    "lon": -48.5441098
+  },
+  "tags": {
+    "addr:housenumber": "1302",
+    "addr:postcode": "88020-001",
+    "addr:street": "Avenida Hercílio Luz",
+    "amenity": "hospital",
+    "building": "hospital",
+    "healthcare": "hospital",
+    "name": "Hospital Doutor Carlos Corrêa"
+  }
+},
+{
+  "type": "way",
+  "id": 553989285,
+  "center": {
+    "lat": -27.6404691,
+    "lon": -48.6680913
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça da Gruta Nossa Senhora Aparecida"
+  }
+},
+{
+  "type": "way",
+  "id": 553989287,
+  "center": {
+    "lat": -27.6355785,
+    "lon": -48.6426187
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "loc_name": "Parque da Ponte",
+    "name": "Praça Pública de Lazer Dilmor Duncke",
+    "official_name": "Praça Irmã Neves",
+    "source:official_name": "Lei 4.839/2020;Lei 5.201/2022"
+  }
+},
+{
+  "type": "way",
+  "id": 555282291,
+  "center": {
+    "lat": -27.6296276,
+    "lon": -48.5254651
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:street": "Avenida Jorge Lacerda",
+    "addr:suburb": "Costeira do Pirajubaé",
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Parque da Costeira do Pirajubaé"
+  }
+},
+{
+  "type": "way",
+  "id": 556017076,
+  "center": {
+    "lat": -27.6087250,
+    "lon": -48.5376866
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:street": "Rua João Motta Espezim",
+    "addr:suburb": "Saco dos Limões",
+    "alt_name": "Praça do Saco dos Limões",
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Abdon Batista"
+  }
+},
+{
+  "type": "way",
+  "id": 557153942,
+  "center": {
+    "lat": -27.5765488,
+    "lon": -48.6223566
+  },
+  "tags": {
+    "building": "supermarket",
+    "name": "Supermercado Marcocentro",
+    "old_name": "Supermercado Gêmeos",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 558627834,
+  "center": {
+    "lat": -27.5906970,
+    "lon": -48.5566743
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Gilberto Guerreiro da Fonseca"
+  }
+},
+{
+  "type": "way",
+  "id": 568540189,
+  "center": {
+    "lat": -27.6747240,
+    "lon": -48.6450867
+  },
+  "tags": {
+    "building": "supermarket",
+    "name": "Supermercado Di Marcos",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 568603142,
+  "center": {
+    "lat": -27.6135762,
+    "lon": -48.5440669
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Servidão Santa Clara"
+  }
+},
+{
+  "type": "way",
+  "id": 570612572,
+  "center": {
+    "lat": -27.5936689,
+    "lon": -48.5831302
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça João de Maria Cavalazzi"
+  }
+},
+{
+  "type": "way",
+  "id": 587764324,
+  "center": {
+    "lat": -27.5776097,
+    "lon": -48.6691433
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Linear de Lisboa Guilherme Gripp Filho"
+  }
+},
+{
+  "type": "way",
+  "id": 589492091,
+  "center": {
+    "lat": -27.6139322,
+    "lon": -48.5905252
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça João Batista Rodrigues Júnior (Zó)"
+  }
+},
+{
+  "type": "way",
+  "id": 604994197,
+  "center": {
+    "lat": -27.5959873,
+    "lon": -48.5828051
+  },
+  "tags": {
+    "alt_name": "Praça Paulo Shlemper",
+    "leisure": "park",
+    "name": "Praça Paulo Schlemper",
+    "source:alt_name": "PMF"
+  }
+},
+{
+  "type": "way",
+  "id": 605469610,
+  "center": {
+    "lat": -27.5867636,
+    "lon": -48.5251259
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça José Dutra"
+  }
+},
+{
+  "type": "way",
+  "id": 605767094,
+  "center": {
+    "lat": -27.5879244,
+    "lon": -48.6202323
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Centro de Convivência Roçado"
+  }
+},
+{
+  "type": "way",
+  "id": 605921487,
+  "center": {
+    "lat": -27.5732334,
+    "lon": -48.5395115
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça República da Grécia"
+  }
+},
+{
+  "type": "way",
+  "id": 606415792,
+  "center": {
+    "lat": -27.6022637,
+    "lon": -48.6066908
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Parque São José"
+  }
+},
+{
+  "type": "way",
+  "id": 606415796,
+  "center": {
+    "lat": -27.6028486,
+    "lon": -48.6125543
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Parque Recreativo Beira-Mar de São José Adroaldo Pedro Cassol"
+  }
+},
+{
+  "type": "way",
+  "id": 607937136,
+  "center": {
+    "lat": -27.5776300,
+    "lon": -48.5345681
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Vida Forte"
+  }
+},
+{
+  "type": "way",
+  "id": 612058454,
+  "center": {
+    "lat": -27.5975910,
+    "lon": -48.6093632
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Vera Lúcia Heck"
+  }
+},
+{
+  "type": "way",
+  "id": 615307022,
+  "center": {
+    "lat": -27.5646493,
+    "lon": -48.5197086
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Baía Norte"
+  }
+},
+{
+  "type": "way",
+  "id": 620359855,
+  "center": {
+    "lat": -27.5796982,
+    "lon": -48.5911280
+  },
+  "tags": {
+    "alt_name": "Praça Arlindo Philipe",
+    "leisure": "park",
+    "name": "Praça Arlindo Francisco Philippi",
+    "source:alt_name": "PMF"
+  }
+},
+{
+  "type": "way",
+  "id": 625475891,
+  "center": {
+    "lat": -27.5890367,
+    "lon": -48.5147138
+  },
+  "tags": {
+    "addr:housenumber": "192",
+    "addr:street": "Rua Cônego Thomaz Fontes",
+    "amenity": "college",
+    "building": "yes",
+    "name": "Seminário Bom Pastor"
+  }
+},
+{
+  "type": "way",
+  "id": 637837311,
+  "center": {
+    "lat": -27.5898182,
+    "lon": -48.5606139
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "740",
+    "addr:postcode": "88015-600",
+    "addr:street": "Rua Almirante Lamego",
+    "addr:suburb": "Centro",
+    "building": "supermarket",
+    "building:levels": "1",
+    "name": "Hippo",
+    "opening_hours": "Mo-Su 09:00-20:00",
+    "shop": "supermarket",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 648531691,
+  "center": {
+    "lat": -27.5878334,
+    "lon": -48.6177408
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Ulisses Kuntze"
+  }
+},
+{
+  "type": "way",
+  "id": 652504439,
+  "center": {
+    "lat": -27.6230345,
+    "lon": -48.6773996
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "346",
+    "addr:postcode": "88137-072",
+    "addr:street": "Rua da Universidade",
+    "addr:suburb": "Pedra Branca",
+    "building": "yes",
+    "name": "Hippo",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 654253124,
+  "center": {
+    "lat": -27.5993936,
+    "lon": -48.5802353
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Osvaldo de Oliveira"
+  }
+},
+{
+  "type": "way",
+  "id": 662460232,
+  "center": {
+    "lat": -27.5947201,
+    "lon": -48.6223981
+  },
+  "tags": {
+    "description": "Praça com bancos e academia ao ar livre",
+    "leisure": "park",
+    "name": "Praça do Roçado"
+  }
+},
+{
+  "type": "way",
+  "id": 673409077,
+  "center": {
+    "lat": -27.6037485,
+    "lon": -48.5468524
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "360",
+    "addr:postcode": "88020-200",
+    "addr:street": "Rua Silva Jardim",
+    "addr:suburb": "Centro",
+    "amenity": "university",
+    "contact:phone": "+55 48 3229-3200",
+    "name": "Faculdade de Tecnologia Senac",
+    "opening_hours": "Mo-Fr 07:30-21:30, Sa 08:00-12:00"
+  }
+},
+{
+  "type": "way",
+  "id": 673932325,
+  "center": {
+    "lat": -27.5954255,
+    "lon": -48.5498312
+  },
+  "tags": {
+    "addr:housenumber": "65",
+    "addr:street": "Rua Marechal Guilherme",
+    "amenity": "college",
+    "building": "yes",
+    "building:levels": "1",
+    "building:levels:underground": "1",
+    "contact:phone": "+55 48 3304-1592",
+    "contact:website": "https://www.metodomedicina.com.br/",
+    "description": "Pré-Vestibular Método Medicina",
+    "name": "Método Medicina",
+    "roof:material": "roof_tiles",
+    "roof:shape": "hipped"
+  }
+},
+{
+  "type": "way",
+  "id": 675490853,
+  "center": {
+    "lat": -27.5677319,
+    "lon": -48.6169300
+  },
+  "tags": {
+    "addr:street": "Rua das Orquídeas",
+    "amenity": "college",
+    "building": "yes",
+    "description": "Escola de formação de Profissionais de Enfermagem.",
+    "internet_access": "yes",
+    "name": "EFOS",
+    "website": "https://efos.saude.sc.gov.br/portal2011/"
+  }
+},
+{
+  "type": "way",
+  "id": 677435671,
+  "center": {
+    "lat": -27.5804599,
+    "lon": -48.5974880
+  },
+  "tags": {
+    "access": "yes",
+    "addr:housenumber": "275",
+    "addr:postcode": "88095-400",
+    "addr:street": "Rua Gualberto Senna",
+    "amenity": "hospital",
+    "check_date": "2026-09-12",
+    "contact:phone": "+55 48 3039-7535",
+    "emergency": "yes",
+    "healthcare": "hospital",
+    "healthcare:speciality": "general",
+    "name": "Unidade de Pronto Aendimento do Continente (UPA)",
+    "opening_hours": "24/7",
+    "operator": "Secretaria Municipal de Saúde",
+    "operator:type": "government",
+    "short_name": "UPA do Continente"
+  }
+},
+{
+  "type": "way",
+  "id": 681638292,
+  "center": {
+    "lat": -27.6340128,
+    "lon": -48.6583459
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:postcode": "88130-620",
+    "addr:street": "Rua Alferes Tiradentes",
+    "addr:suburb": "Ponte do Imaruim",
+    "leisure": "park",
+    "name": "Praça Jardim dos Eucaliptos"
+  }
+},
+{
+  "type": "way",
+  "id": 684016397,
+  "center": {
+    "lat": -27.6065604,
+    "lon": -48.6434240
+  },
+  "tags": {
+    "addr:street": "Rua José Luiz de Souza",
+    "alt_name": "Praça dos Gnomos",
+    "leisure": "park",
+    "name": "Praça Santa Paulina"
+  }
+},
+{
+  "type": "way",
+  "id": 688477872,
+  "center": {
+    "lat": -27.5953761,
+    "lon": -48.5513232
+  },
+  "tags": {
+    "addr:housenumber": "291",
+    "addr:street": "Rua Deodoro",
+    "building": "yes",
+    "name": "HiperBom",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 690765425,
+  "center": {
+    "lat": -27.5693649,
+    "lon": -48.6087124
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça de Barreiros"
+  }
+},
+{
+  "type": "way",
+  "id": 690968203,
+  "center": {
+    "lat": -27.5721818,
+    "lon": -48.6225467
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Nossa Senhora Aparecida"
+  }
+},
+{
+  "type": "way",
+  "id": 691055661,
+  "center": {
+    "lat": -27.5894067,
+    "lon": -48.7165512
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Graciema Maikot Cassol"
+  }
+},
+{
+  "type": "way",
+  "id": 691083511,
+  "center": {
+    "lat": -27.5502442,
+    "lon": -48.6232802
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Zenaide de Souza Galvão"
+  }
+},
+{
+  "type": "way",
+  "id": 692903253,
+  "center": {
+    "lat": -27.6086645,
+    "lon": -48.5898655
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "190",
+    "addr:postcode": "88085-475",
+    "addr:street": "Rua Mário Cândido da Silva",
+    "addr:suburb": "Abraão",
+    "alt_name": "Pedreira do Abraão",
+    "leisure": "park",
+    "name": "Parque Aventuras Maria Inês Tournier Rodrigues",
+    "operator": "ACEM",
+    "operator:type": "public"
+  }
+},
+{
+  "type": "way",
+  "id": 693538828,
+  "center": {
+    "lat": -27.5916089,
+    "lon": -48.5485843
+  },
+  "tags": {
+    "addr:housenumber": "967",
+    "addr:street": "Avenida Rio Branco",
+    "building": "yes",
+    "name": "Passeio Rio Branco",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 694828166,
+  "center": {
+    "lat": -27.5557183,
+    "lon": -48.6248046
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça da Conceição"
+  }
+},
+{
+  "type": "way",
+  "id": 695810478,
+  "center": {
+    "lat": -27.5906624,
+    "lon": -48.5469565
+  },
+  "tags": {
+    "addr:housename": "Espaço Físico Integrado II – UFSC",
+    "addr:housenumber": "757",
+    "addr:postcode": "88015-310",
+    "addr:street": "Rua Dom Joaquim",
+    "amenity": "university",
+    "contact:email": "sead@contato.ufsc.br",
+    "contact:phone": "+55 48 3721-4446",
+    "contact:website": "https://portal.sead.ufsc.br/",
+    "name": "Secretaria de Educação a Distância",
+    "operator": "Universidade Federal de Santa Catarina",
+    "operator:short": "UFSC",
+    "short_name": "SEAD UFSC"
+  }
+},
+{
+  "type": "way",
+  "id": 697618385,
+  "center": {
+    "lat": -27.5855288,
+    "lon": -48.5086514
+  },
+  "tags": {
+    "amenity": "university",
+    "name": "Núcleo de Estudo em Patologia Aquícola",
+    "operator": "Universidade Federal de Santa Catarina",
+    "short_name": "NEPAQ UFSC"
+  }
+},
+{
+  "type": "way",
+  "id": 699948658,
+  "center": {
+    "lat": -27.5918893,
+    "lon": -48.6145178
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:postcode": "88102-300",
+    "addr:street": "Rua Brasilpinho",
+    "addr:suburb": "Kobrasol",
+    "leisure": "park",
+    "name": "Praça Gilberto Pedro Hoffmann Nahas",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "way",
+  "id": 699950281,
+  "center": {
+    "lat": -27.5946869,
+    "lon": -48.6142050
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "723",
+    "addr:postcode": "88102-080",
+    "addr:street": "Avenida Delamar José da Silva",
+    "addr:suburb": "Kobrasol",
+    "building": "supermarket",
+    "contact:facebook": "https://www.facebook.com/redeimperatriz",
+    "contact:instagram": "https://www.instagram.com/redeimperatriz/",
+    "mobile": "+55 48 99143 4233",
+    "name": "Supermercados Imperatriz",
+    "name:pt": "Supermercado Imperatriz",
+    "opening_hours": "Mo-Sa 08:00-22:00; Su,PH 08:00-21:00",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:maestro": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa_electron": "yes",
+    "phone": "+55 48 3259 1066",
+    "shop": "supermarket",
+    "toilets": "yes",
+    "toilets:access": "permissive",
+    "website": "https://www.supermercadosimperatriz.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 706528035,
+  "center": {
+    "lat": -27.5778456,
+    "lon": -48.6775708
+  },
+  "tags": {
+    "addr:street": "Rua Antônio Jovita Duarte",
+    "leisure": "park",
+    "name": "Quadra Esporte Lanches",
+    "operator": "Sport Lanches"
+  }
+},
+{
+  "type": "way",
+  "id": 706974880,
+  "center": {
+    "lat": -27.5892012,
+    "lon": -48.5513689
+  },
+  "tags": {
+    "alt_name": "Praça Dom Pedro Primeiro;Praça Dom Pedro 1º",
+    "leisure": "park",
+    "loc_name": "Praça do Hemosc",
+    "name": "Praça Dom Pedro I",
+    "short_name": "Pç. D. Pedro I"
+  }
+},
+{
+  "type": "way",
+  "id": 712544098,
+  "center": {
+    "lat": -27.5923673,
+    "lon": -48.6504975
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "10393",
+    "addr:street": "Rua Antônio Jovita Duarte",
+    "addr:suburb": "Forquilhinhas",
+    "check_date:opening_hours": "2026-01-22",
+    "email": "sac@bistek.com.br",
+    "name": "Bistek Supermercados",
+    "opening_hours": "Mo-Sa 07:00-22:00; Su 07:30-21:00; PH off",
+    "operator": "Bistek",
+    "phone": "+55 48 3375-3900",
+    "shop": "supermarket",
+    "source:opening_hours": "website",
+    "website": "https://www.bistek.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 718866372,
+  "center": {
+    "lat": -27.5744913,
+    "lon": -48.5999152
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Parque Eduardo Dias",
+    "source:name": "PMF"
+  }
+},
+{
+  "type": "way",
+  "id": 720585963,
+  "center": {
+    "lat": -27.5612853,
+    "lon": -48.5167529
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Doutor Fausto Lobo da Silva Brasil"
+  }
+},
+{
+  "type": "way",
+  "id": 737040464,
+  "center": {
+    "lat": -27.6261676,
+    "lon": -48.6319894
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Antônio Francisco Machado"
+  }
+},
+{
+  "type": "way",
+  "id": 737584103,
+  "center": {
+    "lat": -27.5867701,
+    "lon": -48.5959460
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Alfredo Wagner"
+  }
+},
+{
+  "type": "way",
+  "id": 752978121,
+  "center": {
+    "lat": -27.5573920,
+    "lon": -48.6375477
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Dirço José do Amaral"
+  }
+},
+{
+  "type": "way",
+  "id": 760581422,
+  "center": {
+    "lat": -27.7095648,
+    "lon": -48.6500223
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Pública de Lazer Irmã Alcídia"
+  }
+},
+{
+  "type": "way",
+  "id": 762321329,
+  "center": {
+    "lat": -27.6005227,
+    "lon": -48.6411689
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça São Luís Orione"
+  }
+},
+{
+  "type": "way",
+  "id": 762322008,
+  "center": {
+    "lat": -27.6089730,
+    "lon": -48.6481744
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Vicente da Cruz Machado"
+  }
+},
+{
+  "type": "way",
+  "id": 770411220,
+  "center": {
+    "lat": -27.6038115,
+    "lon": -48.5966701
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Parque do Abraão"
+  }
+},
+{
+  "type": "way",
+  "id": 770884756,
+  "center": {
+    "lat": -27.6022861,
+    "lon": -48.5025908
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Parque Linear do Córrego Grande"
+  }
+},
+{
+  "type": "way",
+  "id": 771704487,
+  "center": {
+    "lat": -27.5990283,
+    "lon": -48.6052482
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "34",
+    "addr:postcode": "88101-200",
+    "addr:street": "Avenida Josué di Bernardi",
+    "addr:suburb": "Campinas",
+    "name": "Imperatriz",
+    "opening_hours": "Mo-Sa 08:00-22:00; Su 08:00-20:00",
+    "shop": "supermarket",
+    "toilets": "yes",
+    "toilets:access": "permissive"
+  }
+},
+{
+  "type": "way",
+  "id": 778535564,
+  "center": {
+    "lat": -27.5955794,
+    "lon": -48.5506362
+  },
+  "tags": {
+    "addr:housenumber": "153",
+    "addr:street": "Rua Vidal Ramos",
+    "building": "yes",
+    "building:levels": "2",
+    "name": "Centro Comercial Paris",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 785736619,
+  "center": {
+    "lat": -27.5771663,
+    "lon": -48.5191136
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Municipal do Manguezal do Itacorubi"
+  }
+},
+{
+  "type": "way",
+  "id": 788283429,
+  "center": {
+    "lat": -27.6611894,
+    "lon": -48.5003988
+  },
+  "tags": {
+    "alt_name": "Praça do Elevado do Rio Tavares",
+    "leisure": "park",
+    "lit": "yes",
+    "loc_name": "Praça do Viaduto do Trevo do Rio Tavares",
+    "name": "Praça Milton Otávio da Silva (Milton Tatu)",
+    "opening_hours": "sunrise-sunset",
+    "operator": "Prefeitura Municipal de Florianópolis",
+    "operator:type": "public"
+  }
+},
+{
+  "type": "way",
+  "id": 789640037,
+  "center": {
+    "lat": -27.6719574,
+    "lon": -48.6863462
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Parque Aririú"
+  }
+},
+{
+  "type": "way",
+  "id": 815781148,
+  "center": {
+    "lat": -27.5737445,
+    "lon": -48.6237658
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Ronaldo Gomes Dionissa"
+  }
+},
+{
+  "type": "way",
+  "id": 816087791,
+  "center": {
+    "lat": -27.6301759,
+    "lon": -48.6894592
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "395",
+    "addr:postcode": "88137010",
+    "addr:street": "Rua João Bernardino da Rosa",
+    "addr:suburb": "Pedra Branca",
+    "amenity": "university",
+    "internet_access": "yes",
+    "name": "Instituto Federal de Santa Catarina - Câmpus Palhoça Bilíngue",
+    "note": "Também é ensino médio técnico integrado e centro de diversos cursos ",
+    "short_name": "IFSC",
+    "website": "https://www.ifsc.edu.br/web/campus-palhoca-bilingue/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 820915936,
+  "center": {
+    "lat": -27.5825069,
+    "lon": -48.5406811
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "153",
+    "addr:postcode": "88025-140",
+    "addr:street": "Rua General Acastro de Campo",
+    "addr:suburb": "Centro",
+    "amenity": "hospital",
+    "contact:instagram": "https://www.instagram.com/hospitalbeiramar/?igsh=MTJ0enI2Yjk0ZHd1eQ%3D%3D",
+    "email": "atendimento@hospitalbeiramar.com.br",
+    "healthcare": "hospital",
+    "healthcare:speciality": "mastologia;ginecologia;infectologia;plastic_surgery;surgery",
+    "mobile": "+55 48 99217 4885",
+    "name": "Hospital Beira Mar",
+    "phone": "+55 48 3029 9999",
+    "short_name": "UBM",
+    "website": "https://www.hospitalbeiramar.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 835204930,
+  "center": {
+    "lat": -27.6348716,
+    "lon": -48.6886703
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Frederico Henrique Folster"
+  }
+},
+{
+  "type": "way",
+  "id": 835420873,
+  "center": {
+    "lat": -27.6518756,
+    "lon": -48.6716928
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Paulo João Martins"
+  }
+},
+{
+  "type": "way",
+  "id": 837288751,
+  "center": {
+    "lat": -27.6952148,
+    "lon": -48.6779551
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Manoel Álvaro Ferreira (Nelico)"
+  }
+},
+{
+  "type": "way",
+  "id": 858916396,
+  "center": {
+    "lat": -27.5897380,
+    "lon": -48.6139450
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Pracinha Cassol"
+  }
+},
+{
+  "type": "way",
+  "id": 868499312,
+  "center": {
+    "lat": -27.5784754,
+    "lon": -48.6210027
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Leandro Guesser"
+  }
+},
+{
+  "type": "way",
+  "id": 868500243,
+  "center": {
+    "lat": -27.5776690,
+    "lon": -48.6101036
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Alvina di Bernardi Kalbusch"
+  }
+},
+{
+  "type": "way",
+  "id": 868500526,
+  "center": {
+    "lat": -27.5930580,
+    "lon": -48.6232657
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Albertino Batista"
+  }
+},
+{
+  "type": "way",
+  "id": 888662350,
+  "center": {
+    "lat": -27.5912306,
+    "lon": -48.5604649
+  },
+  "tags": {
+    "addr:housenumber": "1218",
+    "addr:street": "Rua Felipe Schmidt",
+    "amenity": "college",
+    "building": "yes",
+    "building:levels": "1",
+    "name": "Supera",
+    "roof:material": "roof_tiles",
+    "roof:shape": "gabled"
+  }
+},
+{
+  "type": "way",
+  "id": 960174260,
+  "center": {
+    "lat": -27.5654937,
+    "lon": -48.6537194
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Walmor Raulino Júnior"
+  }
+},
+{
+  "type": "way",
+  "id": 964356162,
+  "center": {
+    "lat": -27.6777097,
+    "lon": -48.5057810
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Parque Margarida Antunes (Dona Guida)"
+  }
+},
+{
+  "type": "way",
+  "id": 966847081,
+  "center": {
+    "lat": -27.6071253,
+    "lon": -48.6674225
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Olália Gonçalves de Melo"
+  }
+},
+{
+  "type": "way",
+  "id": 973605184,
+  "center": {
+    "lat": -27.6900959,
+    "lon": -48.5593248
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Sérgio Eduardo Neves Schmidt",
+    "sport": "multi"
+  }
+},
+{
+  "type": "way",
+  "id": 974184815,
+  "center": {
+    "lat": -27.6428984,
+    "lon": -48.7146156
+  },
+  "tags": {
+    "alt_name": "Praça de São Sebastião",
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Luzia Aninha Fonseca Gregório",
+    "source:name": "Lei n. 4.408, de 29/06/2016."
+  }
+},
+{
+  "type": "way",
+  "id": 975325125,
+  "center": {
+    "lat": -27.5949489,
+    "lon": -48.5867531
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Eugênio Melo"
+  }
+},
+{
+  "type": "way",
+  "id": 975528300,
+  "center": {
+    "lat": -27.5834993,
+    "lon": -48.5787746
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça dos Navegantes",
+    "source": "PMF"
+  }
+},
+{
+  "type": "way",
+  "id": 975686023,
+  "center": {
+    "lat": -27.5984996,
+    "lon": -48.5895253
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Parque de Capoeiras",
+    "source:name": "PMF"
+  }
+},
+{
+  "type": "way",
+  "id": 975779252,
+  "center": {
+    "lat": -27.5831862,
+    "lon": -48.5882510
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Marcelino Vieira Filho"
+  }
+},
+{
+  "type": "way",
+  "id": 977052384,
+  "center": {
+    "lat": -27.6255181,
+    "lon": -48.6590617
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "313",
+    "addr:postcode": "88133-500",
+    "addr:street": "Avenida Gentil Reinaldo Cordioli",
+    "addr:suburb": "Jardim Eldorado",
+    "alt_name": "Combo",
+    "building": "yes",
+    "name": "Combo Atacadista",
+    "opening_hours": "07:00-22:30",
+    "phone": "+55 048 3205-6800",
+    "shop": "supermarket",
+    "wholesale": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 983443019,
+  "center": {
+    "lat": -27.6028269,
+    "lon": -48.5467788
+  },
+  "tags": {
+    "addr:housenumber": "100",
+    "addr:street": "Travessa Syríaco Atherino",
+    "amenity": "college",
+    "name": "SESC Prainha"
+  }
+},
+{
+  "type": "way",
+  "id": 984542340,
+  "center": {
+    "lat": -27.6396022,
+    "lon": -48.7116093
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "30",
+    "addr:postcode": "88136-200",
+    "addr:street": "Rua: Marino Jorge dos Santos",
+    "addr:suburb": "São Sebastião",
+    "alt_name": "Supermercado Ideal",
+    "building": "supermarket",
+    "name": "Ideal Supermercado (Loja 5)",
+    "opening_hours": "07:00-21:00",
+    "phone": "+55 048 3374-1093",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 986508929,
+  "center": {
+    "lat": -27.6394159,
+    "lon": -48.7104855
+  },
+  "tags": {
+    "amenity": "college",
+    "building": "yes",
+    "building:levels": "2",
+    "name": "Centro Catequético",
+    "roof:shape": "hipped"
+  }
+},
+{
+  "type": "way",
+  "id": 992969596,
+  "center": {
+    "lat": -27.6528904,
+    "lon": -48.6939697
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "300",
+    "addr:postcode": "88132591",
+    "addr:street": "Avenida Terra Bela",
+    "addr:suburb": "Caminho Novo",
+    "alt_name": "Komprão",
+    "building": "yes",
+    "name": "L67 Komprão Koch Atacadista",
+    "name:pt": "Komprão Koch Atacadista",
+    "opening_hours": "07:00-22:00",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1004122950,
+  "center": {
+    "lat": -27.6599271,
+    "lon": -48.5372116
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça José João Leal"
+  }
+},
+{
+  "type": "way",
+  "id": 1009131694,
+  "center": {
+    "lat": -27.5735322,
+    "lon": -48.6224202
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Antônio Vítor de Mello Lubi"
+  }
+},
+{
+  "type": "way",
+  "id": 1027569582,
+  "center": {
+    "lat": -27.6107638,
+    "lon": -48.6454392
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Adelson José Müller"
+  }
+},
+{
+  "type": "way",
+  "id": 1046999616,
+  "center": {
+    "lat": -27.5945881,
+    "lon": -48.5527817
+  },
+  "tags": {
+    "amenity": "college",
+    "building": "yes",
+    "name": "Grau Técnico",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1046999679,
+  "center": {
+    "lat": -27.5955761,
+    "lon": -48.5512887
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "265",
+    "addr:postcode": "88010-020",
+    "addr:street": "Rua Deodoro",
+    "addr:suburb": "Centro",
+    "amenity": "college",
+    "building:levels": "4",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "name": "Colégio COC Floripa | Escola SEB - Terceirão e Pré-vestibular",
+    "operator": "Edson Nassan",
+    "website": "https://colegiococfloripa.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 1064372227,
+  "center": {
+    "lat": -27.5737200,
+    "lon": -48.5349540
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Largo Frei Tito Olivetto"
+  }
+},
+{
+  "type": "way",
+  "id": 1145138906,
+  "center": {
+    "lat": -27.6031505,
+    "lon": -48.5231997
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Bosque do CFH"
+  }
+},
+{
+  "type": "way",
+  "id": 1155272315,
+  "center": {
+    "lat": -27.6745149,
+    "lon": -48.6781274
+  },
+  "tags": {
+    "addr:street": "Avenida Bom Jesus de Nazaré",
+    "building": "supermarket",
+    "name": "Supermercados Sul do Rio",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1157086415,
+  "center": {
+    "lat": -27.6392404,
+    "lon": -48.6822330
+  },
+  "tags": {
+    "name": "Bistek",
+    "opening_hours": "Mo-Su 05:00-22:00",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1163971552,
+  "center": {
+    "lat": -27.6066898,
+    "lon": -48.5922302
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Gil do Continente"
+  }
+},
+{
+  "type": "way",
+  "id": 1177697417,
+  "center": {
+    "lat": -27.6335243,
+    "lon": -48.6442135
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "222",
+    "addr:street": "Avenida Aniceto Zacchi",
+    "addr:suburb": "Ponte do Imaruim",
+    "building": "yes",
+    "name": "Supermercado Imperatriz",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1177700067,
+  "center": {
+    "lat": -27.6364592,
+    "lon": -48.6478791
+  },
+  "tags": {
+    "addr:housenumber": "587",
+    "addr:postcode": "88130-800",
+    "addr:street": "Avenida Aniceto Zacchi",
+    "building": "yes",
+    "contact:facebook": "https://www.facebook.com/pierrisupermercado/",
+    "contact:instagram": "https://www.instagram.com/supermercadopierri/",
+    "layer": "1",
+    "name": "Pierri Supermercado",
+    "opening_hours": "Mo-Fr 08:00-12:00,13:00-20:30; Sa 08:00 -20:30; PH off",
+    "phone": "+55 48 3242 3940",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1177700070,
+  "center": {
+    "lat": -27.6328095,
+    "lon": -48.6514695
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "489",
+    "addr:postcode": "88130-420",
+    "addr:street": "Rua Major José Honório da Costa",
+    "addr:suburb": "Ponte do Imaruim",
+    "alt_name": "Supermercado Ideal",
+    "building": "yes",
+    "loc_name": "Ideal Supermercados",
+    "name": "Ideal Supermercado",
+    "opening_hours": "08:00-22:00",
+    "phone": "+55 48 2132 2137",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1177700078,
+  "center": {
+    "lat": -27.6553023,
+    "lon": -48.6732350
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "4004",
+    "addr:postcode": "88131-200",
+    "addr:street": "Supermercado",
+    "addr:suburb": "Rua Vereador Osvaldo de Oliveira",
+    "building": "yes",
+    "name": "É De Casa Supermercados",
+    "opening_hours": "07:00-22:00",
+    "operator": "Rua Vereador Osvaldo de Oliveira",
+    "phone": "+55 48 3031 9500",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1177700080,
+  "center": {
+    "lat": -27.6461275,
+    "lon": -48.6662642
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Supermercado Imperatriz",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1177700084,
+  "center": {
+    "lat": -27.6422070,
+    "lon": -48.6628301
+  },
+  "tags": {
+    "addr:housenumber": "2095",
+    "addr:street": "Rua João Born",
+    "branch": "Loja 2",
+    "building": "yes",
+    "contact:instagram": "https://www.instagram.com/supermercadossuldorio/",
+    "mobile": "+55 48 99116 0019",
+    "name": "Supermercado Sul do Rio",
+    "phone": "+55 48 3242 0085",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1198633828,
+  "center": {
+    "lat": -27.6999630,
+    "lon": -48.5088299
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Doutor Rodrigo da Luz Silva"
+  }
+},
+{
+  "type": "way",
+  "id": 1205924197,
+  "center": {
+    "lat": -27.6017027,
+    "lon": -48.6144075
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "861",
+    "addr:postcode": "88101-001",
+    "addr:street": "Avenida Presidente Kennedy",
+    "addr:suburb": "Campinas",
+    "alt_name": "Super Imperatriz Kennedy",
+    "branch": "Supermercados Imperatriz",
+    "building": "supermarket",
+    "name": "Supermercados Imperatriz",
+    "name:pt": "Supermercado Imperatriz",
+    "opening_hours": "07:00-22:00",
+    "phone": "+55 48 3279-4136",
+    "shop": "supermarket",
+    "short_name": "Imperatriz"
+  }
+},
+{
+  "type": "way",
+  "id": 1213137941,
+  "center": {
+    "lat": -27.6603556,
+    "lon": -48.5402276
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Wilfried Gessner"
+  }
+},
+{
+  "type": "way",
+  "id": 1275350143,
+  "center": {
+    "lat": -27.6433992,
+    "lon": -48.6677418
+  },
+  "tags": {
+    "addr:housenumber": "461",
+    "addr:postcode": "88130-101",
+    "addr:street": "Avenida Barão do Rio Branco",
+    "amenity": "hospital",
+    "contact:instagram": "https://www.instagram.com/hcsaolucas/",
+    "email": "contato@hcsaolucas.com.br",
+    "healthcare": "hospital",
+    "healthcare:speciality": "general",
+    "name": "Clínica São Lucas",
+    "opening_hours": "Mo-Fr 07:00-21:00; Sa,Su 07:00-18:00",
+    "phone": "+55 48 3242 7788",
+    "website": "https://hcsaolucas.com.br/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1295871218,
+  "center": {
+    "lat": -27.6745516,
+    "lon": -48.6761093
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Samiro Arcanjo da Silva"
+  }
+},
+{
+  "type": "way",
+  "id": 1314078875,
+  "center": {
+    "lat": -27.6470574,
+    "lon": -48.6902479
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Pública Municipal de Lazer Ana Maria dos Santos"
+  }
+},
+{
+  "type": "way",
+  "id": 1319323898,
+  "center": {
+    "lat": -27.5739179,
+    "lon": -48.6758309
+  },
+  "tags": {
+    "addr:street": "Rua Jacob Ferreira de Melo",
+    "leisure": "park",
+    "name": "Praça Manuel Jacó de Melo - Seu Deca"
+  }
+},
+{
+  "type": "way",
+  "id": 1320193859,
+  "center": {
+    "lat": -27.5775370,
+    "lon": -48.6145588
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "231",
+    "addr:postcode": "88110-639",
+    "addr:street": "Rua Menino Júlio César",
+    "addr:suburb": "Nossa Senhora do Rosário",
+    "branch": "São José",
+    "building": "yes",
+    "email": "cb04@comboatacadista.com.br",
+    "name": "Combo Atacadista",
+    "opening_hours": "Mo-Sa 07:00-22:30; Su 08:00-21:00; Sa[1]06:00-22:30; PH off",
+    "phone": "+55 48 3733 0700",
+    "shop": "supermarket",
+    "website": "https://www.comboatacadista.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 1338129313,
+  "center": {
+    "lat": -27.6169058,
+    "lon": -48.6310630
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Iracema Pedroso Sales"
+  }
+},
+{
+  "type": "way",
+  "id": 1341324210,
+  "center": {
+    "lat": -27.5800179,
+    "lon": -48.6150974
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "2209",
+    "addr:postcode": "88110-694",
+    "addr:street": "Rua Paulino Pedro Hermes",
+    "addr:suburb": "Nossa Senhora do Rosário",
+    "landuse": "commercial",
+    "name": "Floresta Mall",
+    "operator": "Floresta S.Mall SCP",
+    "ref:vatin": "BR52110424000102",
+    "shop": "mall",
+    "website": "https://florestamall.com/"
+  }
+},
+{
+  "type": "way",
+  "id": 1344834319,
+  "center": {
+    "lat": -27.6201751,
+    "lon": -48.6660950
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Francisca Maria Souza (Dona Chiquinha)"
+  }
+},
+{
+  "type": "way",
+  "id": 1347445371,
+  "center": {
+    "lat": -27.5863382,
+    "lon": -48.6059773
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Stalin Vilen"
+  }
+},
+{
+  "type": "way",
+  "id": 1361677720,
+  "center": {
+    "lat": -27.5539287,
+    "lon": -48.6557634
+  },
+  "tags": {
+    "addr:city": "são José",
+    "addr:postcode": "88119414",
+    "addr:street": "Rua Jacatirão",
+    "leisure": "park",
+    "name": "Praça Jacatirão"
+  }
+},
+{
+  "type": "way",
+  "id": 1391009724,
+  "center": {
+    "lat": -27.6857707,
+    "lon": -48.6592003
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "14",
+    "addr:postcode": "88134-114",
+    "addr:street": "R. Bráulio Felipe",
+    "addr:suburb": "Barra do Aririú",
+    "building": "yes",
+    "name": "Ideal Supermercado (Loja 4)",
+    "opening_hours": "07:00-21:00",
+    "phone": "+55 48 2012 8376",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1391372895,
+  "center": {
+    "lat": -27.6304173,
+    "lon": -48.6535654
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "650",
+    "addr:postcode": "88132-959",
+    "addr:street": "Rua José Soares de Oliveira",
+    "addr:suburb": "Ponte do Imaruim",
+    "alt_name": "Komprão",
+    "branch": "Loja 79",
+    "building": "yes",
+    "name": "Komprão Koch Atacadista",
+    "opening_hours": "07:00-22:00",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "phone": "+55 047 305-8072",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1391862026,
+  "center": {
+    "lat": -27.6491268,
+    "lon": -48.7096769
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "55",
+    "addr:postcode": "88132-599",
+    "addr:street": "Avenida Paulo Roberto Vidal",
+    "addr:suburb": "Caminho Novo",
+    "building": "yes",
+    "name": "Ideal Supermecado",
+    "opening_hours": "07:00-21:00",
+    "phone": "+55 048 2012-8323",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1392690323,
+  "center": {
+    "lat": -27.5993440,
+    "lon": -48.6242080
+  },
+  "tags": {
+    "addr:city": "São José",
+    "addr:housenumber": "SN",
+    "addr:postcode": "88108-100",
+    "addr:street": "Rua Pedro Cota de Castro",
+    "addr:suburb": "Roçado",
+    "brand": "Atacadão",
+    "brand:wikidata": "Q2868739",
+    "building": "yes",
+    "name": "Atacadão",
+    "note": "Marginal da BR 101",
+    "opening_hours": "07:00-22:00",
+    "phone": "+55 048 2108-424",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1393412507,
+  "center": {
+    "lat": -27.6620490,
+    "lon": -48.7098599
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Pública de Lazer Benta Alves de Souza"
+  }
+},
+{
+  "type": "way",
+  "id": 1414891195,
+  "center": {
+    "lat": -27.6325718,
+    "lon": -48.6542513
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "646",
+    "addr:postcode": "88130470",
+    "addr:street": "Rua Antônio Vieira",
+    "alt_name": "Supermercado Ideal",
+    "building": "yes",
+    "loc_name": "Ideal Supermercados",
+    "name": "Ideal Supermercado (Loja 1)",
+    "opening_hours": "08:00-22:00",
+    "phone": "+55 48 3242 5317",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1419024873,
+  "center": {
+    "lat": -27.5598453,
+    "lon": -48.5161602
+  },
+  "tags": {
+    "addr:housenumber": "1530",
+    "addr:street": "Rodovia João Paulo",
+    "building": "yes",
+    "name": "Centro Comercial Jaime Costa",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 1419526566,
+  "center": {
+    "lat": -27.5703631,
+    "lon": -48.6497570
+  },
+  "tags": {
+    "addr:housenumber": "2192",
+    "addr:street": "Rua José Antônio Pereira",
+    "building": "yes",
+    "name": "Centro Comercial Potecas",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 1423386163,
+  "center": {
+    "lat": -27.6307983,
+    "lon": -48.6380688
+  },
+  "tags": {
+    "addr:housenumber": "5545",
+    "addr:postcode": "88104205",
+    "addr:street": "Rua Frederico Afonso",
+    "amenity": "college",
+    "contact:instagram": "https://www.instagram.com/escoladeoleiros.smct.pmsj.sc/",
+    "name": "Escola de Oleiros Joaquim Antônio de Medeiros.",
+    "phone": "+55 48 3381 0048"
+  }
+},
+{
+  "type": "way",
+  "id": 1425675294,
+  "center": {
+    "lat": -27.6058233,
+    "lon": -48.5373019
+  },
+  "tags": {
+    "addr:street": "Rua Duque de Caxias",
+    "addr:suburb": "Saco dos Limões",
+    "branch": "Loja 1",
+    "building": "yes",
+    "contact:instagram": "https://www.instagram.com/p/CqqpdDHpsUe/",
+    "name": "Mercados Baratíssimo",
+    "opening_hours": "Mo-Sa 07:00-20:00; Su 08:00-12:30; PH off",
+    "phone": "+55 48 3333 5125",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1425900404,
+  "center": {
+    "lat": -27.5676045,
+    "lon": -48.6104751
+  },
+  "tags": {
+    "addr:housenumber": "1150",
+    "addr:street": "Avenida Leoberto Leal",
+    "addr:suburb": "Barreiros",
+    "building": "yes",
+    "contact:facebook": "https://www.facebook.com/alimentoscentral/?locale=pt_BR",
+    "contact:instagram": "https://www.instagram.com/central_alimentos/",
+    "email": "contato@centraldealimentos.com.br",
+    "mobile": "+55 47 99248 5741",
+    "name": "Central de Alimentos",
+    "payment:credit_cards": "yes",
+    "payment:pix": "yes",
+    "shop": "supermarket",
+    "website": "https://www.lojacentraldealimentos.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 1426074246,
+  "center": {
+    "lat": -27.6031019,
+    "lon": -48.6360995
+  },
+  "tags": {
+    "addr:street": "Rua Vereador Arthur Manoel Mariano",
+    "building": "yes",
+    "name": "Vitória Center",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 1426103678,
+  "center": {
+    "lat": -27.5970329,
+    "lon": -48.6432624
+  },
+  "tags": {
+    "addr:street": "Rua Vereador Arthur Manoel Mariano",
+    "amenity": "hospital",
+    "emergency": "yes",
+    "healthcare": "hospital",
+    "healthcare:speciality": "general",
+    "name": "Unidade de Pronto Atendimento Forquilhinha",
+    "operator": "Secretaria de Saúde",
+    "operator:type": "government",
+    "short_name": "UPA Forquilhinha"
+  }
+},
+{
+  "type": "way",
+  "id": 1426133687,
+  "center": {
+    "lat": -27.5702726,
+    "lon": -48.6386040
+  },
+  "tags": {
+    "addr:street": "Rua José Antônio Pereira",
+    "building": "yes",
+    "name": "Supermercado Ipiranga",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1426739624,
+  "center": {
+    "lat": -27.5899320,
+    "lon": -48.6489256
+  },
+  "tags": {
+    "addr:street": "Rua Kiliano Hames",
+    "building": "yes",
+    "name": "TT Ponto Forte",
+    "shop": "mall"
+  }
+},
+{
+  "type": "way",
+  "id": 1429610085,
+  "center": {
+    "lat": -27.6609439,
+    "lon": -48.6943755
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Parque Bela Vista Arcelino Luiz de Farias"
+  }
+},
+{
+  "type": "way",
+  "id": 1431717031,
+  "center": {
+    "lat": -27.6645058,
+    "lon": -48.5455404
+  },
+  "tags": {
+    "addr:housenumber": "3374",
+    "addr:street": "Avenida Deputado Diomício Freitas",
+    "addr:suburb": "Carianos",
+    "amenity": "college",
+    "contact:facebook": "https://www.facebook.com/VoeFloripaEscola/",
+    "contact:instagram": "https://www.instagram.com/voefloripa/",
+    "email": "atendimento@voefloripa.com.br",
+    "mobile": "+55 48 99692 2423",
+    "name": "VoeFloripa Escola de Aviação Cívil",
+    "website": "https://www.voefloripa.com.br/"
+  }
+},
+{
+  "type": "way",
+  "id": 1443367497,
+  "center": {
+    "lat": -27.5873397,
+    "lon": -48.5991652
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Iaponan Soares de Araújo"
+  }
+},
+{
+  "type": "way",
+  "id": 1443949145,
+  "center": {
+    "lat": -27.5868132,
+    "lon": -48.7160568
+  },
+  "tags": {
+    "addr:housenumber": "333",
+    "addr:postcode": "88123-001",
+    "addr:street": "Avenida Engelberto Koerich",
+    "addr:suburb": "Colônia Santana",
+    "amenity": "hospital",
+    "email": "ipq@saude.sc.gov.br",
+    "emergency": "yes",
+    "healthcare": "hospital",
+    "name": "Instituto de Psiquiatria do Estado de Santa Catarina",
+    "operator": "Secretaria de Estado da Saúde",
+    "operator:type": "government",
+    "phone": "+55 48 3664 3400",
+    "website": "https://www.saude.sc.gov.br/index.php/pt/ses-sc/unidades-de-saude/instituto-de-psiquiatria-ipq"
+  }
+},
+{
+  "type": "way",
+  "id": 1444735220,
+  "center": {
+    "lat": -27.6539442,
+    "lon": -48.6935454
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Terrabella"
+  }
+},
+{
+  "type": "way",
+  "id": 1457150770,
+  "center": {
+    "lat": -27.6267769,
+    "lon": -48.6698978
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "88",
+    "addr:postcode": "88137-272",
+    "addr:street": "Av. Pedra Branca",
+    "addr:suburb": "Pedra Branca",
+    "branch": "Loja 84 - Pedra Branca",
+    "building": "supermarket",
+    "name": "Komprão Koch Atacadista",
+    "opening_hours": "07:00-22:00",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:pix": "yes",
+    "phone": "+55 048 3263-8282",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1457759958,
+  "center": {
+    "lat": -27.6421572,
+    "lon": -48.6703015
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "270",
+    "addr:postcode": "88132-149",
+    "addr:street": "Avenida Atílio Pedro Pagani",
+    "addr:suburb": "Pagani",
+    "building": "supermarket",
+    "layer": "1",
+    "name": "Giassi Supermercados",
+    "opening_hours": "07:30-22:00",
+    "phone": "+55 48 3279-0500",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1457762719,
+  "center": {
+    "lat": -27.6413821,
+    "lon": -48.6872898
+  },
+  "tags": {
+    "addr:city": "Palhoça",
+    "addr:housenumber": "925",
+    "addr:postcode": "88132-149",
+    "addr:street": "Avenida Atílio Pedro Pagani",
+    "addr:suburb": "Pagani",
+    "building": "supermarket",
+    "name": "Prado Supermercado",
+    "phone": "+55 48 4109-0010",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1462057192,
+  "center": {
+    "lat": -27.5827005,
+    "lon": -48.6735850
+  },
+  "tags": {
+    "addr:street": "Rua Antônio Jovita Duarte",
+    "building": "yes",
+    "contact:instagram": "https://www.instagram.com/santossupermercados/",
+    "name": "Santos Supermercados",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1463554302,
+  "center": {
+    "lat": -27.5896854,
+    "lon": -48.6031683
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Andréia Dolisete dos Santos"
+  }
+},
+{
+  "type": "way",
+  "id": 1496802874,
+  "center": {
+    "lat": -27.6062443,
+    "lon": -48.5960548
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça e parque ecolôgico Ilha das conchas"
+  }
+},
+{
+  "type": "way",
+  "id": 1507479838,
+  "center": {
+    "lat": -27.5595519,
+    "lon": -48.6202703
+  },
+  "tags": {
+    "addr:housenumber": "334",
+    "addr:street": "Rua João Ambrósio da Silva",
+    "building": "yes",
+    "name": "Direto do Campo",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1507515513,
+  "center": {
+    "lat": -27.5648201,
+    "lon": -48.6389870
+  },
+  "tags": {
+    "addr:street": "Rua Franklin Cascaes",
+    "building": "yes",
+    "name": "Mercado Guga Express",
+    "opening_hours": "Mo-Sa 00:01-02:00,06:00-23:59; Su 07:00-22:00; PH off",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1541448425,
+  "center": {
+    "lat": -27.5859062,
+    "lon": -48.6811289
+  },
+  "tags": {
+    "addr:street": "Rua João Honorato da Silveira",
+    "building": "yes",
+    "name": "Mercado União",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1544603127,
+  "center": {
+    "lat": -27.5567522,
+    "lon": -48.6593510
+  },
+  "tags": {
+    "addr:housenumber": "857",
+    "addr:street": "Rua Acelino Pereira",
+    "building": "yes",
+    "mobile": "+55 48 99652 5663",
+    "name": "Supermercado Jardim Botânico",
+    "phone": "+55 48 2013 3131",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1547712266,
+  "center": {
+    "lat": -27.6044375,
+    "lon": -48.5926333
+  },
+  "tags": {
+    "addr:postcode": "88085-174",
+    "addr:street": "Avenida Patrício Caldeira de Andrada",
+    "addr:suburb": "Abraão",
+    "air_conditioning": "yes",
+    "building": "yes",
+    "building:levels": "1",
+    "layer": "1",
+    "name": "Bistek Supermercados",
+    "shop": "supermarket",
+    "stroller": "yes",
+    "website": "https://www.bistek.com.br/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1556774301,
+  "center": {
+    "lat": -27.5754309,
+    "lon": -48.6615969
+  },
+  "tags": {
+    "addr:street": "Avenida Ceniro Luiz Ribeiro Martins",
+    "building": "yes",
+    "delivery": "yes",
+    "name": "Mercado Ceniro",
+    "phone": "+55 48 3375 3149",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 1567235971,
+  "center": {
+    "lat": -27.6063190,
+    "lon": -48.5468239
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Turma da Árvore"
+  }
+},
+{
+  "type": "way",
+  "id": 1567794969,
+  "center": {
+    "lat": -27.5589433,
+    "lon": -48.6322270
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Parque Linear de Areias"
+  }
+},
+{
+  "type": "way",
+  "id": 1575028082,
+  "center": {
+    "lat": -27.5931503,
+    "lon": -48.5091165
+  },
+  "tags": {
+    "addr:street": "Rua Doutor João Carlos Baron Maurer",
+    "leisure": "park",
+    "name": "Parque do Jacaré",
+    "opening_hours": "24h"
+  }
+},
+{
+  "type": "relation",
+  "id": 2167640,
+  "center": {
+    "lat": -27.6004060,
+    "lon": -48.5197117
+  },
+  "tags": {
+    "addr:postcode": "88040-900",
+    "addr:street": "Rua Roberto Sampaio Gonzaga",
+    "alt_name": "Campus Universitário",
+    "amenity": "university",
+    "contact:phone": "+55 48 3721-9000",
+    "contact:website": "https://ufsc.br/",
+    "name": "Universidade Federal de Santa Catarina",
+    "name:en": "Federal University of Santa Catarina",
+    "short_name": "UFSC",
+    "type": "multipolygon",
+    "wheelchair": "yes",
+    "wikidata": "Q1851075",
+    "wikipedia": "pt:Universidade Federal de Santa Catarina"
+  }
+},
+{
+  "type": "relation",
+  "id": 6690052,
+  "center": {
+    "lat": -27.7195457,
+    "lon": -48.5642190
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Maria Francisca da Silva (Dona Chiquinha)",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 6712396,
+  "center": {
+    "lat": -27.5851548,
+    "lon": -48.5500745
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Sesquicentenário da Polícia Militar",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 6938277,
+  "center": {
+    "lat": -27.5935222,
+    "lon": -48.5615565
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Hercílio Luz",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 6958433,
+  "center": {
+    "lat": -27.5931115,
+    "lon": -48.6012344
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Monte Cristo",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 7941975,
+  "center": {
+    "lat": -27.5946097,
+    "lon": -48.5725714
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Praça Alziro Zarur",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 9259454,
+  "center": {
+    "lat": -27.6153284,
+    "lon": -48.5858470
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Manoel David Chaves",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 13105801,
+  "center": {
+    "lat": -27.6017707,
+    "lon": -48.5742897
+  },
+  "tags": {
+    "dog": "yes",
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Parque de Coqueiros Engenheiro Hamilton Schaefer",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 13105811,
+  "center": {
+    "lat": -27.6065004,
+    "lon": -48.5733822
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça e Marina Ponta da Ilhota",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 13116481,
+  "center": {
+    "lat": -27.5975619,
+    "lon": -48.5606997
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Parque Náutico Valter Lange",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 13137926,
+  "center": {
+    "lat": -27.6086908,
+    "lon": -48.5807119
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "358",
+    "addr:postcode": "88080-350",
+    "addr:street": "Rua Pascoal Simone",
+    "addr:suburb": "Coqueiros",
+    "amenity": "university",
+    "contact:phone": "+55 48 3664-8600",
+    "contact:website": "https://www.udesc.br/cefid/",
+    "faculty": "sports",
+    "name": "Centro de Ciências da Saúde e do Esporte",
+    "operator": "Universidade do Estado de Santa Catarina",
+    "short_name": "CEFID UDESC",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 13137927,
+  "center": {
+    "lat": -27.5857592,
+    "lon": -48.5048884
+  },
+  "tags": {
+    "amenity": "university",
+    "contact:website": "https://www.udesc.br/",
+    "name": "Universidade do Estado de Santa Catarina",
+    "short_name": "UDESC",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 13257146,
+  "center": {
+    "lat": -27.6436477,
+    "lon": -48.7031870
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Parque do Madri",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 13260155,
+  "center": {
+    "lat": -27.6480238,
+    "lon": -48.6724423
+  },
+  "tags": {
+    "leisure": "park",
+    "lit": "yes",
+    "name": "Parque das Bandeiras",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 13260254,
+  "center": {
+    "lat": -27.7154052,
+    "lon": -48.5624895
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Fermínio Manoel da Silva",
+    "source:name": "survey",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 16384004,
+  "center": {
+    "lat": -27.6407835,
+    "lon": -48.6830047
+  },
+  "tags": {
+    "leisure": "park",
+    "name": "Praça Pública de Lazer Miguel de Souza Pagani",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 17090819,
+  "center": {
+    "lat": -27.6808281,
+    "lon": -48.6395531
+  },
+  "tags": {
+    "alt_name": "Parque da Barra",
+    "leisure": "park",
+    "name": "Praça Francisco João Lucas",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 17090872,
+  "center": {
+    "lat": -27.6853316,
+    "lon": -48.5424557
+  },
+  "tags": {
+    "addr:city": "Florianópolis",
+    "addr:housenumber": "1326",
+    "addr:postcode": "88049-500",
+    "addr:street": "Rua José Olímpio da Silva",
+    "addr:suburb": "Tapera",
+    "alt_name": "Centro de Ciências Agrárias",
+    "amenity": "university",
+    "contact:phone": "+55 48 3721-4614",
+    "contact:website": "http://fazenda.ufsc.br/",
+    "description": "Campus Sul da Ilha - Centro de Ciências Agrárias",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "internet_access:ssid": "eduroam",
+    "name": "Fazenda Experimental da Ressacada",
+    "operator": "Universidade Federal de Santa Catarina",
+    "operator:short": "UFSC",
+    "operator:type": "university",
+    "operator:wikidata": "Q1851075",
+    "short_name": "FER/CCA/UFSC",
+    "type": "multipolygon",
+    "website": "http://www.fazenda.ufsc.br/"
+  }
+}
+
+  ]
+}

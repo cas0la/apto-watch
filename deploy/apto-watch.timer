@@ -1,0 +1,10 @@
+[Unit]
+Description=Roda o apto-watch a cada 3 horas, das 7h às 22h
+
+[Timer]
+OnCalendar=*-*-* 07,10,13,16,19,22:00:00
+RandomizedDelaySec=15min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

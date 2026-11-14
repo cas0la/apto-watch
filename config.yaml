@@ -1,0 +1,75 @@
+# apto-watch: o que o watcher procura e com que ritmo.
+# Segredos (Supabase, Telegram) ficam no arquivo .env, nunca aqui.
+
+# Identificação honesta do robô. Troque o link pelo do seu repositório.
+user_agent: "apto-watch/0.1 (busca pessoal de aluguel; +https://github.com/cas0la/apto-watch)"
+
+# Ritmo: uma requisição a cada N segundos, poucas páginas por busca.
+delay_seconds: 10
+max_pages_per_search: 8
+# Páginas de detalhe lidas por execução (só em fontes automáticas que aceitam o robô).
+detail_limit: 25
+
+# Condições para um anúncio entrar na lista.
+criteria:
+  max_total: 3500          # aluguel + condomínio
+  min_banheiros: 2
+  min_vagas: 1
+  regioes:
+    "Palhoça":
+      incluir: ["Pedra Branca"]
+    "São José":
+      excluir: ["Areias", "Serraria", "Roçado", "Forquilhinha", "Forquilhinhas", "Forquilinha", "Forquilinhas", "Forquilhas", "Lisboa",
+                "San Marino", "Sertão do Maruim", "Ipiranga"]
+    "Florianópolis":
+      incluir: ["Estreito", "Balneário", "Coqueiros", "Abraão", "Capoeiras", "Itaguaçu",
+                "Bom Abrigo", "Jardim Atlântico", "Canto", "Monte Cristo", "Coloninha",
+                "Vila São João", "Centro", "Trindade", "Agronômica", "Córrego Grande",
+                "Itacorubi", "Santa Mônica", "Pantanal", "Saco dos Limões", "Carvoeira",
+                "José Mendes", "Serrinha", "Prainha"]
+
+# Buscas. modo: auto = o watcher lê sozinho (site aceita robô identificado e o robots.txt permite);
+#        assistido = o site recusa robôs; a coleta é feita pelo Claude no seu Chrome, quando você pedir,
+#        e importada com `python -m watcher --ingest`. Teste de 06/11/2026.
+searches:
+  # Automáticas
+  - source: ibagy
+    modo: auto
+    url: "https://ibagy.com.br/busca?finalidade=aluguel&categoriagrupo=Residencial&tipo_residencial[]=apartamento&cidadebairro[]=palhoça&banheiros[]=2&vagas[]=1"
+    assume: {banheiros: 2}   # o card não mostra banheiros; o filtro da busca garante 2+
+  - source: ibagy
+    modo: auto
+    url: "https://ibagy.com.br/busca?finalidade=aluguel&categoriagrupo=Residencial&tipo_residencial[]=apartamento&cidadebairro[]=sao-jose&banheiros[]=2&vagas[]=1"
+    assume: {banheiros: 2}
+  - source: ibagy
+    modo: auto
+    url: "https://ibagy.com.br/busca?finalidade=aluguel&categoriagrupo=Residencial&tipo_residencial[]=apartamento&cidadebairro[]=florianopolis&banheiros[]=2&vagas[]=1"
+    assume: {banheiros: 2}
+  - source: quintoandar
+    modo: auto
+    url: "https://www.quintoandar.com.br/alugar/imovel/palhoca-sc-brasil/apartamento/1-vagas/2-banheiros/de-500-a-3500-reais"
+  - source: quintoandar
+    modo: auto
+    url: "https://www.quintoandar.com.br/alugar/imovel/sao-jose-sc-brasil/apartamento/1-vagas/2-banheiros/de-500-a-3500-reais"
+  - source: quintoandar
+    modo: auto
+    url: "https://www.quintoandar.com.br/alugar/imovel/florianopolis-sc-brasil/apartamento/1-vagas/2-banheiros/de-500-a-3500-reais"
+
+  # Assistidas (recusaram robô identificado: HTTP 403/429)
+  - source: vivareal
+    modo: assistido
+    url: "https://www.vivareal.com.br/aluguel/santa-catarina/palhoca/bairros/pedra-branca/apartamento_residencial/?banheiros=2,3,4&vagas=1,2,3,4&precoMaximo=3500"
+  - source: vivareal
+    modo: assistido
+    url: "https://www.vivareal.com.br/aluguel/santa-catarina/sao-jose/apartamento_residencial/?banheiros=2,3,4&vagas=1,2,3,4&precoMaximo=3500"
+  - source: vivareal
+    modo: assistido
+    url: "https://www.vivareal.com.br/aluguel/santa-catarina/florianopolis/apartamento_residencial/?banheiros=2,3,4&vagas=1,2,3,4&precoMaximo=3500"
+  - source: olx
+    modo: assistido
+    url: "https://www.olx.com.br/imoveis/aluguel/apartamentos/estado-sc/florianopolis-e-regiao/grande-florianopolis/palhoca"
+  - source: olx
+    modo: assistido
+    url: "https://www.olx.com.br/imoveis/aluguel/apartamentos/estado-sc/florianopolis-e-regiao/grande-florianopolis/sao-jose"
+  # Crédito Real (creditoreal.com.br) recusou com HTTP 429; Adriano Imóveis proíbe robôs no robots.txt.
+  # Brognoli e Isci aceitam o robô, mas montam a busca por JavaScript: leitores ainda não feitos.
