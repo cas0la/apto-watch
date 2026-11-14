@@ -1,0 +1,481 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-14T00:00:00Z",
+  "title": "Design System: Busca de apartamentos",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Off-white Ground",
+        "canonical": "#f6f5f1",
+        "oklch": "oklch(97.0% 0.005 95)",
+        "tonalRamp": [
+          "#0c0b09",
+          "#252421",
+          "#40403d",
+          "#5e5e5a",
+          "#7e7d7a",
+          "#9f9e9b",
+          "#c5c4c0",
+          "#efeeea"
+        ]
+      },
+      "sheet": {
+        "role": "neutral",
+        "displayName": "Sheet White",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 90)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "sign": {
+        "role": "primary",
+        "displayName": "Placa Yellow",
+        "canonical": "#ffd23f",
+        "oklch": "oklch(87.9% 0.162 91)",
+        "tonalRamp": [
+          "#100a00",
+          "#2d2302",
+          "#4e3e0a",
+          "#725b07",
+          "#987a0b",
+          "#bd9a28",
+          "#ebbf1f",
+          "#feeebf"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Sign Black",
+        "canonical": "#141414",
+        "oklch": "oklch(19.1% 0.000 90)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#3d3d3a",
+        "oklch": "oklch(35.9% 0.005 107)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#242421",
+          "#40403d",
+          "#5e5e5b",
+          "#7d7d7a",
+          "#9f9f9b",
+          "#c4c4c1",
+          "#efefeb"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Stone",
+        "canonical": "#686862",
+        "oklch": "oklch(51.5% 0.009 107)",
+        "tonalRamp": [
+          "#0c0b07",
+          "#24241f",
+          "#40403b",
+          "#5e5e58",
+          "#7e7e77",
+          "#9f9f98",
+          "#c5c5be",
+          "#efefe8"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#d9d7cf",
+        "oklch": "oklch(87.8% 0.011 95)",
+        "tonalRamp": [
+          "#0d0b06",
+          "#26241e",
+          "#414039",
+          "#5f5e57",
+          "#7f7d76",
+          "#a09e97",
+          "#c6c4bc",
+          "#f1efe6"
+        ]
+      },
+      "chip": {
+        "role": "neutral",
+        "displayName": "Chip",
+        "canonical": "#efeee8",
+        "oklch": "oklch(94.8% 0.008 99)",
+        "tonalRamp": [
+          "#0c0b08",
+          "#252420",
+          "#41403b",
+          "#5f5e59",
+          "#7e7d78",
+          "#9f9e99",
+          "#c5c4be",
+          "#f0efe9"
+        ]
+      },
+      "tarja": {
+        "role": "secondary",
+        "displayName": "Tarja Red",
+        "canonical": "#d7261e",
+        "oklch": "oklch(56.7% 0.212 29)",
+        "tonalRamp": [
+          "#1e0000",
+          "#4a0303",
+          "#78100b",
+          "#b00e0b",
+          "#df3026",
+          "#ff6555",
+          "#ffab9f",
+          "#fee9e6"
+        ]
+      },
+      "tarja-ink": {
+        "role": "secondary",
+        "displayName": "Tarja Ink",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 90)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "ink-hover": {
+        "role": "neutral",
+        "displayName": "Ink Hover",
+        "canonical": "#2b2b2b",
+        "oklch": "oklch(28.9% 0.000 90)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "sign-faded": {
+        "role": "primary",
+        "displayName": "Faded Placa",
+        "canonical": "#e9e7df",
+        "oklch": "oklch(92.7% 0.011 95)",
+        "tonalRamp": [
+          "#0d0b06",
+          "#26241e",
+          "#414039",
+          "#5f5e57",
+          "#7f7d76",
+          "#a09e97",
+          "#c6c4bc",
+          "#f1efe6"
+        ]
+      },
+      "sign-wash": {
+        "role": "primary",
+        "displayName": "Placa Wash",
+        "canonical": "#fbf6dd",
+        "oklch": "oklch(97.0% 0.033 98)",
+        "tonalRamp": [
+          "#0f0b00",
+          "#282411",
+          "#44402c",
+          "#625e49",
+          "#827e67",
+          "#a49f88",
+          "#cac5ad",
+          "#f4efd6"
+        ]
+      },
+      "on-ink": {
+        "role": "neutral",
+        "displayName": "On-ink",
+        "canonical": "#f1efe6",
+        "oklch": "oklch(95.1% 0.012 96)",
+        "tonalRamp": [
+          "#0d0b06",
+          "#26241d",
+          "#414039",
+          "#5f5e56",
+          "#7f7d75",
+          "#a09f96",
+          "#c6c4bc",
+          "#f1efe6"
+        ]
+      },
+      "on-ink-2": {
+        "role": "neutral",
+        "displayName": "On-ink Dim",
+        "canonical": "#b9b6aa",
+        "oklch": "oklch(77.5% 0.017 95)",
+        "tonalRamp": [
+          "#0d0b04",
+          "#26241b",
+          "#424036",
+          "#605e53",
+          "#807d72",
+          "#a19f93",
+          "#c7c4b8",
+          "#f2efe2"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page title in the yellow header; uppercase."
+      },
+      "price": {
+        "displayName": "Price",
+        "purpose": "Total in the ALUGA-SE strip; the largest number on a card."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Period counts (28px); opportunity totals use 22px."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Region headings and alert names; uppercase."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Header summary line; uppercase."
+      },
+      "tab": {
+        "displayName": "Tab",
+        "purpose": "Tab labels; 12px/0.02em at <=420px."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, strip label, summaries; uppercase."
+      },
+      "flag": {
+        "displayName": "Flag",
+        "purpose": "Photo flags; pill 11px, mini-tarja 10px."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, tabular figures; ledes cap at 66ch."
+      },
+      "address": {
+        "displayName": "Address",
+        "purpose": "Street line on a card."
+      },
+      "body-sm": {
+        "displayName": "Body small",
+        "purpose": "Breakdown, conditions, notes, references."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Tags, photo counter, timestamps."
+      }
+    },
+    "shadows": [],
+    "borders": [
+      {
+        "name": "frame",
+        "value": "2px solid #141414",
+        "purpose": "Every card, alert, button, input, strip edge and period divider."
+      },
+      {
+        "name": "emphasis",
+        "value": "3px solid #141414",
+        "purpose": "Header bottom rule; favourite outline."
+      },
+      {
+        "name": "plate",
+        "value": "1.5px solid #141414",
+        "purpose": "Tags and notes; dashed for warnings, notes and paused alerts."
+      },
+      {
+        "name": "hairline",
+        "value": "1px solid #d9d7cf",
+        "purpose": "Internal separators."
+      },
+      {
+        "name": "focus",
+        "value": "outline: 2.5px solid #141414; outline-offset: 2px",
+        "purpose": "Global focus ring; yellow and -3px inset on the tab bar."
+      }
+    ],
+    "motion": [
+      {
+        "name": "cola",
+        "value": "450ms cubic-bezier(.16,1,.3,1); scale 1.25 to 1, rotate -6deg to -14deg, opacity 0 to 1",
+        "purpose": "The ALUGADO tarja sticks once when a listing is marked rented. Off under reduced motion."
+      },
+      {
+        "name": "button-fill",
+        "value": "background-color 150ms",
+        "purpose": "Button hover fill. Off under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "max-width: 420px"
+      },
+      {
+        "name": "wide",
+        "value": "min-width: 900px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Button (default, pressed, disabled, pressed+disabled)",
+      "kind": "button",
+      "refersTo": "button",
+      "description": "Card actions. Pressed = ink fill with yellow label; a rented listing keeps its pressed mark at 55% while disabled.",
+      "html": "<div style=\"display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:360px\"><button class=\"ds-btn\"><svg class=\"ds-ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 20 4.5 12.6a4.6 4.6 0 0 1 6.5-6.5l1 1 1-1a4.6 4.6 0 0 1 6.5 6.5Z\"/></svg>Favoritar</button><button class=\"ds-btn\" aria-pressed=\"true\"><svg class=\"ds-ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg>Alugado</button><button class=\"ds-btn\" disabled><svg class=\"ds-ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 20 4.5 12.6a4.6 4.6 0 0 1 6.5-6.5l1 1 1-1a4.6 4.6 0 0 1 6.5 6.5Z\"/></svg>Favoritar</button><button class=\"ds-btn\" aria-pressed=\"true\" disabled><svg class=\"ds-ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg>Alugado</button></div>",
+      "css": ":root{--ground:#f6f5f1;--sheet:#fff;--sign:#ffd23f;--ink:#141414;--ink-2:#3d3d3a;--muted:#686862;--rule:#d9d7cf;--chip:#efeee8;--tarja:#d7261e;--tarja-ink:#fff;--ink-hover:#2b2b2b;--sign-faded:#e9e7df;--sign-wash:#fbf6dd;--on-ink:#f1efe6;--on-ink-2:#b9b6aa;--display:'Archivo Narrow','Arial Narrow',sans-serif;--body:'Archivo',system-ui,sans-serif;--r:2px}.ds-ico{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter}.ds-btn{font:700 13px/1 var(--display);text-transform:uppercase;letter-spacing:.05em;border:2px solid var(--ink);border-radius:var(--r);background:var(--sheet);color:var(--ink);min-height:44px;padding:0 10px;display:inline-flex;gap:6px;align-items:center;justify-content:center;cursor:pointer;transition:background-color .15s}.ds-btn:hover{background:var(--sign)}.ds-btn:focus-visible{outline:2.5px solid var(--ink);outline-offset:2px}.ds-btn[aria-pressed=\"true\"]{background:var(--ink);color:var(--sign)}.ds-btn:disabled{opacity:.4;cursor:not-allowed;background:var(--sheet)}.ds-btn[aria-pressed=\"true\"]:disabled{background:var(--ink);color:var(--sign);opacity:.55}"
+    },
+    {
+      "name": "Primary and Danger Buttons",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary (Novo alerta, login) is ink with yellow lettering; danger (Excluir) is red line, red fill on hover.",
+      "html": "<div style=\"display:flex;gap:6px\"><button class=\"ds-btn ds-primary\">Novo alerta</button><button class=\"ds-btn ds-danger\">Excluir</button></div>",
+      "css": ":root{--ground:#f6f5f1;--sheet:#fff;--sign:#ffd23f;--ink:#141414;--ink-2:#3d3d3a;--muted:#686862;--rule:#d9d7cf;--chip:#efeee8;--tarja:#d7261e;--tarja-ink:#fff;--ink-hover:#2b2b2b;--sign-faded:#e9e7df;--sign-wash:#fbf6dd;--on-ink:#f1efe6;--on-ink-2:#b9b6aa;--display:'Archivo Narrow','Arial Narrow',sans-serif;--body:'Archivo',system-ui,sans-serif;--r:2px}.ds-btn{font:700 13px/1 var(--display);text-transform:uppercase;letter-spacing:.05em;border:2px solid var(--ink);border-radius:var(--r);background:var(--sheet);color:var(--ink);min-height:44px;padding:0 10px;display:inline-flex;gap:6px;align-items:center;justify-content:center;cursor:pointer;transition:background-color .15s}.ds-btn:hover{background:var(--sign)}.ds-btn:focus-visible{outline:2.5px solid var(--ink);outline-offset:2px}.ds-btn[aria-pressed=\"true\"]{background:var(--ink);color:var(--sign)}.ds-btn:disabled{opacity:.4;cursor:not-allowed;background:var(--sheet)}.ds-btn[aria-pressed=\"true\"]:disabled{background:var(--ink);color:var(--sign);opacity:.55}.ds-primary{background:var(--ink);color:var(--sign)}.ds-primary:hover{background:var(--ink-hover)}.ds-danger{color:var(--tarja);border-color:var(--tarja)}.ds-danger:hover{background:var(--tarja);color:var(--tarja-ink)}"
+    },
+    {
+      "name": "Tab Bar",
+      "kind": "nav",
+      "refersTo": "tab",
+      "description": "Sticky black bar; the active tab is a solid yellow cell. 5-column grid with short labels at <=420px.",
+      "html": "<nav class=\"ds-tabs\" role=\"tablist\"><button class=\"ds-tab\" role=\"tab\" aria-selected=\"true\">Análise <b>18</b></button><button class=\"ds-tab\" role=\"tab\">Não fav. <b>8</b></button><button class=\"ds-tab\" role=\"tab\">Favoritos <b>10</b></button><button class=\"ds-tab\" role=\"tab\">Descartes <b>55</b></button><button class=\"ds-tab\" role=\"tab\">Alertas <b>2</b></button></nav>",
+      "css": ":root{--ground:#f6f5f1;--sheet:#fff;--sign:#ffd23f;--ink:#141414;--ink-2:#3d3d3a;--muted:#686862;--rule:#d9d7cf;--chip:#efeee8;--tarja:#d7261e;--tarja-ink:#fff;--ink-hover:#2b2b2b;--sign-faded:#e9e7df;--sign-wash:#fbf6dd;--on-ink:#f1efe6;--on-ink-2:#b9b6aa;--display:'Archivo Narrow','Arial Narrow',sans-serif;--body:'Archivo',system-ui,sans-serif;--r:2px}.ds-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));background:var(--ink);max-width:390px}.ds-tab{font:600 12px/1 var(--display);text-transform:uppercase;letter-spacing:.02em;color:var(--on-ink);background:none;border:0;padding:9px 2px 8px;min-height:52px;display:flex;flex-direction:column;gap:3px;align-items:center;justify-content:center;cursor:pointer;white-space:nowrap}.ds-tab b{font:700 13px/1 var(--body);color:var(--on-ink-2)}.ds-tab[aria-selected=\"true\"]{background:var(--sign);color:var(--ink)}.ds-tab[aria-selected=\"true\"] b{color:var(--ink)}.ds-tab:focus-visible{outline:2.5px solid var(--sign);outline-offset:-3px}"
+    },
+    {
+      "name": "ALUGA-SE Strip",
+      "kind": "custom",
+      "refersTo": "sign-strip",
+      "description": "Yellow band with ALUGA-SE, the neighbourhood and the condensed total; struck-through previous total on a price drop; faded when rented.",
+      "html": "<div style=\"max-width:390px;display:grid;gap:8px\"><div class=\"ds-strip\"><span class=\"ds-lbl\">Aluga-se · Pedra Branca</span><span><span class=\"ds-was\">R$ 2.900</span><span class=\"ds-tot\">R$ 2.750</span></span></div><div class=\"ds-strip ds-rented\"><span class=\"ds-lbl\">Aluga-se · Pedra Branca</span><span class=\"ds-tot\">R$ 2.802</span></div></div>",
+      "css": ":root{--ground:#f6f5f1;--sheet:#fff;--sign:#ffd23f;--ink:#141414;--ink-2:#3d3d3a;--muted:#686862;--rule:#d9d7cf;--chip:#efeee8;--tarja:#d7261e;--tarja-ink:#fff;--ink-hover:#2b2b2b;--sign-faded:#e9e7df;--sign-wash:#fbf6dd;--on-ink:#f1efe6;--on-ink-2:#b9b6aa;--display:'Archivo Narrow','Arial Narrow',sans-serif;--body:'Archivo',system-ui,sans-serif;--r:2px}.ds-strip{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--sign);border-block:2px solid var(--ink);padding:8px 12px;color:var(--ink)}.ds-lbl{font:700 13px/1.15 var(--display);text-transform:uppercase;letter-spacing:.05em}.ds-tot{font:700 30px/1 var(--display);white-space:nowrap}.ds-was{display:block;font:600 12px var(--body);text-decoration:line-through;text-align:right;color:var(--ink-2)}.ds-rented{background:var(--sign-faded)}"
+    },
+    {
+      "name": "ALUGADO Tarja and Rent Note",
+      "kind": "custom",
+      "refersTo": "tarja",
+      "description": "Diagonal red band over a grayscale photo; rent note is automatic (Provavelmente alugado, no undo) or manual (Marcado como alugado, with Desfazer).",
+      "html": "<div style=\"max-width:390px;border:2px solid var(--ink-2);background:var(--sheet)\"><div class=\"ds-photo\"><div class=\"ds-tarja\">Alugado</div></div><div style=\"padding:12px;display:grid;gap:10px\"><div class=\"ds-rentnote\"><span><b>Provavelmente alugado.</b> Saiu do ar no VivaReal em 12/11.</span></div><div class=\"ds-rentnote\"><span><b>Marcado como alugado.</b> Por você em 13/11.</span><button class=\"ds-btn\"><svg class=\"ds-ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M9 7 4 12l5 5M4 12h11a5 5 0 0 1 0 10h-3\"/></svg>Desfazer</button></div></div></div>",
+      "css": ":root{--ground:#f6f5f1;--sheet:#fff;--sign:#ffd23f;--ink:#141414;--ink-2:#3d3d3a;--muted:#686862;--rule:#d9d7cf;--chip:#efeee8;--tarja:#d7261e;--tarja-ink:#fff;--ink-hover:#2b2b2b;--sign-faded:#e9e7df;--sign-wash:#fbf6dd;--on-ink:#f1efe6;--on-ink-2:#b9b6aa;--display:'Archivo Narrow','Arial Narrow',sans-serif;--body:'Archivo',system-ui,sans-serif;--r:2px}.ds-ico{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter}.ds-btn{font:700 13px/1 var(--display);text-transform:uppercase;letter-spacing:.05em;border:2px solid var(--ink);border-radius:var(--r);background:var(--sheet);color:var(--ink);min-height:44px;padding:0 10px;display:inline-flex;gap:6px;align-items:center;justify-content:center;cursor:pointer;transition:background-color .15s}.ds-btn:hover{background:var(--sign)}.ds-btn:focus-visible{outline:2.5px solid var(--ink);outline-offset:2px}.ds-btn[aria-pressed=\"true\"]{background:var(--ink);color:var(--sign)}.ds-btn:disabled{opacity:.4;cursor:not-allowed;background:var(--sheet)}.ds-btn[aria-pressed=\"true\"]:disabled{background:var(--ink);color:var(--sign);opacity:.55}.ds-photo{position:relative;overflow:hidden;height:200px;background:repeating-linear-gradient(0deg,#bbb 0 18px,#999 18px 20px);filter:none}.ds-tarja{position:absolute;left:-20%;right:-20%;top:42%;background:var(--tarja);color:var(--tarja-ink);font:700 30px/1 var(--display);text-transform:uppercase;letter-spacing:.18em;text-align:center;padding:8px 0;rotate:-14deg;animation:ds-cola .45s cubic-bezier(.16,1,.3,1)}@keyframes ds-cola{from{scale:1.25;opacity:0;rotate:-6deg}to{scale:1;opacity:1;rotate:-14deg}}@media (prefers-reduced-motion:reduce){.ds-tarja{animation:none}}.ds-rentnote{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--sheet);border:2px solid var(--tarja);padding:8px 10px;font:400 13px/1.5 var(--body);color:var(--ink)}.ds-rentnote b{color:var(--tarja)}.ds-rentnote .ds-btn{min-height:36px}"
+    },
+    {
+      "name": "Flags",
+      "kind": "chip",
+      "refersTo": "flag",
+      "description": "Plates on the photo: ink+yellow for Novo / Baixou; light sheet plates for Favorito, Descartado and Era descartado (reaberto).",
+      "html": "<div class=\"ds-flags\"><span class=\"ds-flag\">Novo</span><span class=\"ds-flag\">Baixou R$ 150</span><span class=\"ds-flag ds-light\">Favorito · Lucas</span><span class=\"ds-flag ds-light\">Descartado · Ana</span><span class=\"ds-flag ds-light\">Era descartado</span></div>",
+      "css": ":root{--ground:#f6f5f1;--sheet:#fff;--sign:#ffd23f;--ink:#141414;--ink-2:#3d3d3a;--muted:#686862;--rule:#d9d7cf;--chip:#efeee8;--tarja:#d7261e;--tarja-ink:#fff;--ink-hover:#2b2b2b;--sign-faded:#e9e7df;--sign-wash:#fbf6dd;--on-ink:#f1efe6;--on-ink-2:#b9b6aa;--display:'Archivo Narrow','Arial Narrow',sans-serif;--body:'Archivo',system-ui,sans-serif;--r:2px}.ds-flags{display:flex;gap:6px;flex-wrap:wrap;padding:8px;background:#888}.ds-flag{font:700 12px/1 var(--display);text-transform:uppercase;letter-spacing:.06em;padding:6px 8px;background:var(--ink);color:var(--sign)}.ds-light{background:var(--sheet);color:var(--ink);border:2px solid var(--ink);padding:4px 6px}"
+    },
+    {
+      "name": "Tags",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Fact chips under the address: good facts inverted, warnings dashed, source in hairline.",
+      "html": "<div class=\"ds-tags\"><span class=\"ds-tag ds-good\">gás encanado</span><span class=\"ds-tag\">elevador</span><span class=\"ds-tag ds-warn\">semimobiliado</span><span class=\"ds-tag ds-src\">VivaReal</span></div>",
+      "css": ":root{--ground:#f6f5f1;--sheet:#fff;--sign:#ffd23f;--ink:#141414;--ink-2:#3d3d3a;--muted:#686862;--rule:#d9d7cf;--chip:#efeee8;--tarja:#d7261e;--tarja-ink:#fff;--ink-hover:#2b2b2b;--sign-faded:#e9e7df;--sign-wash:#fbf6dd;--on-ink:#f1efe6;--on-ink-2:#b9b6aa;--display:'Archivo Narrow','Arial Narrow',sans-serif;--body:'Archivo',system-ui,sans-serif;--r:2px}.ds-tags{display:flex;flex-wrap:wrap;gap:6px}.ds-tag{font:600 12px/1 var(--body);padding:5px 7px;border:1.5px solid var(--ink);border-radius:var(--r);color:var(--ink);background:var(--sheet)}.ds-good{background:var(--ink);color:var(--sheet)}.ds-warn{border-style:dashed}.ds-src{border-color:var(--rule);color:var(--muted)}"
+    },
+    {
+      "name": "Alert Period Selector",
+      "kind": "custom",
+      "refersTo": "period",
+      "description": "Three equal cells (Últimas 24h / Últimos 7 dias / Último mês) with counts; the selected cell fills yellow.",
+      "html": "<div class=\"ds-periods\" role=\"group\" aria-label=\"Período\"><button aria-pressed=\"true\"><span>Últimas 24h</span><b>5</b></button><button aria-pressed=\"false\"><span>Últimos 7 dias</span><b>9</b></button><button aria-pressed=\"false\"><span>Último mês</span><b>10</b></button></div>",
+      "css": ":root{--ground:#f6f5f1;--sheet:#fff;--sign:#ffd23f;--ink:#141414;--ink-2:#3d3d3a;--muted:#686862;--rule:#d9d7cf;--chip:#efeee8;--tarja:#d7261e;--tarja-ink:#fff;--ink-hover:#2b2b2b;--sign-faded:#e9e7df;--sign-wash:#fbf6dd;--on-ink:#f1efe6;--on-ink-2:#b9b6aa;--display:'Archivo Narrow','Arial Narrow',sans-serif;--body:'Archivo',system-ui,sans-serif;--r:2px}.ds-periods{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--ink);max-width:390px}.ds-periods button{font:inherit;color:var(--ink);background:var(--sheet);border:0;border-right:2px solid var(--ink);padding:10px;cursor:pointer;text-align:left;display:grid;gap:4px}.ds-periods button:last-child{border-right:0}.ds-periods span{font:600 12px/1.1 var(--display);text-transform:uppercase;letter-spacing:.05em;color:var(--ink-2)}.ds-periods b{font:700 28px/1 var(--display)}.ds-periods button[aria-pressed=\"true\"]{background:var(--sign)}.ds-periods button[aria-pressed=\"true\"] span{color:var(--ink)}.ds-periods button:focus-visible{outline:2.5px solid var(--ink);outline-offset:-3px}"
+    },
+    {
+      "name": "Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Selects and text fields: 2px ink frame on sheet.",
+      "html": "<label class=\"ds-field\">Região <select class=\"ds-input\"><option>Todas</option></select></label>",
+      "css": ":root{--ground:#f6f5f1;--sheet:#fff;--sign:#ffd23f;--ink:#141414;--ink-2:#3d3d3a;--muted:#686862;--rule:#d9d7cf;--chip:#efeee8;--tarja:#d7261e;--tarja-ink:#fff;--ink-hover:#2b2b2b;--sign-faded:#e9e7df;--sign-wash:#fbf6dd;--on-ink:#f1efe6;--on-ink-2:#b9b6aa;--display:'Archivo Narrow','Arial Narrow',sans-serif;--body:'Archivo',system-ui,sans-serif;--r:2px}.ds-field{display:grid;gap:6px;font:600 13px var(--body);color:var(--ink-2)}.ds-input{font:500 15px var(--body);color:var(--ink);background:var(--sheet);border:2px solid var(--ink);border-radius:var(--r);padding:7px 9px;min-height:40px}.ds-input:focus-visible{outline:2.5px solid var(--ink);outline-offset:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Placa de Aluga-se",
+    "overview": "**Creative North Star: \"Placa de Aluga-se\"**\n\nEvery listing is a real-estate rental sign. A solid yellow strip carries the word ALUGA-SE, the neighbourhood and the condensed monthly total; black condensed capitals and 2px black rules frame it; a red ALUGADO band is pasted diagonally over the photo when the flat is gone. The page reads like a wall of those signs on an off-white ground, not like a portal's grid of soft white cards with heart icons.\n\nThe system is light mode only, mobile-first and dense. One column on a phone (390px is the reference width), an auto-fill grid on desktop for calm comparison. Decoration is limited to sign material: full-bleed yellow strips, black bars, square corners, flat ink. Depth comes from borders and colour blocks, never from shadows. The only motion is the tarja \"sticking\" once when a listing is marked rented.",
+    "keyCharacteristics": [
+      "Yellow is a sign colour, used in full strips (header, price strip, active tab, active period, hover), never as a thin accent.",
+      "Black does the structural work: 2px rules, the tab bar, pressed buttons, flags.",
+      "Red appears only for ALUGADO and errors.",
+      "Archivo Narrow uppercase is the sign voice; Archivo is the reading voice.",
+      "Square corners (2px), no shadows, 2px-stroke line icons."
+    ],
+    "rules": [
+      {
+        "name": "The Three Inks Rule",
+        "body": "Yellow, black and red are the only chromatic statements. Every other value is a neutral step between ink and sheet.",
+        "section": "colors"
+      },
+      {
+        "name": "The Red Means Gone Rule",
+        "body": "Tarja red marks a rented listing, a destructive action or an error. It never decorates.",
+        "section": "colors"
+      },
+      {
+        "name": "The Full Strip Rule",
+        "body": "Yellow is applied as a solid block that fills its container's width (strip, band, tab cell, period cell). It is not used for thin underlines, dots or text on white.",
+        "section": "colors"
+      },
+      {
+        "name": "The Sign Voice Rule",
+        "body": "Anything that would be painted on a sign (titles, prices, labels, buttons, tabs, flags) is Archivo Narrow uppercase with positive tracking. Anything a person reads as a sentence is Archivo in sentence case.",
+        "section": "typography"
+      },
+      {
+        "name": "The Total Leads Rule",
+        "body": "On a listing, the total in the strip is the largest type after the page title. Nothing on the card competes with it.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Shadow Rule",
+        "body": "Signs are flat. Separate surfaces with a 2px ink rule or a colour change, never with a shadow or blur.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** put the total in the yellow strip at 30px Archivo Narrow 700 and keep it the largest number on the card.",
+      "**Do** frame every surface and control with a 2px ink border and a 2px radius.",
+      "**Do** show state with colour blocks: yellow fill for active/hover, ink fill with yellow lettering for pressed.",
+      "**Do** keep a rented listing's pressed mark visible when disabled (ink fill, yellow label, 55% opacity).",
+      "**Do** use the dashed border for provisional or paused things only.",
+      "**Do** draw icons as 2px-stroke SVG lines with square caps."
+    ],
+    "donts": [
+      "**Don't** add shadows, blur or gradients to surfaces (the tab bar's overflow fade mask is functional, not a surface).",
+      "**Don't** use tarja red for anything except rented, destructive and error states.",
+      "**Don't** round corners beyond 2px or build soft white cards with heart overlays like the portals.",
+      "**Don't** use yellow as text on white or as a thin accent line.",
+      "**Don't** add a dark mode; the sign is printed on light stock."
+    ]
+  }
+}
