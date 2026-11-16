@@ -68,8 +68,8 @@ class Store:
         return out
 
     def listings_missing_details(self, limit: int) -> list[dict]:
-        return self._get("listings", {"select": "id,source,lat,lon", "details_at": "is.null",
-                                      "source": "in.(vivareal,zap)", "active": "is.true", "limit": str(limit)})
+        return self._get("listings", {"select": "id,source,url,lat,lon", "details_at": "is.null",
+                                      "source": "in.(vivareal,zap,isci)", "active": "is.true", "limit": str(limit)})
 
     def upsert_listings(self, rows: list[dict]):
         rows = [{k: v for k, v in r.items() if k in LISTING_FIELDS} for r in rows]
@@ -77,15 +77,27 @@ class Store:
             self._post("listings", rows[i:i + 200], upsert=True)
 
     def find_duplicate(self, l: dict, street_key: str) -> dict | None:
-        """Mesmo imóvel anunciado em outro site: mesma rua e número, total e área parecidos."""
-        if not street_key or not re.search(r"\d", street_key):
+        """Mesmo imóvel anunciado em outro site: mesma rua e número, total e área parecidos.
+
+        Sem rua (a Isci mascara o endereço), vale um critério mais estreito: mesmo bairro e cidade,
+        total a até R$ 10, área a até 3 m² e o mesmo número de banheiros.
+        """
+        by_street = bool(street_key and re.search(r"\d", street_key))
+        if not by_street and not (l.get("bairro") and l.get("area")):
             return None
         total = (l.get("rent") or 0) + (l.get("cond") or 0)
-        rows = self._get("listings", {"select": "id,source,street,addr,area,alt_urls", "active": "is.true",
-                                      "source": f"neq.{l['source']}", "and": f"(total.gte.{total - 80},total.lte.{total + 80})"})
+        rows = self._get("listings", {"select": "id,source,street,addr,bairro,cidade,area,banheiros,total,alt_urls",
+                                      "active": "is.true", "source": f"neq.{l['source']}",
+                                      "and": f"(total.gte.{total - 80},total.lte.{total + 80})"})
         from .run import _street_key  # import tardio para evitar ciclo
+        from .criteria import norm
         for r in rows:
-            if _street_key(r) == street_key and (not l.get("area") or not r.get("area") or abs(r["area"] - l["area"]) <= 3):
+            if by_street:
+                if _street_key(r) == street_key and (not l.get("area") or not r.get("area") or abs(r["area"] - l["area"]) <= 3):
+                    return r
+            elif (norm(r.get("bairro") or "") == norm(l["bairro"]) and norm(r.get("cidade") or "") == norm(l.get("cidade") or "")
+                  and abs((r.get("total") or 0) - total) <= 10 and r.get("area") and abs(r["area"] - l["area"]) <= 3
+                  and (not r.get("banheiros") or not l.get("banheiros") or r["banheiros"] == l["banheiros"])):
                 return r
         return None
 

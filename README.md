@@ -7,11 +7,11 @@ com critérios que os portais não oferecem, favoritos e descartes compartilhado
 
 | Fonte | Como entra | Por quê |
 |---|---|---|
-| Ibagy, QuintoAndar | **Automático**: o watcher roda no seu PC a cada 3 h | Aceitam robô identificado e o `robots.txt` permite |
+| Ibagy, QuintoAndar, Isci | **Automático**: o watcher roda no seu PC a cada 3 h | Aceitam robô identificado e o `robots.txt` permite |
 | VivaReal, ZAP, OLX | **Coleta assistida**: você pede ao Claude Code "faz a coleta assistida" | Recusam robô identificado (HTTP 403) |
 | Crédito Real | Coleta assistida (se quiser incluir) | Recusou o robô (HTTP 429) |
 | Adriano Imóveis | Fora | O `robots.txt` proíbe robôs |
-| Brognoli, Isci | Ainda não | Aceitam o robô, mas a busca é montada por JavaScript; falta escrever o leitor |
+| Brognoli | Fora | O site só anuncia venda: `/alugar` redireciona para `/venda` (16/11/2026) |
 
 O watcher se identifica no `User-Agent`, respeita o `robots.txt`, espera entre requisições e para quando o site
 recusa. Ele não tenta contornar bloqueios.
@@ -20,6 +20,7 @@ Tudo vai para o mesmo processamento (`watcher/run.py`):
 
 - **Anúncio novo** que passa nos critérios do `config.yaml` entra na lista e dispara os alertas que combinam.
 - **Mesmo imóvel em dois sites** (mesma rua e número, total e área parecidos) vira um card só, com os dois links.
+  A Isci esconde a rua; para ela vale mesmo bairro e cidade, total a até R$ 10, área a até 3 m² e mesmos banheiros.
 - **Redução de preço**: o histórico fica em `price_history`; um anúncio descartado que baixa de preço volta para
   "Em análise" com a etiqueta "baixou R$ X" e pode gerar alerta.
 - **Alugado**: depois de 7 dias sem aparecer numa leitura completa da fonte, o anúncio é desativado e aparece como

@@ -7,7 +7,7 @@ import json
 import pytest
 
 from watcher import criteria, run as runmod
-from watcher.sources import ibagy, olx, quintoandar, vivareal
+from watcher.sources import ibagy, isci, olx, quintoandar, vivareal
 
 CRIT = {
     "max_total": 3500, "min_banheiros": 2, "min_vagas": 1,
@@ -312,3 +312,70 @@ def test_supabase_env():
     assert "exemplo" in supabase_env("https://SEU-PROJETO.supabase.co", "cole-a-service-role-key-aqui")
     assert "Project URL" in supabase_env("abc.supabase.co", "k")
     assert supabase_env("https://abcd.supabase.co", "eyJ...") is None
+
+
+ISCI_JSON = json.dumps({"quantidade": 21, "lista": [
+    {"codigo": 1931, "finalidade": "Aluguel", "titulo": "Apartamento de 2 Dormitórios no Pedra Branca", "valor": "R$ 2.500,00",
+     "valorcondominio": "R$ 450,00", "bairro": "Pedra Branca", "cidade": "Palhoça", "endereco": "*****",
+     "numeroquartos": "2", "numerobanhos": "2", "numerovagas": "1", "areaprincipal": "60,40",
+     "url_amigavel": "apartamento-de-2-dormitorios-no-pedra-branca-palhoca",
+     "fotos": [{"urlp": "https://cdn.imoview.com.br/isciimoveis/Imoveis/1931/a.jpeg?179"}]},
+    {"codigo": 5, "finalidade": "Venda", "valor": "R$ 500.000,00"}]})
+
+ISCI_DETAIL = """<div class="descricao">Apartamento semimobiliado. Aceita pet de pequeno porte.</div>
+<ul class="lista-caracteristicas-extras caracteristicas-internas">
+<li class="caracteristicas-extras extras-none"><img> Ar condicionado</li>
+<li class="caracteristicas-extras extras-active"><img> Armário cozinha</li></ul>
+<ul class="lista-caracteristicas-extras caracteristicas-externas">
+<li class="caracteristicas-extras extras-active"><img> Gás canalizado</li></ul>
+<p>Valor R$ 2.500,00 Condomínio R$ 450,00 IPTU R$ 150,00 Total R$ 3.100,00</p>"""
+
+
+def test_isci_list_and_payload():
+    items = isci.parse_list(ISCI_JSON)
+    assert len(items) == 1
+    it = items[0]
+    assert it["id"] == "isci-1931" and it["rent"] == 2500 and it["cond"] == 450 and it["area"] == 60
+    assert it["banheiros"] == 2 and it["vagas"] == 1 and it["street"] is None
+    assert it["url"] == "https://www.isciimoveis.com.br/imovel/apartamento-de-2-dormitorios-no-pedra-branca-palhoca/1931"
+    assert it["photos"] == ["https://cdn.imoview.com.br/isciimoveis/Imoveis/1931/a.jpeg"]
+    assert isci.total_pages(ISCI_JSON) == 2
+    p = isci.payload("https://www.isciimoveis.com.br/aluguel/apartamento?banheiros=2&vagas=1", 3)
+    assert p["finalidade"] == "aluguel" and p["numerobanhos"] == "2" and p["numerovagas"] == "1"
+    assert p["numeropagina"] == 3 and p["tipos[0][codigo]"] == 2
+
+
+def test_isci_error_and_detail():
+    with pytest.raises(ValueError):
+        isci.parse_list(json.dumps({"error": True, "message": "Ocorreu um erro inesperado."}))
+    d = isci.parse_detail(ISCI_DETAIL)
+    assert d["amenities"] == ["Armário cozinha", "Gás canalizado"] and d["iptu"] == "R$ 150"
+    assert d["descricao"].startswith("Apartamento semimobiliado")
+
+
+def test_isci_collect_uses_post(monkeypatch):
+    posts = []
+
+    class C:
+        def post(self, url, data):
+            posts.append((url, data["numeropagina"]))
+            return ISCI_JSON
+
+    cfg = {"max_pages_per_search": 4,
+           "searches": [{"source": "isci", "url": "https://www.isciimoveis.com.br/aluguel/apartamento?banheiros=2&vagas=1"}]}
+    seen, report = runmod.collect(cfg, C())
+    assert posts == [(isci.ENDPOINT, 1), (isci.ENDPOINT, 2)]
+    assert list(seen) == ["isci-1931"] and report[0]["complete"] is True
+
+
+def test_duplicate_without_street(monkeypatch):
+    from watcher.store import Store
+    st = Store("https://x.supabase.co", "k")
+    rows = [{"id": "2914186158", "source": "vivareal", "street": "Rua Recanto dos Santos, 110", "bairro": "Pedra Branca",
+             "cidade": "Palhoça", "area": 65, "banheiros": 2, "total": 2774, "alt_urls": []}]
+    monkeypatch.setattr(st, "_get", lambda *a, **k: rows)
+    l = {"source": "isci", "bairro": "Pedra Branca", "cidade": "Palhoça", "rent": 2380, "cond": 393, "area": 65, "banheiros": 2}
+    assert st.find_duplicate(l, "")["id"] == "2914186158"
+    assert st.find_duplicate({**l, "area": 70}, "") is None
+    assert st.find_duplicate({**l, "rent": 2300}, "") is None
+    assert st.find_duplicate({**l, "bairro": "Centro"}, "") is None

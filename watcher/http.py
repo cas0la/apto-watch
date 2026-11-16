@@ -57,12 +57,19 @@ class PoliteClient:
         return self._robots[host].can_fetch(self.ua, url)
 
     def get(self, url: str) -> str:
+        return self._request("GET", url)
+
+    def post(self, url: str, data: dict) -> str:
+        """POST de formulário, para sites que montam a busca por JavaScript (mesmas regras do GET)."""
+        return self._request("POST", url, data)
+
+    def _request(self, method: str, url: str, data: dict | None = None) -> str:
         if not self.allowed(url):
             raise Blocked("robots.txt não permite este caminho")
         self._wait()
         self.requests += 1
         try:
-            r = self.session.get(url, timeout=30)
+            r = self.session.request(method, url, data=data, timeout=30)
         except requests.RequestException as e:  # rede fora, timeout
             raise Blocked(f"falha de rede: {e.__class__.__name__}") from e
         if r.status_code in (404, 410):

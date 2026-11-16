@@ -19,17 +19,23 @@ aqui, pelo Chrome do usuário, quando ele pedir, e importada com `python -m watc
 
 1. Leia `config.yaml`: as buscas com `modo: assistido` e os `criteria`.
 2. Carregue as ferramentas do Chrome numa única chamada do ToolSearch e abra uma aba nova.
-3. **VivaReal/ZAP**: para cada URL, abra a página 1 e as seguintes com `&pagina=N` até o total do `<h1>`
-   (30 por página). Em cada página, rode o coletor abaixo e acumule em `localStorage` (a navegação
-   reinicia o JavaScript da página).
+3. **VivaReal/ZAP**: abra a primeira URL numa aba e, dali, leia as páginas com `fetch` no mesmo domínio
+   (`&pagina=N`, 4 s entre páginas, até o total do `<h1>`), passando o HTML por `DOMParser` e pelo coletor
+   abaixo. Rode o laço em segundo plano e confira o progresso: cada chamada do `javascript_tool` tem limite de 45 s.
 4. **Detalhes**: para cada anúncio que passa nos critérios do `config.yaml`, busque a página de detalhe
    (mesmo domínio, `fetch`) com 3,5 s de intervalo, rodando em segundo plano e conferindo o progresso,
-   porque cada chamada do `javascript_tool` tem limite de 45 s.
-5. **OLX**: abra cada URL (e `?o=2`, `?o=3`…), leia o bloco `{"ads":[...]}` com o coletor OLX abaixo.
-6. Exporte o resultado: escreva o JSON no `<body>` da aba e leia com `get_page_text`. Se passar de 50 mil
-   caracteres, exporte em partes.
-7. Grave em `coleta/AAAA-MM-DD.json` e rode:
-   `.venv/bin/python -m watcher --ingest coleta/AAAA-MM-DD.json`
+   porque cada chamada do `javascript_tool` tem limite de 45 s. Busque só os que ainda não estão no Supabase
+   (por `id` e em `alt_urls`). O VivaReal começa a responder 429 depois de ~35 detalhes seguidos: pare ali
+   e deixe o resto para a próxima coleta.
+5. **OLX**: leia cada URL com `fetch` (as URLs já têm filtros; a página N é `&o=N`, 50 anúncios por página,
+   pare quando vier menos de 50) e extraia o bloco `{"ads":[...]}` do HTML com o coletor OLX abaixo.
+6. Exporte pelo receptor local: rode `python3 scripts/receive_collection.py coleta` em segundo plano e,
+   na aba, `fetch('http://127.0.0.1:8767/<fonte>-AAAA-MM-DD', {method: 'POST', body: JSON.stringify(lista)})`.
+   Na primeira vez em cada site o Chrome pergunta se a página pode acessar a rede local: peça ao usuário
+   para clicar em **Permitir** (o aviso não aparece na captura de tela). Pare o receptor no fim.
+   Sem o receptor, escreva o JSON no `<body>` e leia com `get_page_text`, em partes de até 40 mil caracteres.
+7. Rode `.venv/bin/python -m watcher --ingest coleta/<fonte>-AAAA-MM-DD.json` para cada arquivo. Se o
+   Supabase estourar o tempo, rode de novo: a importação pode ser repetida sem duplicar.
 8. Mostre ao usuário o resumo: novos, reduções de preço, duplicados juntados, alertas enviados e o que ficou de fora.
 
 ## Formato do JSON (uma lista)

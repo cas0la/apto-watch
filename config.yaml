@@ -54,6 +54,10 @@ searches:
   - source: quintoandar
     modo: auto
     url: "https://www.quintoandar.com.br/alugar/imovel/florianopolis-sc-brasil/apartamento/1-vagas/2-banheiros/de-500-a-3500-reais"
+  # Isci (Palhoça): a busca é um POST que devolve JSON; os filtros vão na query (banheiros, vagas, quartos).
+  - source: isci
+    modo: auto
+    url: "https://www.isciimoveis.com.br/aluguel/apartamento?banheiros=2&vagas=1"
 
   # Assistidas (recusaram robô identificado: HTTP 403/429)
   - source: vivareal
@@ -65,11 +69,15 @@ searches:
   - source: vivareal
     modo: assistido
     url: "https://www.vivareal.com.br/aluguel/santa-catarina/florianopolis/apartamento_residencial/?banheiros=2,3,4&vagas=1,2,3,4&precoMaximo=3500"
+  # OLX: pe = preço máximo do aluguel, bas = banheiros a partir de, gsp = vagas a partir de (teste de 16/11/2026).
   - source: olx
     modo: assistido
-    url: "https://www.olx.com.br/imoveis/aluguel/apartamentos/estado-sc/florianopolis-e-regiao/grande-florianopolis/palhoca"
+    url: "https://www.olx.com.br/imoveis/aluguel/apartamentos/estado-sc/florianopolis-e-regiao/grande-florianopolis/palhoca?pe=3500&bas=2&gsp=1"
   - source: olx
     modo: assistido
-    url: "https://www.olx.com.br/imoveis/aluguel/apartamentos/estado-sc/florianopolis-e-regiao/grande-florianopolis/sao-jose"
+    url: "https://www.olx.com.br/imoveis/aluguel/apartamentos/estado-sc/florianopolis-e-regiao/grande-florianopolis/sao-jose?pe=3500&bas=2&gsp=1"
+  - source: olx
+    modo: assistido
+    url: "https://www.olx.com.br/imoveis/aluguel/apartamentos/estado-sc/florianopolis?pe=3500&bas=2&gsp=1"
   # Crédito Real (creditoreal.com.br) recusou com HTTP 429; Adriano Imóveis proíbe robôs no robots.txt.
-  # Brognoli e Isci aceitam o robô, mas montam a busca por JavaScript: leitores ainda não feitos.
+  # Brognoli (brognoli.com.br) só anuncia venda: /alugar redireciona para /venda (teste de 16/11/2026).

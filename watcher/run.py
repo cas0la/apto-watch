@@ -13,13 +13,14 @@ from datetime import datetime, timedelta, timezone
 
 from . import criteria, enrich
 from .http import Blocked, NotFound, PoliteClient
-from .sources import ibagy, olx, quintoandar, vivareal
+from .sources import ibagy, isci, olx, quintoandar, vivareal
 from .store import Store, now
 from .telegram import Telegram, format_message
 
 log = logging.getLogger("apto-watch")
-MODULES = {"vivareal": vivareal, "zap": vivareal, "olx": olx, "ibagy": ibagy, "quintoandar": quintoandar}
-DETAIL_SOURCES = {"vivareal", "zap"}
+MODULES = {"vivareal": vivareal, "zap": vivareal, "olx": olx, "ibagy": ibagy, "quintoandar": quintoandar, "isci": isci}
+DETAIL_SOURCES = {"vivareal", "zap", "isci"}  # fontes com página de detalhe lida pelo watcher
+JUDGE_AFTER_DETAIL = {"vivareal", "zap"}       # o card não basta para julgar: lê o detalhe antes dos critérios
 
 
 def _normalize(l: dict) -> dict:
@@ -105,13 +106,19 @@ def ingest_file(path: str) -> tuple[dict[str, dict], list[dict]]:
 
 
 def fetch_details(client: PoliteClient, l: dict) -> dict:
-    """Completa um anúncio VivaReal/ZAP com a página de detalhe (só se o site aceitar)."""
+    """Completa um anúncio com a página de detalhe (VivaReal/ZAP só se o site aceitar; Isci)."""
     try:
-        d = vivareal.parse_detail(client.get(vivareal.detail_url(l["id"])))
+        if l.get("source") == "isci":
+            d = isci.parse_detail(client.get(l["url"]))
+        else:
+            d = vivareal.parse_detail(client.get(vivareal.detail_url(l["id"])))
     except NotFound:
         return {"active": False}
     d["details_at"] = now()
-    d["refs"] = enrich.refs(d.get("lat"), d.get("lon"))
+    if d.get("lat") is not None:
+        d["refs"] = enrich.refs(d.get("lat"), d.get("lon"))
+    if d.get("descricao") or d.get("amenities"):  # anúncio já gravado: o pet também vem do texto novo
+        d["pet"], d["pet_neg"] = criteria.pet_status(" ".join([d.get("descricao") or "", " ".join(d.get("amenities") or [])]))
     return d
 
 
@@ -127,7 +134,7 @@ def process(cfg: dict, store: Store, tg: Telegram | None, seen: dict[str, dict],
     for lid, l in seen.items():
         ex = existing.get(lid)
         if ex is None:
-            if not criteria.base_ok(l, crit)[0] and l.get("source") not in DETAIL_SOURCES:
+            if not criteria.base_ok(l, crit)[0] and l.get("source") not in JUDGE_AFTER_DETAIL:
                 continue
             if l["source"] in DETAIL_SOURCES and not l.get("details_at") and detail_budget > 0:
                 try:
