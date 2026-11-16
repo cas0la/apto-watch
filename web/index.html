@@ -125,7 +125,7 @@ h2 small{font:500 12px var(--font);letter-spacing:0;color:var(--muted)}
 .flag span.light{background:color-mix(in srgb,var(--sheet) 95%,transparent);color:var(--ink)}
 .head{display:grid;grid-template-columns:minmax(0,1fr) auto;border-bottom:1px solid var(--rule)}
 .f{padding:10px 12px;min-width:0}
-.f + .f{border-left:1px solid var(--rule)}
+.head>.f+.f{border-left:1px solid var(--rule)}
 .f .lab{margin-bottom:5px}
 .addr{margin:0;font:600 16px/1.3 var(--font);overflow-wrap:anywhere}
 .spec{font:500 13px/1.4 var(--font);color:var(--ink-2);margin-top:3px}
@@ -196,6 +196,54 @@ details p{white-space:pre-line;margin:0 0 10px;color:var(--ink-2)}
 @keyframes cola{from{scale:1.25;opacity:0;rotate:-5deg}to{scale:1;opacity:1;rotate:-12deg}}
 .rentnote{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--stamp-wash);border-radius:var(--r);padding:8px 10px;font-size:13px;color:var(--ink)}
 .rentnote b{color:var(--stamp-deep)}
+
+/* ficha ampliada (dialog): galeria grande + a mesma ficha; no celular, tela cheia com barra de voltar */
+.addr-open{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;text-align:left;cursor:pointer;overflow-wrap:anywhere}
+.addr-open:hover{color:var(--pen);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.card .ph img,.card .head,.card .brk,.card .items{cursor:pointer}
+html:has(.ficha[open]){overflow:hidden}
+.ficha{padding:0;margin:0;border:0;width:100%;max-width:none;height:100%;max-height:none;background:var(--sheet);color:var(--ink);overflow-y:auto;overscroll-behavior:contain}
+.ficha::backdrop{background:color-mix(in srgb,var(--ink) 55%,transparent)}
+.ficha[open]{animation:empurra .26s cubic-bezier(.2,.8,.2,1)}
+@keyframes empurra{from{translate:28px 0;opacity:0}}
+.fx-bar{position:sticky;top:0;z-index:3;display:flex;align-items:center;min-height:52px;background:var(--sheet);border-bottom:1px solid var(--rule);padding:env(safe-area-inset-top,0px) max(8px,env(safe-area-inset-right,0px)) 0 max(8px,env(safe-area-inset-left,0px))}
+.fx-back{font:600 15px/1 var(--font);color:var(--pen);background:none;border:0;border-radius:var(--r);min-height:44px;padding:0 12px 0 6px;display:inline-flex;gap:6px;align-items:center;cursor:pointer;transition:background-color .15s,color .15s}
+.fx-back:hover{background:var(--hover);color:var(--pen-deep)}
+.fx-gal{background:var(--chip);min-width:0}
+.fx-stage{position:relative;overflow:hidden}
+.fx-ph{display:flex;width:100%;aspect-ratio:4/3;max-height:64dvh;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.fx-ph::-webkit-scrollbar{display:none}
+.fx-ph img{flex:0 0 100%;width:100%;height:100%;object-fit:contain;scroll-snap-align:start;scroll-snap-stop:always;display:block}
+.fx-ph .none{margin:auto;font:500 13px var(--font);color:var(--muted)}
+.fx-stage .tarja{top:44%}
+.fx-thumbs{display:flex;gap:6px;overflow-x:auto;padding:8px max(12px,env(safe-area-inset-right,0px)) 8px max(12px,env(safe-area-inset-left,0px));background:var(--sheet);border-bottom:1px solid var(--rule);scrollbar-width:thin}
+.fx-th{flex:none;width:68px;height:51px;padding:0;border:0;border-radius:4px;overflow:hidden;background:var(--chip);cursor:pointer;opacity:.62;transition:opacity .15s}
+.fx-th img{width:100%;height:100%;object-fit:cover;display:block}
+.fx-th:hover{opacity:1}
+.fx-th[aria-current="true"]{opacity:1;outline:2px solid var(--pen);outline-offset:-2px}
+.fx-sheet{min-width:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+.ficha .addr{margin:0;font:600 18px/1.3 var(--font);letter-spacing:-.01em;text-transform:none;color:var(--ink);display:block}
+.fx-f{border-top:1px solid var(--hair);padding-top:10px}
+.fx-f p{margin:4px 0 0;white-space:pre-line;font-size:14px;color:var(--ink-2);max-width:66ch}
+.fx-f p.ni{color:var(--muted)}
+.fx-f .refs{margin:6px 0 0}
+.ficha.rented .fx-ph img{filter:grayscale(1) contrast(.9);opacity:.6}
+.ficha.rented .val{color:var(--muted)}
+.ficha.rented .fx-sheet .head,.ficha.rented .fx-sheet .items,.ficha.rented .fx-sheet .brk{opacity:.7}
+.ficha.desc .fx-sheet .head,.ficha.desc .fx-sheet .items,.ficha.desc .fx-sheet .brk{opacity:.62}
+.ficha .toast{position:fixed}
+@media (min-width:740px){
+  .ficha{width:min(1180px,calc(100vw - 48px));height:min(860px,calc(100dvh - 48px));margin:auto;border:1px solid var(--rule);border-radius:var(--r-card);overflow:hidden}
+  .ficha[open]{display:flex;flex-direction:column;animation-name:surge}
+  @keyframes surge{from{translate:0 12px;opacity:0}}
+  .fx-bar{padding:0 8px}
+  .fx-main{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 400px}
+  .fx-gal{display:flex;flex-direction:column;min-height:0}
+  .fx-stage{flex:1;min-height:0}
+  .fx-ph{aspect-ratio:auto;max-height:none;height:100%}
+  .fx-thumbs{border-bottom:0;border-top:1px solid var(--rule)}
+  .fx-sheet{overflow-y:auto;border-left:1px solid var(--rule);overscroll-behavior:contain}
+}
 
 /* alertas */
 .alerts-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
@@ -286,7 +334,8 @@ form.aform .full{grid-column:1/-1}
 @media (min-width:900px){ .card .acts{grid-template-columns:repeat(3,auto);justify-content:start} }
 @media (prefers-reduced-motion:reduce){
   *{scroll-behavior:auto!important}
-  .tarja.fresh,.toast,.sync-btn.busy .ico{animation:none}
+  .tarja.fresh,.toast,.sync-btn.busy .ico,.ficha[open]{animation:none}
+  .fx-th,.fx-back{transition:none}
   .btn,.card{transition:none}
 }
 </style>
@@ -349,6 +398,7 @@ form.aform .full{grid-column:1/-1}
   </div></details></div>
   <main><div class="wrap" id="list" role="tabpanel" tabindex="-1"></div></main>
 </div>
+<dialog class="ficha" id="ficha" aria-labelledby="fx-addr"></dialog>
 <div class="toast" id="toast" role="status" hidden></div>
 
 <script>
@@ -442,33 +492,39 @@ const itemHtml = ([k, label, fact]) => k === 'f'
 
 /* ---------- card ---------- */
 function slide(btn, dir) { const s = btn.parentElement.querySelector('.ph'); s.scrollBy({ left: dir * s.clientWidth, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); }
-function card(d) {
+const dropShown = d => d.prev_total && d.prev_total > d.total && (Date.now() - new Date(d.price_drop_at) < 21 * DAY || state(d) === 'reaberto');
+/* Etiquetas sobre a foto (Novo, Baixou, Favorito…) e o carimbo ALUGADO: iguais no card e na ficha ampliada. */
+function overlay(d) {
   const st = state(d), m = marks[d.id], rent = rentInfo(d);
-  const photos = d.photos || [];
-  const imgs = photos.length ? photos.map((u, i) => `<img alt="${esc(d.bairro || 'Apartamento')}: foto ${i + 1} de ${photos.length}" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${esc(u)}">`).join('') : '<span class="none">Sem fotos no anúncio</span>';
-  // Bairro entra na linha de medidas; a cidade só quando a lista não está agrupada por região.
-  const grouped = $('fGrp').checked && !SINGLE;
-  const place = grouped ? (d.regiao || '').startsWith(d.bairro || '\u0000') ? '' : d.bairro : [d.bairro, d.cidade].filter(Boolean).join(', ');
-  const spec = [place, d.area && d.area + '\u00a0m²', d.quartos && d.quartos + '\u00a0quartos', d.banheiros && d.banheiros + '\u00a0banheiros', d.vagas && d.vagas + (d.vagas > 1 ? '\u00a0vagas' : '\u00a0vaga')].filter(Boolean).map(x => `<span>${esc(x)}</span>`).join(' · ');
-  const isFav = st === 'fav', isDesc = st === 'desc';
-  const drop = d.prev_total && d.prev_total > d.total && (Date.now() - new Date(d.price_drop_at) < 21 * DAY || st === 'reaberto');
-  const fresh = Date.now() - new Date(d.first_seen) < 3 * DAY;
-  const top = [fresh && '<span>Novo</span>', drop && `<span>Baixou ${brl(d.prev_total - d.total)}</span>`,
-    isFav && `<span class="light">Favorito${m.by_email ? ' · ' + esc(who(m.by_email)) : ''}</span>`, isDesc && `<span class="light">Descartado${m.by_email ? ' · ' + esc(who(m.by_email)) : ''}</span>`,
+  const top = [Date.now() - new Date(d.first_seen) < 3 * DAY && '<span>Novo</span>', dropShown(d) && `<span>Baixou ${brl(d.prev_total - d.total)}</span>`,
+    st === 'fav' && `<span class="light">Favorito${m.by_email ? ' · ' + esc(who(m.by_email)) : ''}</span>`, st === 'desc' && `<span class="light">Descartado${m.by_email ? ' · ' + esc(who(m.by_email)) : ''}</span>`,
     st === 'reaberto' && '<span class="light">Era descartado</span>'].filter(Boolean).join('');
-  const am = (d.amenities || []).filter(x => !/m²|quarto|banheiro|vaga|suíte|andar|aceita animais/i.test(x)).slice(0, 12).join(' · ');
+  return (top && !rent ? `<div class="flag">${top}</div>` : '') + (rent ? `<div class="tarja${freshRent === d.id ? ' fresh' : ''}" aria-hidden="true">Alugado</div>` : '');
+}
+/* A ficha sem a foto: endereço | total, composição, quadro de itens e corpo.
+   big = ficha ampliada (dialog): endereço é o título, descrição e "Perto daqui" já abertos. */
+function sheetHtml(d, big) {
+  const st = state(d), rent = rentInfo(d);
+  // Bairro entra na linha de medidas; a cidade só quando a lista não está agrupada por região.
+  const grouped = !big && $('fGrp').checked && !SINGLE;
+  const place = grouped ? (d.regiao || '').startsWith(d.bairro || '\u0000') ? '' : d.bairro : [d.bairro, d.cidade].filter(Boolean).join(', ');
+  const spec = [place, d.area && d.area + ' m²', d.quartos && d.quartos + ' quartos', d.banheiros && d.banheiros + ' banheiros', d.vagas && d.vagas + (d.vagas > 1 ? ' vagas' : ' vaga')].filter(Boolean).map(x => `<span>${esc(x)}</span>`).join(' · ');
+  const isFav = st === 'fav', isDesc = st === 'desc', drop = dropShown(d);
+  const am = (d.amenities || []).filter(x => !/m²|quarto|banheiro|vaga|suíte|andar|aceita animais/i.test(x)).slice(0, big ? 40 : 12).join(' · ');
   const srcs = [d.source, ...(d.alt_urls || []).map(x => x.source)].map(s => SRC[s] || s).join(' + ');
   const street = d.street || (d.addr || '').split(' - ')[0] || d.bairro || '';
   const id = esc(d.id), dis = rent ? ' disabled' : '';
-  return `<article class="card${isFav ? ' fav' : ''}${isDesc ? ' desc' : ''}${rent ? ' rented' : ''}" data-id="${id}" aria-labelledby="ad-${id}">
-  <div class="photo"><div class="ph">${imgs}</div>
-    ${photos.length > 1 ? `<button class="nav p" type="button" aria-label="Foto anterior" onclick="slide(this,-1)">${ico('left')}</button><button class="nav n" type="button" aria-label="Próxima foto" onclick="slide(this,1)">${ico('right')}</button>` : ''}
-    ${photos.length ? `<span class="cnt">${photos.length} fotos</span>` : ''}
-    ${top && !rent ? `<div class="flag">${top}</div>` : ''}
-    ${rent ? `<div class="tarja${freshRent === d.id ? ' fresh' : ''}" aria-hidden="true">Alugado</div>` : ''}
-  </div>
-  <div class="head">
-    <div class="f"><span class="lab">Endereço</span><h3 class="addr" id="ad-${id}">${esc(street)}</h3><div class="spec">${spec}</div></div>
+  const addr = big ? `<h2 class="addr" id="fx-addr">${esc(street)}</h2>`
+    : `<h3 class="addr" id="ad-${id}"><button class="addr-open" type="button" data-k="${id}:open" onclick="openFicha('${id}')">${esc(street)}<span class="sr">: abrir a ficha com fotos maiores</span></button></h3>`;
+  const refs = (d.refs || []).length ? `<ul class="refs">${d.refs.map(([c, n, mt]) => `<li><b>${esc(c)}</b><span class="n">${esc(n)}</span><span class="m">${mt < 1000 ? mt + ' m' : (mt / 1000).toFixed(1).replace('.', ',') + ' km'}</span></li>`).join('')}</ul>` : '';
+  const more = big
+    ? `<div class="fx-f"><span class="lab">Descrição do anúncio</span>${d.descricao ? `<p>${esc(d.descricao)}</p>` : '<p class="ni">não informada</p>'}</div>
+       ${am ? `<div class="fx-f"><span class="lab">Características</span><p>${esc(am)}</p></div>` : ''}
+       ${refs ? `<div class="fx-f"><span class="lab">Perto daqui</span>${refs}</div>` : ''}`
+    : `${refs ? `<details><summary>Perto daqui${sumIco}</summary>${refs}</details>` : ''}
+       ${d.descricao || am ? `<details><summary>Descrição do anúncio${sumIco}</summary>${am ? `<p>${esc(am)}</p>` : ''}${d.descricao ? `<p>${esc(d.descricao)}</p>` : ''}</details>` : ''}`;
+  return `<div class="head">
+    <div class="f"><span class="lab">Endereço</span>${addr}<div class="spec">${spec}</div></div>
     <div class="f ftot"><span class="lab">Total / mês</span>${drop ? `<span class="was">${brl(d.prev_total)}</span>` : ''}<div class="val">${brl(d.total)}</div></div>
   </div>
   <div class="brk"><span class="lab">Composição</span>Aluguel ${brl(d.rent)} + condomínio ${d.cond ? brl(d.cond) : '<span class="blank">não informado</span>'}${d.iptu ? ` · IPTU ${esc(d.iptu)} (conforme anúncio)` : ''}</div>
@@ -482,13 +538,90 @@ function card(d) {
       <button class="btn" type="button" data-k="${id}:desc" aria-pressed="${isDesc}" onclick="mark('${id}','desc')"${dis}>${ico('x')}${isDesc ? 'Voltar' : 'Descartar'}</button>
       <button class="btn" type="button" data-k="${id}:rent" aria-pressed="${!!rent}" onclick="toggleRent('${id}')"${rent && !rent.manual ? ' disabled' : ''}>${ico('key')}Alugado</button>
     </div>
-    ${(d.refs || []).length ? `<details><summary>Perto daqui${sumIco}</summary><ul class="refs">${d.refs.map(([c, n, mt]) => `<li><b>${esc(c)}</b><span class="n">${esc(n)}</span><span class="m">${mt < 1000 ? mt + ' m' : (mt / 1000).toFixed(1).replace('.', ',') + ' km'}</span></li>`).join('')}</ul></details>` : ''}
-    ${d.descricao || am ? `<details><summary>Descrição do anúncio${sumIco}</summary>${am ? `<p>${esc(am)}</p>` : ''}${d.descricao ? `<p>${esc(d.descricao)}</p>` : ''}</details>` : ''}
+    ${more}
     <div class="links">${d.lat ? `<a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=${d.lat},${d.lon}">${ico('pin')}Mapa</a>` : ''}
       <a target="_blank" rel="noopener" href="${esc(d.url)}">${ico('out')}Ver no ${esc(SRC[d.source] || d.source)}</a>
       ${(d.alt_urls || []).map(x => `<a target="_blank" rel="noopener" href="${esc(x.url)}">${ico('out')}${esc(SRC[x.source] || x.source)}</a>`).join('')}
       <span class="code">${esc(srcs)} · cód. ${id} · visto ${ago(d.first_seen)}</span></div>
-  </div></article>`;
+  </div>`;
+}
+function card(d) {
+  const st = state(d), rent = rentInfo(d), photos = d.photos || [], id = esc(d.id);
+  const imgs = photos.length ? photos.map((u, i) => `<img alt="${esc(d.bairro || 'Apartamento')}: foto ${i + 1} de ${photos.length}" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${esc(u)}">`).join('') : '<span class="none">Sem fotos no anúncio</span>';
+  return `<article class="card${st === 'fav' ? ' fav' : ''}${st === 'desc' ? ' desc' : ''}${rent ? ' rented' : ''}" data-id="${id}" aria-labelledby="ad-${id}">
+  <div class="photo"><div class="ph">${imgs}</div>
+    ${photos.length > 1 ? `<button class="nav p" type="button" aria-label="Foto anterior" onclick="slide(this,-1)">${ico('left')}</button><button class="nav n" type="button" aria-label="Próxima foto" onclick="slide(this,1)">${ico('right')}</button>` : ''}
+    ${photos.length ? `<span class="cnt">${photos.length} fotos</span>` : ''}
+    ${overlay(d)}
+  </div>
+  ${sheetHtml(d, false)}</article>`;
+}
+
+/* ---------- ficha ampliada (dialog) ----------
+   Abre ao tocar no anúncio (foto, endereço ou campos). No celular ocupa a tela, com a barra
+   "Voltar para lista"; o voltar do aparelho também fecha (entrada própria no histórico). */
+const fx = { id: null, i: 0, fromPop: false };
+const reduceMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+function fichaHtml(d) {
+  const photos = d.photos || [], n = photos.length, alt = esc(d.bairro || 'Apartamento');
+  const imgs = n ? photos.map((u, i) => `<img alt="${alt}: foto ${i + 1} de ${n}" ${i > 1 ? 'loading="lazy" ' : ''}decoding="async" referrerpolicy="no-referrer" src="${esc(u)}">`).join('') : '<span class="none">Sem fotos no anúncio</span>';
+  return `<div class="fx-bar"><button class="fx-back" type="button" onclick="closeFicha()">${ico('left')}Voltar para lista</button></div>
+  <div class="fx-main">
+    <section class="fx-gal" aria-label="Fotos do anúncio">
+      <div class="fx-stage"><div class="fx-ph" id="fxPh">${imgs}</div>
+        ${n > 1 ? `<button class="nav p" type="button" aria-label="Foto anterior" onclick="goPhoto(fx.i - 1)">${ico('left')}</button><button class="nav n" type="button" aria-label="Próxima foto" onclick="goPhoto(fx.i + 1)">${ico('right')}</button>` : ''}
+        ${n ? '<span class="cnt" id="fxCnt"></span>' : ''}
+        <div id="fxOver">${overlay(d)}</div>
+      </div>
+      ${n > 1 ? `<div class="fx-thumbs" id="fxThumbs" role="group" aria-label="Escolher foto">${photos.map((u, i) => `<button class="fx-th" type="button" aria-label="Foto ${i + 1} de ${n}" onclick="goPhoto(${i})"><img alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${esc(u)}"></button>`).join('')}</div>` : ''}
+    </section>
+    <div class="fx-sheet" id="fxSheet">${sheetHtml(d, true)}</div>
+  </div>`;
+}
+function fichaState(d) {
+  const dl = $('ficha'), st = state(d);
+  dl.classList.toggle('rented', !!rentInfo(d)); dl.classList.toggle('fav', st === 'fav'); dl.classList.toggle('desc', st === 'desc');
+}
+function openFicha(id, i) {
+  const d = L.find(x => x.id === id), dl = $('ficha');
+  if (!d) return;
+  if (i === undefined) { // abre na foto que o card estava mostrando
+    const s = $('list').querySelector(`.card[data-id="${CSS.escape(id)}"] .ph`);
+    i = s && s.clientWidth ? Math.round(s.scrollLeft / s.clientWidth) : 0;
+  }
+  fx.id = id;
+  dl.innerHTML = fichaHtml(d); fichaState(d);
+  if (!dl.open) { dl.showModal(); if (!(history.state && history.state.ficha)) history.pushState({ ficha: id }, ''); }
+  dl.scrollTop = 0;
+  goPhoto(i, 'auto');
+  dl.querySelector('.fx-back').focus({ preventScroll: true });
+}
+function closeFicha() { $('ficha').close(); }
+function goPhoto(i, how) {
+  const s = $('fxPh');
+  if (!s || !s.children.length) return;
+  fx.i = Math.max(0, Math.min(s.children.length - 1, i));
+  s.scrollTo({ left: fx.i * s.clientWidth, behavior: how || (reduceMotion() ? 'auto' : 'smooth') });
+  paintPhoto();
+}
+function paintPhoto() {
+  const s = $('fxPh'), c = $('fxCnt'), t = $('fxThumbs');
+  if (!s) return;
+  const n = s.querySelectorAll('img').length;
+  if (c) c.textContent = n > 1 ? `${fx.i + 1} / ${n}` : '1 foto';
+  if (!t) return;
+  [...t.children].forEach((b, k) => b.setAttribute('aria-current', k === fx.i));
+  const b = t.children[fx.i];
+  if (b) t.scrollTo({ left: b.offsetLeft - (t.clientWidth - b.offsetWidth) / 2, behavior: reduceMotion() ? 'auto' : 'smooth' });
+}
+/* Redesenha a ficha aberta depois de uma marcação (daqui, do card ou da outra pessoa), sem mexer na galeria. */
+function refreshFicha() {
+  const dl = $('ficha'), d = dl.open && fx.id && L.find(x => x.id === fx.id);
+  if (!d) return;
+  const a = document.activeElement, k = a && dl.contains(a) && a.dataset ? a.dataset.k : null;
+  $('fxSheet').innerHTML = sheetHtml(d, true); $('fxOver').innerHTML = overlay(d); fichaState(d);
+  const n = k && dl.querySelector(`[data-k="${CSS.escape(k)}"]`);
+  if (n) n.focus({ preventScroll: true });
 }
 
 /* ---------- listas ---------- */
@@ -536,6 +669,7 @@ function paint(html) {
   const inList = a && $('list').contains(a);
   $('list').innerHTML = html;
   pendingFocus = null;
+  refreshFicha();
   if (!k && !inList) return;
   const n = k && $('list').querySelector(`[data-k="${CSS.escape(k)}"]`);
   (n || $('list')).focus({ preventScroll: true });
@@ -655,7 +789,7 @@ function update(id, act) {
   renderCounts();
   if (inView(d, view)) {
     const had = document.activeElement && el.contains(document.activeElement) ? document.activeElement.dataset.k : null;
-    el.outerHTML = card(d); freshRent = null;
+    el.outerHTML = card(d); refreshFicha(); freshRent = null;
     if (had) { const n = $('list').querySelector(`[data-k="${CSS.escape(had)}"]`); if (n) n.focus({ preventScroll: true }); }
     return false;
   }
@@ -678,7 +812,8 @@ async function toggleRent(id) {
 /* ---------- avisos ---------- */
 let toastT = 0;
 function notify(msg, err, undo) {
-  const t = $('toast');
+  const t = $('toast'), host = $('ficha').open ? $('ficha') : document.body;
+  if (t.parentElement !== host) host.append(t); // com a ficha aberta, o aviso precisa ficar na camada dela
   t.setAttribute('role', err ? 'alert' : 'status');
   t.innerHTML = `<span>${esc(msg)}</span>${undo ? '<button type="button">Desfazer</button>' : ''}`;
   t.classList.toggle('err', !!err); t.hidden = false;
@@ -762,6 +897,36 @@ function subscribe() {
     if (!editing) render();
   }).subscribe();
 }
+
+/* Ficha ampliada: toque em qualquer parte do card que não seja um controle abre a ficha. */
+$('list').addEventListener('click', e => {
+  const c = e.target.closest('.card');
+  if (!c || e.target.closest('button,a,summary,details,input,select,label,.rentnote') || String(getSelection())) return;
+  const img = e.target.closest('.ph img');
+  openFicha(c.dataset.id, img ? [...img.parentElement.children].indexOf(img) : undefined);
+});
+$('ficha').addEventListener('click', e => { if (e.target === e.currentTarget) closeFicha(); }); // fundo escuro (desktop)
+$('ficha').addEventListener('keydown', e => {
+  if ((e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') || e.target.closest('input,select,textarea,.fx-sheet')) return;
+  e.preventDefault(); goPhoto(fx.i + (e.key === 'ArrowRight' ? 1 : -1));
+});
+let fxScroll = 0;
+$('ficha').addEventListener('scroll', e => {
+  if (e.target.id !== 'fxPh') return;
+  cancelAnimationFrame(fxScroll);
+  fxScroll = requestAnimationFrame(() => { const s = e.target, i = Math.round(s.scrollLeft / s.clientWidth); if (i !== fx.i) { fx.i = i; paintPhoto(); } });
+}, true);
+window.addEventListener('resize', () => { if ($('ficha').open) goPhoto(fx.i, 'auto'); });
+$('ficha').addEventListener('close', () => {
+  const id = fx.id, t = $('toast');
+  if (t.parentElement !== document.body) document.body.append(t);
+  $('ficha').innerHTML = ''; fx.id = null;
+  if (!fx.fromPop && history.state && history.state.ficha) history.back();
+  fx.fromPop = false;
+  const op = id && $('list').querySelector(`.card[data-id="${CSS.escape(id)}"] .addr-open`);
+  if (op) op.focus({ preventScroll: true });
+});
+window.addEventListener('popstate', () => { if ($('ficha').open && !(history.state && history.state.ficha)) { fx.fromPop = true; closeFicha(); } });
 
 const VIEWS = ['analise', 'semmarca', 'fav', 'desc', 'alertas'];
 if (VIEWS.includes(location.hash.slice(1))) view = location.hash.slice(1);

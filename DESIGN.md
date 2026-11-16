@@ -331,6 +331,19 @@ A red band across the photo at -12 degrees, 22-28px 800 white uppercase tracked 
 ### Alert Block
 A sheet with name, status pill, a conditions line and Editar / Pausar / Excluir; a three-cell period strip (label over 20px count; active cell pen-wash with a 2px pen underline); then opportunity rows (thumb, pen total at 22px, place, time) that expand in place into a full inspection sheet.
 
+### Expanded Sheet (dialog)
+Tapping a sheet anywhere outside its controls (photo, address, fields) opens the same sheet at reading scale in a native modal `<dialog>`. Its parts, top to bottom:
+- **Bar:** a 52px sticky white bar with a bottom rule. It holds one pen text button, "Voltar para lista", with a left chevron.
+- **Gallery:** the photos on the photo mat, uncropped (`object-fit: contain`). They snap one per swipe, with the same nav circles, flags and stamp as the card, and an ink-80% counter reading "3 / 14".
+- **Thumbnails:** a strip of 68x51 thumbnails at 4px corners, the inactive ones at 62% opacity. The current one gets a 2px pen outline and `aria-current`.
+- **Sheet:** the same sheet with Descrição do anúncio, Características and Perto daqui already open as labelled fields, separated by hairlines. A missing description reads "não informada".
+
+At phone width the dialog fills the screen. It enters with a 28px push from the right (0.26s, cubic-bezier(.2,.8,.2,1)), and the gallery sits above the sheet in one scroll.
+
+From 740px it is a centered 1180x860 sheet: 8px corners, 1px rule, no shadow, over an ink-55% backdrop. The gallery fills the left column and the sheet scrolls in a 400px right column with a rule between them. It enters with a 12px rise.
+
+The device back button, Esc, the backdrop and the bar all close it. Focus returns to the card's address button. Marks made inside update the open sheet and the card behind it, and the toast moves into the dialog's layer while it is open.
+
 ### Toast
 Fixed bottom-center, ink fill, white 14px text, 8px corners, pen-soft text action (Desfazer); error variant on stamp-deep. Rises in over 0.22s. Motion is removed under reduced-motion.
 
