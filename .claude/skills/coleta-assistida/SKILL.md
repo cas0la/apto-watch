@@ -28,13 +28,15 @@ aqui, pelo Chrome do usuário, quando ele pedir, e importada com `python -m watc
    (por `id` e em `alt_urls`). O VivaReal começa a responder 429 depois de ~35 detalhes seguidos: pare ali
    e deixe o resto para a próxima coleta.
 5. **OLX**: leia cada URL com `fetch` (as URLs já têm filtros; a página N é `&o=N`, 50 anúncios por página,
-   pare quando vier menos de 50) e extraia o bloco `{"ads":[...]}` do HTML com o coletor OLX abaixo.
+   pare quando vier menos de 50 ou nenhum anúncio novo: depois do fim o OLX repete páginas) e extraia o bloco `{"ads":[...]}` do HTML com o coletor OLX abaixo.
 6. Exporte pelo receptor local: rode `python3 scripts/receive_collection.py coleta` em segundo plano e,
    na aba, `fetch('http://127.0.0.1:8767/<fonte>-AAAA-MM-DD', {method: 'POST', body: JSON.stringify(lista)})`.
    Na primeira vez em cada site o Chrome pergunta se a página pode acessar a rede local: peça ao usuário
    para clicar em **Permitir** (o aviso não aparece na captura de tela). Pare o receptor no fim.
    Sem o receptor, escreva o JSON no `<body>` e leia com `get_page_text`, em partes de até 40 mil caracteres.
-7. Rode `.venv/bin/python -m watcher --ingest coleta/<fonte>-AAAA-MM-DD.json` para cada arquivo. Se o
+7. Rode `flock -w 900 /run/user/$(id -u)/apto-watch.lock .venv/bin/python -m watcher --ingest coleta/<fonte>-AAAA-MM-DD.json`
+   para cada arquivo, um de cada vez. A trava é a mesma do watcher: sem ela, duas gravações ao mesmo tempo não
+   enxergam uma à outra e o mesmo imóvel entra duas vezes (se acontecer, `scripts/dedupe.py --apply` junta). Se o
    Supabase estourar o tempo, rode de novo: a importação pode ser repetida sem duplicar.
 8. Mostre ao usuário o resumo: novos, reduções de preço, duplicados juntados, alertas enviados e o que ficou de fora.
 
@@ -51,6 +53,36 @@ aqui, pelo Chrome do usuário, quando ele pedir, e importada com `python -m watc
 
 `id` do OLX: `olx-<listId>`. Campos ausentes podem ser omitidos.
 
+## VivaReal: tudo vem no JSON da busca (24/11/2026)
+
+O HTML de cada página de busca traz, no payload `self.__next_f.push([1,"..."])`, um objeto por anúncio
+começando em `{"id":"<código>","prices"`. Junte os pedaços do payload (como no coletor OLX), recorte cada objeto
+contando chaves (respeitando strings) e faça `JSON.parse`. Campos usados:
+`prices.rental.{value,condominium,iptu}`, `address.{street,streetNumber,neighborhood,city,coordinates,isApproximateLocation}`,
+`amenities.{usableAreas,bedrooms,bathrooms,parkingSpaces,unitFloor,values}` (códigos como `PETS_ALLOWED`,
+`GAS_SHOWER`, `ELEVATOR`, `AMERICAN_KITCHEN`, traduzidos para o português do quadro de itens),
+`medias.images` (hash de 32 caracteres em `vr-listing/<hash>/`), `description`, `advertiser.name`, `href`.
+Assim não é preciso abrir a página de detalhe (que dá 429 depois de ~35 seguidas): cada anúncio já sai completo.
+
+## Anunciante (imobiliária)
+
+- **VivaReal**: o card só mostra a imobiliária nos destaques, mas o HTML da busca traz o JSON de cada anúncio:
+  `{"id":"<código>","prices"...` seguido de `"advertiser":{"id":...,"legacyId":...,"name":"<imobiliária>"}`.
+  Percorra os dois padrões em ordem e dê a cada código o primeiro `name` depois dele (função `advMap` abaixo).
+  Conferido contra a página de detalhe em 24/11/2026. O watcher tira a filial ("Ibagy Imóveis - Kobrasol" vira
+  "Ibagy Imóveis").
+- **OLX**: a busca não traz o nome; `professionalAd: false` vira `"Particular"`, o resto fica sem anunciante.
+- **ZAP** repete o VivaReal (mesmos códigos): não precisa coletar.
+
+```js
+const advMap = h => { const re = /\{\\?"id\\?":\\?"(\d{8,11})\\?",\\?"prices|\\?"advertiser\\?":\{\\?"id\\?":\\?"[^"\\]*\\?",\\?"legacyId\\?":\d+,\\?"name\\?":\\?"([^"\\]+)/g;
+  const out = {}; let cur = null, m; while ((m = re.exec(h))) { if (m[1]) cur = m[1]; else if (cur && !out[cur]) out[cur] = m[2]; } return out; };
+```
+
+Releia também os anúncios que já estão no banco (todos os cards que passam nos critérios, não só os novos):
+assim eles ganham data de visto, preço e anunciante atualizados. Os que sumiram da busca, confira pela página
+de detalhe (404/410 = saiu do ar) antes de marcar `active=false, inactive_at=agora`.
+
 ## Coletor VivaReal/ZAP (cards da lista)
 
 ```js
@@ -61,7 +93,7 @@ document.querySelectorAll('[data-cy="rp-property-cd"]').forEach(c => {
   const a = c.querySelector('a[href*="-id-"]'); const id = a?.href.match(/-id-(\d+)/)?.[1]; if (!id) return;
   const price = t('rp-cardProperty-price-txt');
   const [bairro, cidade] = t('rp-cardProperty-location-txt').split(/,\s*(?=[^,]+$)/);
-  M[id] = { id, source: location.host.includes('zap') ? 'zap' : 'vivareal', url: a.href.split('?')[0],
+  M[id] = { id, source: location.host.includes('zap') ? 'zap' : 'vivareal', url: a.href.split('?')[0], anunciante: adv[id] || null, // adv = advMap(html da página)
     rent: num((price.match(/R\$\s*([\d.]+)\s*\/\s*m[êe]s/) || [])[1]), cond: num((price.match(/Cond\.\s*R\$\s*([\d.]+)/) || [])[1]),
     area: num(t('rp-cardProperty-propertyArea-txt')), quartos: num(t('rp-cardProperty-bedroomQuantity-txt')),
     banheiros: num(t('rp-cardProperty-bathroomQuantity-txt')), vagas: num(t('rp-cardProperty-parkingSpacesQuantity-txt')),
@@ -93,6 +125,7 @@ const f = (t.match(/self\.__next_f\.push\(\[1,"(.*?)"\]\)/gs) || []).map(x => { 
 const i = f.indexOf('{"ads":['); let dep = 0, j = i + 7; for (; j < f.length; j++) { if (f[j] == '[') dep++; else if (f[j] == ']' && !--dep) break; }
 JSON.parse(f.slice(i + 7, j + 1)).map(a => { const p = Object.fromEntries((a.properties || []).map(x => [x.name, x.value])); const n = s => parseInt(String(s || '').replace(/\D/g, '')) || 0;
   return { id: 'olx-' + a.listId, source: 'olx', url: String(a.url).split('?')[0], title: a.subject, rent: n(a.priceValue), cond: n(p.condominio),
+    anunciante: a.professionalAd === false ? 'Particular' : null,
     area: n(p.size), quartos: n(p.rooms), banheiros: n(p.bathrooms), vagas: n(p.garage_spaces), bairro: a.locationDetails?.neighbourhood,
     cidade: a.locationDetails?.municipality, amenities: String(p.re_features || '').split(',').map(s => s.trim()).filter(Boolean),
     photos: (a.images || []).map(x => x.original).filter(Boolean).slice(0, 30) }; })

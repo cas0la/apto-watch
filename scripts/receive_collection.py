@@ -8,7 +8,7 @@ OUT = sys.argv[1]
 class H(BaseHTTPRequestHandler):
     def _cors(self):
         o = self.headers.get("Origin") or ""
-        if re.fullmatch(r"https://www\.(vivareal|olx)\.com\.br", o):
+        if re.fullmatch(r"https://www\.(vivareal|zapimoveis|olx)\.com\.br", o):
             self.send_header("Access-Control-Allow-Origin", o)
         self.send_header("Access-Control-Allow-Methods", "POST, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")

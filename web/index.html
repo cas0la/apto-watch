@@ -68,7 +68,7 @@ h1{margin:0;font:700 clamp(18px,4.6vw,22px)/1.2 var(--font);letter-spacing:-.01e
 .tab:focus-visible{outline-offset:-4px}
 .tab .short{display:none}
 @media (max-width:420px){
-  .tabs .wrap{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;overflow:visible;padding-left:0;padding-right:0}
+  .tabs .wrap{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;overflow:visible;padding-left:0;padding-right:0}
   .tabs .wrap,.tabs .wrap.more{-webkit-mask-image:none;mask-image:none}
   .tab{flex-direction:column;gap:4px;padding:9px 2px 7px;font-size:12px;min-height:54px;justify-content:center}
   .tab b{background:none;padding:0;font-size:13px;font-weight:700}
@@ -123,6 +123,7 @@ h2 small{font:500 12px var(--font);letter-spacing:0;color:var(--muted)}
 .flag{position:absolute;left:8px;top:8px;right:60px;display:flex;gap:6px;flex-wrap:wrap}
 .flag span{font:700 11px/1 var(--font);letter-spacing:.02em;padding:6px 8px;border-radius:4px;background:var(--pen);color:var(--sheet)}
 .flag span.light{background:color-mix(in srgb,var(--sheet) 95%,transparent);color:var(--ink)}
+.flag span.seen{color:var(--ink-2);font-weight:600}
 .head{display:grid;grid-template-columns:minmax(0,1fr) auto;border-bottom:1px solid var(--rule)}
 .f{padding:10px 12px;min-width:0}
 .head>.f+.f{border-left:1px solid var(--rule)}
@@ -384,6 +385,7 @@ form.aform .full{grid-column:1/-1}
   <nav class="tabs" aria-label="Listas"><div class="wrap" role="tablist">
     <button class="tab" role="tab" data-v="analise"><span class="full">Em análise</span><span class="short" aria-hidden="true">Análise</span> <b id="n-analise"></b></button>
     <button class="tab" role="tab" data-v="semmarca"><span class="full">Não favoritados</span><span class="short" aria-hidden="true">Não fav.</span> <b id="n-semmarca"></b></button>
+    <button class="tab" role="tab" data-v="umban"><span class="full">1 banheiro</span><span class="short" aria-hidden="true">1 banh.</span> <b id="n-umban"></b></button>
     <button class="tab" role="tab" data-v="fav"><span class="full">Favoritos</span><span class="short" aria-hidden="true">Favoritos</span> <b id="n-fav"></b></button>
     <button class="tab" role="tab" data-v="desc"><span class="full">Descartados</span><span class="short" aria-hidden="true">Descartes</span> <b id="n-desc"></b></button>
     <button class="tab" role="tab" data-v="alertas"><span class="full">Alertas</span><span class="short" aria-hidden="true">Alertas</span> <b id="n-alertas"></b></button>
@@ -391,6 +393,7 @@ form.aform .full{grid-column:1/-1}
   <div class="filters" id="filters"><details class="fdet" id="fdet" open><summary class="fsum"><span class="fs"><b>Filtros</b><span id="fstate"></span></span><span class="end"><span id="count2"></span><svg class="ico i-open" aria-hidden="true"><use href="#i-plus"/></svg><svg class="ico i-close" aria-hidden="true"><use href="#i-minus"/></svg></span></summary><div class="wrap">
     <label for="fReg">Região <select id="fReg"><option value="">Todas</option></select></label>
     <label for="fMax">Até <input id="fMax" type="range" min="1500" max="3500" step="50" value="3500"> <b id="fMaxV"></b></label>
+    <label for="fAnun">Imobiliária <select id="fAnun"><option value="">Todas</option></select></label>
     <label for="fOrd">Ordem <select id="fOrd"><option value="tot">Menor total</option><option value="recent">Mais recentes</option><option value="area">Maior área</option></select></label>
     <label for="fGas" class="inline"><input id="fGas" type="checkbox"> Só com gás</label>
     <label for="fGrp" class="inline"><input id="fGrp" type="checkbox" checked> Agrupar por região</label>
@@ -420,7 +423,7 @@ const narrow = matchMedia('(max-width: 420px)');
 const syncFilters = () => { $('fdet').open = !narrow.matches; };
 syncFilters(); narrow.addEventListener('change', syncFilters);
 
-let L = [], marks = {}, rentals = {}, alerts = [], me = null, view = 'analise', editing = null, openAlert = {}, openOpp = null, freshRent = null;
+let L = [], marks = {}, rentals = {}, seen = {}, alerts = [], me = null, view = 'analise', editing = null, openAlert = {}, openOpp = null, freshRent = null;
 
 /* ---------- regras ---------- */
 const dropAfterMark = d => { const m = marks[d.id]; return d.price_drop_at && m && m.status === 'desc' && new Date(d.price_drop_at) > new Date(m.at); };
@@ -435,7 +438,13 @@ function state(d) {
   if (m.status === 'desc' && dropAfterMark(d)) return 'reaberto';
   return m.status;
 }
-const inView = (d, v) => { const s = state(d); return v === 'analise' ? s !== 'desc' : v === 'semmarca' ? (s === 'none' || s === 'reaberto') : v === 'fav' ? s === 'fav' : s === 'desc'; };
+// 1 banheiro tem aba própria: sai de Em análise e Não favoritados; Favoritos e Descartados mostram todos.
+const oneBath = d => d.banheiros === 1;
+// Alugado (marcado ou fora do ar na fonte) vai sozinho para Descartados; volta quando o anúncio reaparece.
+const inView = (d, v) => { if (rentInfo(d)) return v === 'desc'; const s = state(d); return v === 'analise' ? s !== 'desc' && !oneBath(d) : v === 'semmarca' ? (s === 'none' || s === 'reaberto') && !oneBath(d) : v === 'umban' ? s !== 'desc' && oneBath(d) : v === 'fav' ? s === 'fav' : s === 'desc'; };
+/* Imobiliária: a do anúncio e as dos mesmos imóveis em outros sites. */
+const anuncs = d => [...new Set([d.anunciante, ...(d.alt_urls || []).map(x => x.anunciante)].filter(Boolean))];
+const NI = '__ni';
 const norm = s => (s || '').normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
 const has = (b, n) => !!n && new RegExp('(^|\\s)' + n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(\\s|$)').test(b);
 function alertMatch(d, a) {
@@ -445,7 +454,7 @@ function alertMatch(d, a) {
   if (inc.length && !inc.some(x => has(b, x))) return false;
   if (exc.some(x => has(b, x))) return false;
   if (a.min_quartos && (d.quartos || 0) < a.min_quartos) return false;
-  if (a.min_banheiros && (d.banheiros || 0) < a.min_banheiros) return false;
+  if ((d.banheiros || 0) < (a.min_banheiros || 2)) return false; // 1 banheiro só quando o alerta pede
   if (a.min_vagas && (d.vagas || 0) < a.min_vagas) return false;
   if (a.exigir_pet && d.pet !== 'SIM') return false;
   return true;
@@ -494,11 +503,11 @@ const itemHtml = ([k, label, fact]) => k === 'f'
 function slide(btn, dir) { const s = btn.parentElement.querySelector('.ph'); s.scrollBy({ left: dir * s.clientWidth, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); }
 const dropShown = d => d.prev_total && d.prev_total > d.total && (Date.now() - new Date(d.price_drop_at) < 21 * DAY || state(d) === 'reaberto');
 /* Etiquetas sobre a foto (Novo, Baixou, Favorito…) e o carimbo ALUGADO: iguais no card e na ficha ampliada. */
-function overlay(d) {
+function overlay(d, big) {
   const st = state(d), m = marks[d.id], rent = rentInfo(d);
   const top = [Date.now() - new Date(d.first_seen) < 3 * DAY && '<span>Novo</span>', dropShown(d) && `<span>Baixou ${brl(d.prev_total - d.total)}</span>`,
     st === 'fav' && `<span class="light">Favorito${m.by_email ? ' · ' + esc(who(m.by_email)) : ''}</span>`, st === 'desc' && `<span class="light">Descartado${m.by_email ? ' · ' + esc(who(m.by_email)) : ''}</span>`,
-    st === 'reaberto' && '<span class="light">Era descartado</span>'].filter(Boolean).join('');
+    st === 'reaberto' && '<span class="light">Era descartado</span>', !big && seen[d.id] && `<span class="light seen">Visto ${esc(ago(seen[d.id]))}</span>`].filter(Boolean).join('');
   return (top && !rent ? `<div class="flag">${top}</div>` : '') + (rent ? `<div class="tarja${freshRent === d.id ? ' fresh' : ''}" aria-hidden="true">Alugado</div>` : '');
 }
 /* A ficha sem a foto: endereço | total, composição, quadro de itens e corpo.
@@ -508,7 +517,7 @@ function sheetHtml(d, big) {
   // Bairro entra na linha de medidas; a cidade só quando a lista não está agrupada por região.
   const grouped = !big && $('fGrp').checked && !SINGLE;
   const place = grouped ? (d.regiao || '').startsWith(d.bairro || '\u0000') ? '' : d.bairro : [d.bairro, d.cidade].filter(Boolean).join(', ');
-  const spec = [place, d.area && d.area + ' m²', d.quartos && d.quartos + ' quartos', d.banheiros && d.banheiros + ' banheiros', d.vagas && d.vagas + (d.vagas > 1 ? ' vagas' : ' vaga')].filter(Boolean).map(x => `<span>${esc(x)}</span>`).join(' · ');
+  const spec = [place, d.area && d.area + ' m²', d.quartos && d.quartos + (d.quartos > 1 ? ' quartos' : ' quarto'), d.banheiros && d.banheiros + (d.banheiros > 1 ? ' banheiros' : ' banheiro'), d.vagas && d.vagas + (d.vagas > 1 ? ' vagas' : ' vaga')].filter(Boolean).map(x => `<span>${esc(x)}</span>`).join(' · ');
   const isFav = st === 'fav', isDesc = st === 'desc', drop = dropShown(d);
   const am = (d.amenities || []).filter(x => !/m²|quarto|banheiro|vaga|suíte|andar|aceita animais/i.test(x)).slice(0, big ? 40 : 12).join(' · ');
   const srcs = [d.source, ...(d.alt_urls || []).map(x => x.source)].map(s => SRC[s] || s).join(' + ');
@@ -542,7 +551,7 @@ function sheetHtml(d, big) {
     <div class="links">${d.lat ? `<a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=${d.lat},${d.lon}">${ico('pin')}Mapa</a>` : ''}
       <a target="_blank" rel="noopener" href="${esc(d.url)}">${ico('out')}Ver no ${esc(SRC[d.source] || d.source)}</a>
       ${(d.alt_urls || []).map(x => `<a target="_blank" rel="noopener" href="${esc(x.url)}">${ico('out')}${esc(SRC[x.source] || x.source)}</a>`).join('')}
-      <span class="code">${esc(srcs)} · cód. ${id} · visto ${ago(d.first_seen)}</span></div>
+      <span class="code">${esc(srcs)} · ${d.anunciante ? esc(d.anunciante) : 'imobiliária não informada'} · cód. ${id} · encontrado ${ago(d.first_seen)}</span></div>
   </div>`;
 }
 function card(d) {
@@ -590,6 +599,7 @@ function openFicha(id, i) {
     i = s && s.clientWidth ? Math.round(s.scrollLeft / s.clientWidth) : 0;
   }
   fx.id = id;
+  markSeen(id);
   dl.innerHTML = fichaHtml(d); fichaState(d);
   if (!dl.open) { dl.showModal(); if (!(history.state && history.state.ficha)) history.pushState({ ficha: id }, ''); }
   dl.scrollTop = 0;
@@ -632,10 +642,10 @@ function centerTab() {
 }
 if (document.fonts) document.fonts.ready.then(() => centerTab());
 function renderCounts() {
-  const inA = L.filter(d => inView(d, 'analise')), nA = inA.length, nR = inA.filter(rentInfo).length, nNew = L.filter(d => Date.now() - new Date(d.first_seen) < DAY && !rentInfo(d)).length;
-  $('summary').innerHTML = L.length ? `<b>${nA} em análise</b>${nR ? ` (${nR} ${nR === 1 ? 'alugado' : 'alugados'})` : ''} · ${nNew} ${nNew === 1 ? 'novo' : 'novos'} hoje` : '';
+  const inA = L.filter(d => inView(d, 'analise')), nA = inA.length, nNew = L.filter(d => Date.now() - new Date(d.first_seen) < DAY && !rentInfo(d)).length;
+  $('summary').innerHTML = L.length ? `<b>${nA} em análise</b> · ${nNew} ${nNew === 1 ? 'novo' : 'novos'} hoje` : '';
   if (SINGLE) return;
-  for (const v of ['analise', 'semmarca', 'fav', 'desc']) $('n-' + v).textContent = L.filter(d => inView(d, v)).length;
+  for (const v of ['analise', 'semmarca', 'umban', 'fav', 'desc']) $('n-' + v).textContent = L.filter(d => inView(d, v)).length;
   $('n-alertas').textContent = alerts.length || '';
 }
 function render() {
@@ -647,15 +657,16 @@ function render() {
   if (view === 'alertas') return renderAlerts();
   const reg = $('fReg').value, max = +$('fMax').value, gas = $('fGas').checked, ord = $('fOrd').value;
   showMax();
-  const R = L.filter(d => inView(d, view) && d.total <= max && (!reg || d.regiao === reg) && (!gas || hasGas(d)));
+  const an = $('fAnun').value;
+  const R = L.filter(d => inView(d, view) && d.total <= max && (!reg || d.regiao === reg) && (!gas || hasGas(d)) && (!an || (an === NI ? !d.anunciante : anuncs(d).includes(an))));
   const rentLast = (a, b) => !!rentInfo(a) - !!rentInfo(b);
   const favFirst = (a, b) => (state(b) === 'fav') - (state(a) === 'fav');
   R.sort((a, b) => rentLast(a, b) || (ord === 'area' ? (b.area || 0) - (a.area || 0) : ord === 'recent' ? new Date(b.first_seen) - new Date(a.first_seen) : favFirst(a, b) || a.total - b.total));
   // Resumo dos filtros no celular: agrupamento primeiro; região só quando escolhida.
-  const fs = [$('fGrp').checked ? 'por região' : 'sem agrupar', reg, 'até ' + brl(max), $('fOrd').selectedOptions[0].textContent.toLowerCase(), gas && 'só com gás'].filter(Boolean).join(' · ');
+  const fs = [$('fGrp').checked ? 'por região' : 'sem agrupar', reg, an && $('fAnun').selectedOptions[0].textContent.replace(/ \(\d+\)$/, ''), 'até ' + brl(max), $('fOrd').selectedOptions[0].textContent.toLowerCase(), gas && 'só com gás'].filter(Boolean).join(' · ');
   $('fstate').textContent = fs.charAt(0).toUpperCase() + fs.slice(1);
   $('count').textContent = $('count2').textContent = R.length + (R.length === 1 ? ' anúncio' : ' anúncios');
-  const empty = { analise: 'Nenhum anúncio com esses filtros. Aumente o valor máximo ou escolha outra região.', semmarca: 'Tudo já foi marcado. Os anúncios novos aparecem aqui.', fav: 'Nenhum favorito ainda. Toque em Favoritar num anúncio em análise.', desc: 'Nada descartado.' }[view];
+  const empty = { analise: 'Nenhum anúncio com esses filtros. Aumente o valor máximo ou escolha outra região.', semmarca: 'Tudo já foi marcado. Os anúncios novos aparecem aqui.', fav: 'Nenhum favorito ainda. Toque em Favoritar num anúncio em análise.', desc: 'Nada descartado.', umban: 'Nenhum apartamento de 1 banheiro com esses filtros.' }[view];
   // Agrupado: mesma ordem dentro de cada região. Sem agrupar: uma lista só, na ordem escolhida.
   const groups = $('fGrp').checked ? REGS.map(r => [r, R.filter(d => d.regiao === r)]).filter(g => g[1].length) : R.length ? [['Todos os anúncios', R]] : [];
   paint(groups.map(([r, n]) => `<h2>${r} <small>${n.length}</small></h2><div class="grid">${n.map(card).join('')}</div>`).join('') || `<p class="big-empty">${empty}</p>`);
@@ -804,9 +815,30 @@ function update(id, act) {
 async function toggleRent(id) {
   const prev = rentals[id];
   if (prev) delete rentals[id]; else { rentals[id] = { listing_id: id, by_email: me, at: new Date().toISOString() }; freshRent = id; }
-  update(id, 'rent');
+  const left = update(id, 'rent');
+  if (left && !prev) notify('Marcado como alugado: foi para Descartados.', false, () => toggleRent(id));
   const { error } = prev ? await sb.from('rentals').delete().eq('listing_id', id) : await sb.from('rentals').upsert(rentals[id]);
   if (error) { if (prev) rentals[id] = prev; else delete rentals[id]; render(); notify('Não deu para salvar: ' + error.message, true); }
+}
+
+/* ---------- visto: anúncios que esta pessoa já abriu ---------- */
+async function markSeen(id) {
+  if (seen[id] || !me) return;
+  seen[id] = new Date().toISOString();
+  const el = $('list').querySelector(`.card[data-id="${CSS.escape(id)}"]`), d = L.find(x => x.id === id);
+  if (el && d) el.outerHTML = card(d);
+  const { error } = await sb.from('views').upsert({ listing_id: id, email: me, at: seen[id] });
+  if (error) console.warn('visto não salvo:', error.message);
+}
+document.addEventListener('click', e => { const a = e.target.closest('.links a'), c = a && (a.closest('.card') || (a.closest('#ficha') && fx.id && { dataset: { id: fx.id } })); if (c) markSeen(c.dataset.id); });
+/* Opções do filtro de imobiliária: as que aparecem nos anúncios, da mais frequente para a menos. */
+function fillAnun() {
+  const n = {}; let ni = 0;
+  L.forEach(d => { const a = anuncs(d); if (!a.length) ni++; a.forEach(x => { n[x] = (n[x] || 0) + 1; }); });
+  const cur = $('fAnun').value || prefAnun;
+  $('fAnun').innerHTML = '<option value="">Todas</option>' + Object.entries(n).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'pt-BR'))
+    .map(([k, c]) => `<option value="${esc(k)}">${esc(k)} (${c})</option>`).join('') + (ni ? `<option value="${NI}">Não informada (${ni})</option>` : '');
+  $('fAnun').value = [...$('fAnun').options].some(o => o.value === cur) ? cur : '';
 }
 
 /* ---------- avisos ---------- */
@@ -823,17 +855,19 @@ function notify(msg, err, undo) {
 
 /* ---------- preferências deste aparelho ---------- */
 const PREF = 'apto-prefs-v1';
+let prefAnun = '';
 function loadPrefs() {
   try {
     const p = JSON.parse(localStorage.getItem(PREF) || '{}');
     if (p.reg !== undefined) $('fReg').value = p.reg;
     if (p.max) $('fMax').value = p.max;
     if (p.ord) $('fOrd').value = p.ord;
+    prefAnun = p.anun || '';
     $('fGas').checked = !!p.gas; $('fGrp').checked = p.grp !== false;
   } catch (e) {}
 }
 function savePrefs() {
-  try { localStorage.setItem(PREF, JSON.stringify({ reg: $('fReg').value, max: $('fMax').value, gas: $('fGas').checked, ord: $('fOrd').value, grp: $('fGrp').checked })); } catch (e) {}
+  try { localStorage.setItem(PREF, JSON.stringify({ reg: $('fReg').value, anun: $('fAnun').value, max: $('fMax').value, gas: $('fGas').checked, ord: $('fOrd').value, grp: $('fGrp').checked })); } catch (e) {}
 }
 
 /* ---------- Buscar agora: pedido no Supabase, atendido pelo PC a cada 5 min ---------- */
@@ -872,17 +906,20 @@ function setSync(msg, err) { const s = $('sync'); s.textContent = msg; s.classLi
 async function loadAlerts() { const { data } = await sb.from('alerts').select('*').order('created_at'); alerts = data || []; }
 async function loadAll() {
   setSync('Carregando…');
-  const [ls, ms, rt, rs] = await Promise.all([
+  const [ls, ms, rt, rs, vs] = await Promise.all([
     sb.from('listings').select('*').order('first_seen', { ascending: false }).limit(3000),
     sb.from('marks').select('*'), sb.from('rentals').select('*'),
     sb.from('runs').select('source,status,finished_at,message').order('started_at', { ascending: false }).limit(30),
+    sb.from('views').select('listing_id,at'),
   ]);
   if (ls.error) return setSync('Não foi possível carregar os anúncios: ' + ls.error.message, true);
   marks = Object.fromEntries((ms.data || []).map(m => [m.listing_id, m]));
   rentals = Object.fromEntries((rt.data || []).map(m => [m.listing_id, m]));
+  seen = Object.fromEntries((vs.data || []).map(v => [v.listing_id, v.at]));
   const cutoff = Date.now() - 45 * DAY;
   L = (ls.data || []).filter(d => d.active || marks[d.id] || rentals[d.id] || new Date(d.inactive_at || 0).getTime() > cutoff);
   await loadAlerts();
+  fillAnun();
   const last = {};
   (rs.data || []).forEach(r => { if (!last[r.source]) last[r.source] = r; });
   $('status').innerHTML = Object.values(last).map(r => `<span><i class="dot${r.status === 'ok' ? '' : ' bad'}"></i>${esc(SRC[r.source] || r.source)} ${r.status === 'ok' ? 'lido ' + ago(r.finished_at) : esc(r.status)}</span>`).join('') || '<span>O watcher ainda não rodou.</span>';
@@ -928,7 +965,7 @@ $('ficha').addEventListener('close', () => {
 });
 window.addEventListener('popstate', () => { if ($('ficha').open && !(history.state && history.state.ficha)) { fx.fromPop = true; closeFicha(); } });
 
-const VIEWS = ['analise', 'semmarca', 'fav', 'desc', 'alertas'];
+const VIEWS = ['analise', 'semmarca', 'umban', 'fav', 'desc', 'alertas'];
 if (VIEWS.includes(location.hash.slice(1))) view = location.hash.slice(1);
 document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => { view = b.dataset.v; editing = null; openOpp = null; history.replaceState(null, '', '#' + view); render(); window.scrollTo({ top: 0 }); }));
 document.querySelector('.tabs .wrap').addEventListener('keydown', e => {
@@ -942,7 +979,7 @@ document.querySelector('.tabs .wrap').addEventListener('scroll', e => { const w 
 window.addEventListener('hashchange', () => { const v = location.hash.slice(1); if (VIEWS.includes(v) && v !== view) { view = v; editing = null; render(); } });
 let filterTimer = 0;
 const showMax = () => { const v = brl(+$('fMax').value); $('fMaxV').textContent = v; $('fMax').setAttribute('aria-valuetext', v); };
-['fReg', 'fGas', 'fOrd', 'fGrp'].forEach(id => $(id).addEventListener('change', () => { savePrefs(); render(); }));
+['fReg', 'fAnun', 'fGas', 'fOrd', 'fGrp'].forEach(id => $(id).addEventListener('change', () => { savePrefs(); render(); }));
 $('fMax').addEventListener('input', () => { showMax(); clearTimeout(filterTimer); filterTimer = setTimeout(render, 160); });
 $('fMax').addEventListener('change', () => { clearTimeout(filterTimer); savePrefs(); render(); });
 $('loginForm').addEventListener('submit', async e => {

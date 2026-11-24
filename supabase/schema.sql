@@ -49,10 +49,19 @@ create table if not exists listings (
   prev_total    integer,                   -- total antes da última redução
   price_drop_at timestamptz,               -- quando o total caiu pela última vez
   active        boolean not null default true,
-  alt_urls      jsonb not null default '[]',  -- o mesmo imóvel em outros sites: [{source, url}]
-  inactive_at   timestamptz                   -- quando saiu do ar na fonte (provavelmente alugado)
+  alt_urls      jsonb not null default '[]',  -- o mesmo imóvel em outros sites: [{source, url, anunciante}]
+  inactive_at   timestamptz,                  -- quando saiu do ar na fonte (provavelmente alugado)
+  anunciante    text                          -- imobiliária que anuncia, ou 'Particular'
 );
 create index if not exists listings_last_seen on listings (last_seen desc);
+
+-- Anúncios que cada pessoa já abriu (ficha ampliada ou link do anúncio)
+create table if not exists views (
+  listing_id text not null references listings (id) on delete cascade,
+  email      text not null,
+  at         timestamptz not null default now(),
+  primary key (listing_id, email)
+);
 
 create table if not exists price_history (
   listing_id text not null references listings (id) on delete cascade,
@@ -139,6 +148,7 @@ alter table rentals       enable row level security;
 alter table alerts        enable row level security;
 alter table notifications enable row level security;
 alter table runs          enable row level security;
+alter table views         enable row level security;
 
 drop policy if exists members_read on members;
 create policy members_read on members for select to authenticated using (is_member());
@@ -160,6 +170,11 @@ create policy marks_all on marks for all to authenticated using (is_member()) wi
 
 drop policy if exists rentals_all on rentals;
 create policy rentals_all on rentals for all to authenticated using (is_member()) with check (is_member());
+-- Cada pessoa vê e grava só as próprias visualizações.
+drop policy if exists views_own on views;
+create policy views_own on views for all to authenticated
+  using (is_member() and lower(email) = lower(auth.jwt() ->> 'email'))
+  with check (is_member() and lower(email) = lower(auth.jwt() ->> 'email'));
 
 drop policy if exists alerts_all on alerts;
 create policy alerts_all on alerts for all to authenticated using (is_member()) with check (is_member());

@@ -282,7 +282,7 @@ def test_ingest_and_dedupe(tmp_path):
     cfg = {"criteria": CRIT, "detail_limit": 0}
     s = runmod.process(cfg, store, None, seen, report)
     assert s["dupes"] == 1 and s["new"] == 0
-    assert store.rows["ibagy-1"]["alt_urls"] == [{"source": "vivareal", "url": "https://vr/1"}]
+    assert store.rows["ibagy-1"]["alt_urls"] == [{"source": "vivareal", "url": "https://vr/1", "anunciante": None}]
 
 
 def test_robots_blocks():
@@ -379,3 +379,53 @@ def test_duplicate_without_street(monkeypatch):
     assert st.find_duplicate({**l, "area": 70}, "") is None
     assert st.find_duplicate({**l, "rent": 2300}, "") is None
     assert st.find_duplicate({**l, "bairro": "Centro"}, "") is None
+
+
+def _l(**k):
+    base = {"cidade": "São José", "bairro": "Barreiros", "area": 63, "quartos": 2, "banheiros": 2}
+    return {**base, **k}
+
+
+def test_mesmo_imovel_rua_com_e_sem_numero():
+    ib = _l(source="ibagy", street="Rua José Victor da Rosa, 722", total=3277)
+    vr = _l(source="vivareal", street="Rua José Victor da Rosa", total=3277)
+    assert criteria.mesmo_imovel(ib, vr) and criteria.mesmo_imovel(vr, ib)
+    # outro número na mesma rua: outro prédio
+    assert not criteria.mesmo_imovel(ib, _l(source="vivareal", street="Rua José Victor da Rosa, 94", total=3277))
+    # condomínio arredondado num dos sites
+    assert criteria.mesmo_imovel(ib, {**vr, "total": 3380})
+    assert not criteria.mesmo_imovel(ib, {**vr, "total": 3500})
+    # área diferente
+    assert not criteria.mesmo_imovel(ib, {**vr, "area": 74})
+
+
+def test_mesmo_imovel_mesmo_site_e_sem_rua():
+    a = _l(source="vivareal", street="Rua José de Lyra Telles, 20", total=3272, area=60)
+    assert not criteria.mesmo_imovel(a, {**a, "total": 3214})        # mesmo prédio, valores diferentes
+    assert criteria.mesmo_imovel(a, {**a, "total": 3290})            # outra imobiliária, mesmo apartamento
+    assert not criteria.mesmo_imovel(a, {**a, "street": "Rua José de Lyra Telles"})  # mesmo site sem número
+    olx = _l(source="olx", street=None, total=3270, area=61)
+    assert criteria.mesmo_imovel(a, olx)
+    assert not criteria.mesmo_imovel(a, {**olx, "total": 3200})
+    assert not criteria.mesmo_imovel(olx, {**olx, "id": "outro"})  # dois do OLX sem rua: não junta
+    assert criteria.rua({"street": "Pedra Branca, Palhoça", "bairro": "Pedra Branca"}) is None
+
+
+def test_alerta_um_banheiro_e_anunciante():
+    l = {"rent": 2000, "cond": 300, "banheiros": 1, "bairro": "Centro", "regiao": "São José"}
+    assert not criteria.alert_match(l, {"max_total": 3500})
+    assert criteria.alert_match(l, {"max_total": 3500, "min_banheiros": 1})
+    assert criteria.anunciante("Ibagy Imóveis - Kobrasol") == "Ibagy Imóveis"
+    assert criteria.anunciante("Imobiliária X Ltda.") == "Imobiliária X"
+
+
+def test_lote_junta_duplicados_do_mesmo_envio():
+    rows = [{"id": "1", "source": "vivareal", "url": "https://vr/1", "street": "Rua A, 10", "bairro": "Centro", "cidade": "São José",
+             "rent": 2500, "cond": 400, "area": 60, "banheiros": 2, "vagas": 1, "descricao": "x"},
+            {"id": "olx-2", "source": "olx", "url": "https://olx/2", "bairro": "Centro", "cidade": "São José",
+             "rent": 2500, "cond": 400, "area": 61, "banheiros": 2, "vagas": 1}]
+    seen = {r["id"]: runmod._normalize(dict(r)) for r in rows}
+    store = FakeStore(existing={}, alerts=[])
+    s = runmod.process({"criteria": {**CRIT, "regioes": {"São José": {}}}, "detail_limit": 0}, store, None, seen, [])
+    assert s["new"] == 1 and s["dupes"] == 1
+    assert store.rows["1"]["alt_urls"][0]["url"] == "https://olx/2"

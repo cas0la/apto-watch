@@ -9,7 +9,7 @@ import requests
 LISTING_FIELDS = {
     "id", "source", "url", "title", "addr", "street", "bairro", "cidade", "regiao", "rent", "cond", "iptu",
     "area", "quartos", "banheiros", "vagas", "amenities", "descricao", "pet", "pet_neg", "photos", "lat", "lon",
-    "refs", "nota", "first_seen", "last_seen", "details_at", "prev_total", "price_drop_at", "active", "alt_urls", "inactive_at",
+    "refs", "nota", "first_seen", "last_seen", "details_at", "prev_total", "price_drop_at", "active", "alt_urls", "inactive_at", "anunciante",
 }
 
 
@@ -73,33 +73,25 @@ class Store:
 
     def upsert_listings(self, rows: list[dict]):
         rows = [{k: v for k, v in r.items() if k in LISTING_FIELDS} for r in rows]
-        for i in range(0, len(rows), 200):
-            self._post("listings", rows[i:i + 200], upsert=True)
+        # O PostgREST exige as mesmas chaves em todas as linhas de um envio (PGRST102):
+        # anúncios com e sem detalhe vão em lotes separados.
+        groups: dict[tuple, list[dict]] = {}
+        for r in rows:
+            groups.setdefault(tuple(sorted(r)), []).append(r)
+        for group in groups.values():
+            for i in range(0, len(group), 200):
+                self._post("listings", group[i:i + 200], upsert=True)
 
-    def find_duplicate(self, l: dict, street_key: str) -> dict | None:
-        """Mesmo imóvel anunciado em outro site: mesma rua e número, total e área parecidos.
-
-        Sem rua (a Isci mascara o endereço), vale um critério mais estreito: mesmo bairro e cidade,
-        total a até R$ 10, área a até 3 m² e o mesmo número de banheiros.
-        """
-        by_street = bool(street_key and re.search(r"\d", street_key))
-        if not by_street and not (l.get("bairro") and l.get("area")):
+    def find_duplicate(self, l: dict, street_key: str | None = None) -> dict | None:
+        """Mesmo imóvel já gravado (outro site ou outra imobiliária): ver criteria.mesmo_imovel."""
+        from .criteria import mesmo_imovel  # import tardio para evitar ciclo
+        if not l.get("area") or not l.get("cidade"):
             return None
         total = (l.get("rent") or 0) + (l.get("cond") or 0)
-        rows = self._get("listings", {"select": "id,source,street,addr,bairro,cidade,area,banheiros,total,alt_urls",
-                                      "active": "is.true", "source": f"neq.{l['source']}",
-                                      "and": f"(total.gte.{total - 80},total.lte.{total + 80})"})
-        from .run import _street_key  # import tardio para evitar ciclo
-        from .criteria import norm
-        for r in rows:
-            if by_street:
-                if _street_key(r) == street_key and (not l.get("area") or not r.get("area") or abs(r["area"] - l["area"]) <= 3):
-                    return r
-            elif (norm(r.get("bairro") or "") == norm(l["bairro"]) and norm(r.get("cidade") or "") == norm(l.get("cidade") or "")
-                  and abs((r.get("total") or 0) - total) <= 10 and r.get("area") and abs(r["area"] - l["area"]) <= 3
-                  and (not r.get("banheiros") or not l.get("banheiros") or r["banheiros"] == l["banheiros"])):
-                return r
-        return None
+        rows = self._get("listings", {"select": "id,source,street,addr,bairro,cidade,area,quartos,banheiros,total,alt_urls",
+                                      "active": "is.true",
+                                      "and": f"(total.gte.{total - 150},total.lte.{total + 150})"})
+        return next((r for r in rows if r["id"] != l.get("id") and mesmo_imovel(l, r)), None)
 
     def add_alt_url(self, listing_id: str, current: list, item: dict):
         if any(x.get("url") == item["url"] for x in current):

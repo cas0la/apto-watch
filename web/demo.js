@@ -30,6 +30,10 @@
     // Um descartado com redução de preço, para mostrar a volta para "Não favoritados".
     const dropped = ls.find(l => markOf(l.id) === 'desc' && l.active);
     if (dropped) { dropped.prev_total = dropped.total + 250; dropped.price_drop_at = new Date(now - 2 * H).toISOString(); }
+    // Demonstração das novidades de 24/11: anunciante e alguns de 1 banheiro.
+    const AN = { ibagy: 'Ibagy Imóveis', quintoandar: 'QuintoAndar', isci: 'Isci Imóveis' }, VR = ['Ibagy Imóveis', 'Adriano Imóveis', 'Divid', 'Evolução Imóveis', null];
+    ls.forEach((l, i) => { if (!l.anunciante) l.anunciante = AN[l.source] || VR[i % VR.length]; });
+    ls.filter(l => l.active && markOf(l.id) !== 'desc').slice(-3).forEach(l => { l.banheiros = 1; });
     const st = read();
     if (!st.marks) st.marks = Object.fromEntries(ms.map(m => [m.listing_id, m]));
     // Um alugado marcado na mão (por quem usa a demonstração), para mostrar o estado manual.
@@ -69,7 +73,8 @@
       return { data: [{ source: 'ibagy', status: 'ok', finished_at: t }, { source: 'quintoandar', status: 'ok', finished_at: t },
         { source: 'vivareal', status: 'ok', finished_at: new Date(Date.now() - 5 * H).toISOString() }], error: null };
     }
-    if (q.table === 'marks' || q.table === 'rentals') {
+    if (q.table === 'marks' || q.table === 'rentals' || q.table === 'views') {
+      st.views = st.views || {};
       const tbl = st[q.table];
       if (q.op === 'select') return { data: Object.values(tbl), error: null };
       if (q.op === 'upsert') tbl[q.row.listing_id] = q.row;

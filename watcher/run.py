@@ -23,8 +23,12 @@ DETAIL_SOURCES = {"vivareal", "zap", "isci"}  # fontes com página de detalhe li
 JUDGE_AFTER_DETAIL = {"vivareal", "zap"}       # o card não basta para julgar: lê o detalhe antes dos critérios
 
 
+ANUNCIANTE_FONTE = {"ibagy": "Ibagy Imóveis", "isci": "Isci Imóveis", "quintoandar": "QuintoAndar"}
+
+
 def _normalize(l: dict) -> dict:
     l["regiao"] = criteria.regiao(l.get("cidade"))
+    l["anunciante"] = criteria.anunciante(l.get("anunciante")) or ANUNCIANTE_FONTE.get(l.get("source"))
     if not l.get("addr"):
         l["addr"] = ", ".join(x for x in [l.get("street"), l.get("bairro"), l.get("cidade")] if x) or None
     text = " ".join([l.get("descricao") or "", " ".join(l.get("amenities") or []), l.get("title") or ""])
@@ -51,9 +55,9 @@ def collect(cfg: dict, client: PoliteClient) -> tuple[dict[str, dict], list[dict
     seen: dict[str, dict] = {}
     report = []
     blocked: set[str] = set()
-    max_pages = cfg.get("max_pages_per_search", 4)
     for s in cfg["searches"]:
         src, url = s["source"], s["url"]
+        max_pages = s.get("max_pages", cfg.get("max_pages_per_search", 4))
         if s.get("modo", "auto") != "auto":
             continue
         mod = MODULES[src]
@@ -147,9 +151,15 @@ def process(cfg: dict, store: Store, tg: Telegram | None, seen: dict[str, dict],
                 _normalize(l)
             if not criteria.base_ok(l, crit)[0]:
                 continue
+            # Mesmo imóvel num anúncio novo deste lote (ainda não gravado) ou já no banco.
+            pend = next((n for n in new_rows if criteria.mesmo_imovel(l, n)), None)
+            if pend:
+                pend["alt_urls"] = (pend.get("alt_urls") or []) + [{"source": l["source"], "url": l["url"], "anunciante": l.get("anunciante")}]
+                summary["dupes"] += 1
+                continue
             dup = store.find_duplicate(l, _street_key(l))
             if dup:
-                store.add_alt_url(dup["id"], dup.get("alt_urls") or [], {"source": l["source"], "url": l["url"]})
+                store.add_alt_url(dup["id"], dup.get("alt_urls") or [], {"source": l["source"], "url": l["url"], "anunciante": l.get("anunciante")})
                 summary["dupes"] += 1
                 continue
             l["first_seen"] = l["last_seen"] = now()
@@ -164,7 +174,7 @@ def process(cfg: dict, store: Store, tg: Telegram | None, seen: dict[str, dict],
             if total < ex["total"]:
                 upd.update(prev_total=ex["total"], price_drop_at=now())
                 drops.append((lid, l, ex["total"]))
-        for k in ("descricao", "amenities", "photos", "lat", "lon", "refs", "addr", "details_at"):
+        for k in ("descricao", "amenities", "photos", "lat", "lon", "refs", "addr", "details_at", "anunciante"):
             if l.get(k) and not ex.get(k):  # completa o que faltava, sem apagar o que já existe
                 upd[k] = l[k]
         store.update_listing(lid, upd)
