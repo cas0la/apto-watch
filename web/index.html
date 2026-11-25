@@ -414,7 +414,7 @@ const brl = n => n ? 'R$ ' + Number(n).toLocaleString('pt-BR') : '—';
 const ico = (n, c = '') => `<svg class="ico ${c}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
 const sumIco = ico('plus', 'i-open') + ico('minus', 'i-close');
 const SINGLE = new URLSearchParams(location.search).get('anuncio');
-const REGS = ['Pedra Branca (Palhoça)', 'São José', 'Florianópolis'];
+const REGS = ['Palhoça', 'São José', 'Florianópolis'];
 const SRC = { vivareal: 'VivaReal', zap: 'ZAP', olx: 'OLX', ibagy: 'Ibagy', quintoandar: 'QuintoAndar', isci: 'Isci' };
 const DAY = 864e5;
 const PERIODS = [['d1', 'Últimas 24h', 0, DAY, 'nas últimas 24h'], ['d7', 'Últimos 7 dias', DAY, 7 * DAY, 'entre 1 e 7 dias atrás'], ['d30', 'Último mês', 7 * DAY, 30 * DAY, 'entre 7 e 30 dias atrás']];

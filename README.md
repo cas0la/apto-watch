@@ -20,7 +20,10 @@ Tudo vai para o mesmo processamento (`watcher/run.py`):
 
 - **Anúncio novo** que passa nos critérios do `config.yaml` entra na lista e dispara os alertas que combinam.
 - **Mesmo imóvel em dois sites** (mesma rua e número, total e área parecidos) vira um card só, com os dois links.
-  A Isci esconde a rua; para ela vale mesmo bairro e cidade, total a até R$ 10, área a até 3 m² e mesmos banheiros.
+  A regra completa está em `criteria.mesmo_imovel` (rua com ou sem número, sites diferentes ou outra imobiliária no
+  mesmo portal); `scripts/dedupe.py --apply` junta os que já estão no banco.
+- **Fora do critério:** bairro fora da lista, mobiliado (só vale armário de cozinha e banheiro) e temporada ou diária.
+  Depois de mudar o `config.yaml`, `scripts/reaplicar_criterios.py --apply` tira do banco o que não passa mais.
 - **Redução de preço**: o histórico fica em `price_history`; um anúncio descartado que baixa de preço volta para
   "Em análise" com a etiqueta "baixou R$ X" e pode gerar alerta.
 - **Alugado**: depois de 7 dias sem aparecer numa leitura completa da fonte, o anúncio é desativado e aparece como
@@ -32,7 +35,7 @@ Na aba Alertas ficam os alertas criados e, para cada um, os anúncios **novos** 
 criado, separados em Últimas 24h, Últimos 7 dias e Último mês. Cada aba tem endereço próprio (`#alertas`, `#fav`…),
 e `?demo` abre a página com os dados da migração, sem Supabase.
 No topo, **Buscar agora** pede uma leitura das fontes ao PC (veja o passo 3). Nos filtros, *Agrupar por região* liga
-ou desliga a divisão por Pedra Branca, São José e Florianópolis; a ordem escolhida vale dentro de cada grupo.
+ou desliga a divisão por Palhoça, São José e Florianópolis; a ordem escolhida vale dentro de cada grupo.
 
 ## Instalação
 

@@ -41,7 +41,7 @@
     if (!st.alerts) st.alerts = [
       { id: 'demo-1', name: 'Geral até R$ 3.500', enabled: true, max_total: 3500, regioes: [], bairros_incluir: [], bairros_excluir: [],
         min_quartos: null, min_banheiros: 2, min_vagas: 1, exigir_pet: false, avisar_reducao: true, created_at: new Date(now - 35 * DAY).toISOString() },
-      { id: 'demo-2', name: 'Pedra Branca até R$ 3.200', enabled: true, max_total: 3200, regioes: ['Pedra Branca (Palhoça)'], bairros_incluir: [], bairros_excluir: [],
+      { id: 'demo-2', name: 'Pedra Branca até R$ 3.200', enabled: true, max_total: 3200, regioes: ['Palhoça'], bairros_incluir: [], bairros_excluir: [],
         min_quartos: 2, min_banheiros: 2, min_vagas: 1, exigir_pet: false, avisar_reducao: true, created_at: new Date(now - 35 * DAY).toISOString() },
     ];
     write(st);

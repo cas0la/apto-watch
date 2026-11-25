@@ -15,18 +15,21 @@ criteria:
   max_total: 3500          # aluguel + condomínio
   min_banheiros: 1        # os de 1 banheiro vão para a aba própria; alertas pedem 2 se não disserem nada
   min_vagas: 1
-  regioes:
+  regioes:                # só os bairros listados entram (lista de 25/11/2026)
     "Palhoça":
-      incluir: ["Pedra Branca"]
+      incluir: ["Pedra Branca", "Pagani"]
     "São José":
-      excluir: ["Areias", "Serraria", "Roçado", "Forquilhinha", "Forquilhinhas", "Forquilinha", "Forquilinhas", "Forquilhas", "Lisboa",
-                "San Marino", "Sertão do Maruim", "Ipiranga"]
+      incluir: ["Campinas", "Kobrasol", "Barreiros", "Bela Vista"]
     "Florianópolis":
-      incluir: ["Estreito", "Balneário", "Coqueiros", "Abraão", "Capoeiras", "Itaguaçu",
-                "Bom Abrigo", "Jardim Atlântico", "Canto", "Monte Cristo", "Coloninha",
-                "Vila São João", "Centro", "Trindade", "Agronômica", "Córrego Grande",
-                "Itacorubi", "Santa Mônica", "Pantanal", "Saco dos Limões", "Carvoeira",
-                "José Mendes", "Serrinha", "Prainha"]
+      # continente
+      incluir: ["Estreito", "Capoeiras", "Abraão", "Canto", "Coloninha", "Jardim Atlântico",
+      # centro e entorno, na ilha
+                "Centro", "Agronômica", "Trindade", "Santa Mônica", "Itacorubi", "Córrego Grande",
+                "Pantanal", "Saco dos Limões", "Carvoeira", "José Mendes", "Prainha", "Serrinha"]
+      # bairros do norte e do sul da ilha que às vezes vêm com "Centro" no nome (ex.: "Ingleses Centro")
+      excluir: ["Ingleses", "Canasvieiras", "Jurerê", "Lagoa", "Campeche", "Rio Vermelho", "Ribeirão", "Santo Antônio", "Barra"]
+  sem_mobilia: true        # só armários de cozinha e banheiro (ver criteria.mobilia_excede)
+  so_longa_duracao: true   # fora temporada e diária (ver criteria.temporada)
 
 # Buscas. modo: auto = o watcher lê sozinho (site aceita robô identificado e o robots.txt permite);
 #        assistido = o site recusa robôs; a coleta é feita pelo Claude no seu Chrome, quando você pedir,
@@ -89,6 +92,9 @@ searches:
   - source: vivareal
     modo: assistido
     url: "https://www.vivareal.com.br/aluguel/santa-catarina/palhoca/bairros/pedra-branca/apartamento_residencial/?banheiros=1,2,3,4&vagas=1,2,3,4&precoMaximo=3500"
+  - source: vivareal
+    modo: assistido
+    url: "https://www.vivareal.com.br/aluguel/santa-catarina/palhoca/bairros/pagani/apartamento_residencial/?banheiros=1,2,3,4&vagas=1,2,3,4&precoMaximo=3500"
   - source: vivareal
     modo: assistido
     url: "https://www.vivareal.com.br/aluguel/santa-catarina/sao-jose/apartamento_residencial/?banheiros=1,2,3,4&vagas=1,2,3,4&precoMaximo=3500"

@@ -429,3 +429,31 @@ def test_lote_junta_duplicados_do_mesmo_envio():
     s = runmod.process({"criteria": {**CRIT, "regioes": {"São José": {}}}, "detail_limit": 0}, store, None, seen, [])
     assert s["new"] == 1 and s["dupes"] == 1
     assert store.rows["1"]["alt_urls"][0]["url"] == "https://olx/2"
+
+
+def test_mobilia_so_cozinha_e_banheiro():
+    m = criteria.mobilia_excede
+    assert m("Apartamento todo mobiliado") == "mobiliado"
+    assert m("Apartamento 2 quartos", ["Mobiliado"]) == "mobiliado"
+    assert m("Semimobiliado com armários na cozinha e banheiros", ["Mobiliado"]) is None
+    assert m("Semi-mobiliado: armários nos quartos").startswith("mobília além")
+    assert m("Sala com sofá e rack").startswith("mobília além")
+    assert m("Não mobiliado. Cozinha com armários") is None
+    assert m("Salão de festas mobiliado e espaço gourmet com mesas e cadeiras") is None
+    assert m("Cozinha com fogão de mesa e coifa") is None
+
+
+def test_temporada():
+    t = criteria.temporada
+    assert t("Locação diária perto da praia", 2500) and t("Aluguel por temporada", 3000)
+    assert t("Faxina diária nas áreas comuns", 2500) is None
+    assert t("Kitnet", 450) and t("Apartamento anual", 3000) is None
+
+
+def test_base_ok_com_mobilia_e_temporada():
+    crit = {**CRIT, "sem_mobilia": True, "so_longa_duracao": True, "regioes": {"Palhoça": {"incluir": ["Pedra Branca", "Pagani"]}}}
+    l = {"rent": 2500, "cond": 400, "banheiros": 2, "vagas": 1, "bairro": "Pagani", "cidade": "Palhoça"}
+    assert criteria.base_ok(l, crit)[0]
+    assert criteria.base_ok({**l, "descricao": "Apartamento mobiliado"}, crit) == (False, "mobiliado")
+    assert criteria.base_ok({**l, "title": "Temporada verão"}, crit)[1].startswith("temporada")
+    assert criteria.base_ok({**l, "bairro": "Ponte do Imaruim"}, crit)[1].startswith("bairro")

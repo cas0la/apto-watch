@@ -11,7 +11,7 @@ PET_NEG = re.compile(
 )
 PET_POS = re.compile(r"aceita animais|aceita pets?|permite pets?|pet.?friendly|(aceita|permite)[^.]{0,20}(pet|animais)", re.I)
 
-REGIAO_DE_CIDADE = {"palhoca": "Pedra Branca (Palhoça)", "sao jose": "São José", "florianopolis": "Florianópolis"}
+REGIAO_DE_CIDADE = {"palhoca": "Palhoça", "sao jose": "São José", "florianopolis": "Florianópolis"}
 
 
 def norm(s: str | None) -> str:
@@ -71,6 +71,11 @@ def base_ok(l: dict, crit: dict) -> tuple[bool, str]:
         return False, f"bairro {l.get('bairro')}/{l.get('cidade')}"
     if l.get("pet") == "NAO":
         return False, "não aceita pet"
+    texto = " ".join([l.get("title") or "", l.get("descricao") or ""])
+    if crit.get("sem_mobilia") and (m := mobilia_excede(texto, l.get("amenities"))):
+        return False, m
+    if crit.get("so_longa_duracao") and (t := temporada(texto + " " + " ".join(l.get("amenities") or []), l.get("rent"))):
+        return False, t
     return True, ""
 
 
@@ -159,3 +164,62 @@ def mesmo_imovel(a: dict, b: dict) -> bool:
         return False
     ba, bb = norm(a.get("bairro")), norm(b.get("bairro"))
     return bool(ba and bb) and (ba == bb or _has(ba, bb) or _has(bb, ba)) and d <= 10
+
+
+# Áreas comuns do prédio: "salão de festas mobiliado" não diz nada do apartamento.
+_AREA_COMUM = re.compile(r"(salao|espaco|area|hall|recepcao|academia|gourmet|lazer|coworking|brinquedoteca|condominio|"
+                         r"festas|jogos|piscina|terraco|rooftop|portaria|lobby)[^.;\n]{0,40}$")
+_MOVEL_FORA = re.compile(
+    r"\b(sofas?|sofa[- ]cama|camas?( box| de casal| de solteiro)?|beliche|colchao|mesa (de jantar|com|e) |mesas e cadeiras|"
+    r"cadeiras|poltronas?|rack|painel (de|da|para) tv|home theater|smart ?tv|televis(ao|or)|escrivaninha|"
+    r"guarda[- ]roupas?|roupeiros?|cabeceira|criado[- ]mudo|comodas?|closet mobiliado|"
+    r"armarios? (planejados? )?(n[oa]s? |em todos os |de )?(quartos?|dormitorios?|suites?)|"
+    r"(moveis|armarios|planejados) em todos os ambientes)\b")
+
+
+def _fora_de_area_comum(t: str, m: re.Match) -> bool:
+    return not _AREA_COMUM.search(t[max(0, m.start() - 60):m.start()])
+
+
+def mobilia_excede(texto: str, amenities: list | None = None) -> str | None:
+    """Motivo se o apartamento tem mobília além de armários de cozinha e banheiro; None se não.
+
+    Sai o "mobiliado" (sem "semi", "não" ou "sem" antes) e o semimobiliado que cita móvel fora da cozinha e do
+    banheiro (sofá, cama, mesa, rack, armário nos quartos...). Fica o semimobiliado que só fala de cozinha e
+    banheiro, ou que não diz o quê. Menções a áreas comuns do prédio ("salão de festas mobiliado") não contam.
+    """
+    t = norm(texto)
+    # A característica "Mobiliado" do portal só vale como mobiliado completo se o texto não disser "semimobiliado".
+    am = [norm(a) for a in amenities or []]
+    semi = re.search(r"\bsemi[\s-]?mobiliad", t)
+    if not semi and any(a in ("mobiliado", "mobiliada") for a in am):
+        return "mobiliado"
+    t = t + " " + " ".join(a for a in am if a not in ("mobiliado", "mobiliada"))
+    for m in re.finditer(r"\b(semi[\s-]?)?mobiliad[oa]s?\b", t):
+        if m.group(1):
+            continue
+        antes = t[max(0, m.start() - 12):m.start()]
+        if re.search(r"\b(nao|sem|nem)\s+(e\s+|esta\s+|vem\s+)?$", antes) or not _fora_de_area_comum(t, m):
+            continue
+        return "mobiliado"
+    t = re.sub(r"\bde mesa\b", " ", t)  # "fogão de mesa", "cooktop de mesa"
+    for m in _MOVEL_FORA.finditer(t):
+        if _fora_de_area_comum(t, m):
+            return f"mobília além de cozinha e banheiro ({m.group(0).strip()})"
+    return None
+
+
+_TEMPORADA = re.compile(r"\btemporada\b|\b(locacao|aluguel)\s+(por\s+)?(diari[ao]s?|dia)\b|\bdiarias?\b|\bpor noite\b|"
+                        r"\bairbnb\b|short stay|\breveillon\b|\bpacote (de )?(fim de semana|feriado)")
+
+
+def temporada(texto: str, rent: int | None = None) -> str | None:
+    """Motivo se é aluguel de temporada ou diária; None para longa duração."""
+    t = norm(texto)
+    for m in _TEMPORADA.finditer(t):
+        if m.group(0).startswith("diaria") and re.search(r"(faxina|limpeza|coleta|portaria|zeladoria)\s+$", t[max(0, m.start() - 15):m.start()]):
+            continue
+        return f"temporada ({m.group(0)})"
+    if rent and rent < 800:
+        return "temporada (aluguel abaixo de R$ 800, provável diária)"
+    return None
